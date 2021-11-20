@@ -12,17 +12,17 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  #maybe this is unnecessary, instead need session#show
-  def show
-    @user = User.find_by(id: params[:id])
+  #maybe this is unnecessary, instead will use session#create to get current user
+  # def show
+  #   @user = User.find_by(id: params[:id])
 
-    if @user
-      render "api/users/show"
-    else
-      render json: ["User Not Found"], status: 404
-      # Not Found
-    end
-  end
+  #   if @user
+  #     render "api/users/show"
+  #   else
+  #     render json: ["User Not Found"], status: 404
+  #     # Not Found
+  #   end
+  # end
 
 
   private
