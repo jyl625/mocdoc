@@ -12,6 +12,7 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  #maybe this is unnecessary, instead need session#show
   def show
     @user = User.find_by(id: params[:id])
 
