@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import FormNavBar from '../nav_bar/form_nav_bar'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -28,23 +29,26 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="login-form">
-        <input type="button" value="Sign up with email" onClick={this.redirectRoute} />
-        <div>or</div>
-        <label>Email address
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={this.update("email")} />
-        </label>
-        <label>Password
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={this.update("password")} />
-        </label>
-        <input type="submit" value="Login"/>
-      </form>
+      <>
+        <FormNavBar currPath={this.props.currPath}/>
+        <form onSubmit={this.handleSubmit} className="login-form">
+          <input type="button" value="Sign up with email" onClick={this.redirectRoute} />
+          <div>or</div>
+          <label>Email address
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.update("email")} />
+          </label>
+          <label>Password
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.update("password")} />
+          </label>
+          <input type="submit" value="Login"/>
+        </form>
+      </>
     )
   }
 }

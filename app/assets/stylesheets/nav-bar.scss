@@ -1,5 +1,5 @@
 .nav-bar {
-  background-color: #fff04b;
+  background-color: #d6e5f3;
   padding: 20px 42px;
   height: 70px;
   display: flex;
@@ -16,6 +16,7 @@
 .logo:hover {
   text-decoration: none;
   color: inherit;
+  cursor: pointer
 }
 
 .nav-link {
@@ -26,10 +27,35 @@
 
 .nav-link:hover {
   border-bottom: 1px solid;
+  cursor: pointer
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   width: 100px;
+}
+
+.patient-name {
+  border-bottom: 1px dotted;
+  color: rgb(0, 35, 75);
+  font-size: 14px;
+}
+.patient-name:hover {
+  border-bottom: 1px solid;
+  cursor: pointer
+}
+
+.nav-container-logged_in {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+}
+
+.signout {
+  font-size: 14px;
+}
+
+.signout:hover {
+  cursor: pointer
 }

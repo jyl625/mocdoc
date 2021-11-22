@@ -10,10 +10,11 @@ const NavBar = ({currentUser, logout}) => {
   )
 
   const patientNav = () => (
-    <div className="nav-container">
+    <div className="nav-container-logged_in">
       <div className="nav-link">My Mocdoc</div>
       <div className="nav-link">Past Appointments</div>
-      <div>{currentUser.email}</div>
+      <div className="patient-name">{currentUser.email}</div>
+      <div className="signout" onClick={() => logout()}>&times; Sign out</div>
     </div>
   )
 
