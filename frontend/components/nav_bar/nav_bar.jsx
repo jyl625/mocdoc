@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 const NavBar = ({currentUser, logout}) => {
   const sessionLinks = () => (
     <div>
-      <div>Log In</div>
-      <div>Sign Up</div>
+      <Link to="/signin">Log In</Link>
+      <Link to="/createuser/details">Sign Up</Link>
     </div>
   )
 
