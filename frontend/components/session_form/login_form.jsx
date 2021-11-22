@@ -34,13 +34,23 @@ class LoginForm extends React.Component {
     })
   }
 
+  showErrors() {
+    return (
+      this.props.errors.map((error, idx) => <li key={idx} 
+                                              className="errorMessage"
+                                            >{error}</li>
+                            )
+    )
+  }
+
   render() {
     return (
       <>
         <FormNavBar currPath={this.props.currPath}/>
         <form onSubmit={this.handleSubmit} className="login-form">
           <input type="button" value="Sign up with email" onClick={this.redirectRoute} />
-          <div>or</div>
+          {/* <div>or</div> */}
+          <h3><span>or</span></h3>
           <label>Email address
             <input
               type="text"
@@ -55,6 +65,9 @@ class LoginForm extends React.Component {
           </label>
           <input type="submit" value="Log in"/>
           <input type="button" value="Demo Login" onClick={this.handleDemoLogin}/>
+          <ul>
+            {this.showErrors()}
+          </ul>
         </form>
       </>
     )

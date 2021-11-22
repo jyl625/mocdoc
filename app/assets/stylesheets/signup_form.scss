@@ -62,4 +62,8 @@
   input[type="submit"]:hover {
     filter: brightness(95%)
   }
+
+  .errorMessage {
+    color: red;
+  }
 }

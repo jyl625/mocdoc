@@ -23,6 +23,15 @@ class SignupForm extends React.Component {
     return (e => this.setState({ [field]: e.currentTarget.value}))
   }
 
+  showErrors() {
+    return (
+      this.props.errors.map((error, idx) => <li key={idx}
+                                              className="errorMessage"
+                                            >{error}</li>
+                            )
+    )
+  }
+
   render() {
     return (
       <>
@@ -45,6 +54,9 @@ class SignupForm extends React.Component {
               onChange={this.update("password")} />
           </label>
           <input type="submit" value="Save and Continue"/>
+          <ul>
+            {this.showErrors()}
+          </ul>
         </form>
       </>
     )
