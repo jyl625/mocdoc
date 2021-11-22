@@ -1,9 +1,13 @@
 import React from "react";
+import NavBarContainer from "./nav_bar/nav_bar_container";
 
 const App = () => (
-  <div>
-    <h1>Mocdoc</h1>
-  </div>
+  <>
+    <NavBarContainer/>
+    {/* <Route exact path="/login" component={LogInFormContainer} />
+    <Route exact path="/signup" component={SignUpFormContainer} /> */}
+
+  </>
 )
 
 
