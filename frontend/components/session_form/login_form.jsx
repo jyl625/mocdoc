@@ -27,6 +27,13 @@ class LoginForm extends React.Component {
     return (e => this.setState({ [field]: e.currentTarget.value }))
   }
 
+  handleDemoLogin = () => {
+    this.props.login({
+      email: "demo@email.com",
+      password: "111111"
+    })
+  }
+
   render() {
     return (
       <>
@@ -47,6 +54,7 @@ class LoginForm extends React.Component {
               onChange={this.update("password")} />
           </label>
           <input type="submit" value="Log in"/>
+          <input type="button" value="Demo Login" onClick={this.handleDemoLogin}/>
         </form>
       </>
     )
