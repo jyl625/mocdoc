@@ -13,14 +13,17 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    this.props.clearSessionErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
     this.props.login(this.state);
   }
 
   redirectRoute = () => {
-    this.props.history.push("/createuser/details")
+    this.props.history.push("/createuser/details");
   }
 
   update(field) {
