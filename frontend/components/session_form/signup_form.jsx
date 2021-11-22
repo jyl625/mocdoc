@@ -24,9 +24,11 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h3>Create an account</h3>
-        <Link to="/signin">Already have one? Log in.</Link>
+      <form onSubmit={this.handleSubmit} className="signup-form">
+        <div className="form-header">
+          <div className="form-title">Create an account</div>
+          <Link to="/signin">Already have one? Log in.</Link>
+        </div>
         <label>Enter your email
           <input 
             type="text" 
@@ -39,7 +41,7 @@ class SignupForm extends React.Component {
             value={this.state.password}
             onChange={this.update("password")} />
         </label>
-        <input type="submit" value="Save and Continue" />
+        <input type="submit" value="Save and Continue"/>
       </form>
     )
   }

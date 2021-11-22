@@ -18,14 +18,18 @@ class LoginForm extends React.Component {
     this.props.login(this.state);
   }
 
+  redirectRoute = () => {
+    this.props.history.push("/createuser/details")
+  }
+
   update(field) {
     return (e => this.setState({ [field]: e.currentTarget.value }))
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <Link to="/createuser/details">Sign up with email</Link>
+      <form onSubmit={this.handleSubmit} className="login-form">
+        <input type="button" value="Sign up with email" onClick={this.redirectRoute} />
         <div>or</div>
         <label>Email address
           <input
@@ -39,7 +43,7 @@ class LoginForm extends React.Component {
             value={this.state.password}
             onChange={this.update("password")} />
         </label>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login"/>
       </form>
     )
   }

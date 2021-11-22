@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+box-sizing: border-box;
+
+}
+
+body {
+margin: 0px;
+padding: 0px;
+color: #00234B;
+font-family: "sharp-sans-medium", "fallback-font", Arial, sans-serif;
+background-color: #f3f3f4;
+}
+
+a, a:focus, a:active {
+text-decoration: none;
+color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+

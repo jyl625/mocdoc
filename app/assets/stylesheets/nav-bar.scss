@@ -1,0 +1,35 @@
+.nav-bar {
+  background-color: #fff04b;
+  padding: 20px 42px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link {
+  border-bottom: 1px dotted;
+  color: rgb(0, 35, 75);
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  border-bottom: 1px solid;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}

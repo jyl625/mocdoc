@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom'
 
 const NavBar = ({currentUser, logout}) => {
   const sessionLinks = () => (
-    <div>
-      <Link to="/signin">Log In</Link>
-      <Link to="/createuser/details">Sign Up</Link>
+    <div className="nav-container">
+      <Link to="/signin" className="nav-link">Log In</Link>
+      <Link to="/createuser/details" className="nav-link">Sign Up</Link>
     </div>
   )
 
   const patientNav = () => (
-    <div>
-      <div>My Mocdoc</div>
-      <div>Past Appointments</div>
+    <div className="nav-container">
+      <div className="nav-link">My Mocdoc</div>
+      <div className="nav-link">Past Appointments</div>
       <div>{currentUser.email}</div>
     </div>
   )
 
   return (
-    <div>
-      <h1>Mocdoc</h1>
+    <div className="nav-bar">
+      <Link className="logo"to="/">Mocdoc</Link>
       {currentUser ? patientNav() : sessionLinks()}
     </div>
   )
