@@ -12,7 +12,6 @@ import { withRouter } from 'react-router';
 
   
 //   render() {
-//     console.log(this.props.ui.modal);
 //     return (
 //       <>
 //         {this.props.ui.modal ? <ModalLoginFormContainer/> : null}
