@@ -52,7 +52,6 @@ class LoginForm extends React.Component {
         <FormNavBar currPath={this.props.currPath}/>
         <form onSubmit={this.handleSubmit} className="login-form">
           <input type="button" value="Sign up with email" onClick={this.redirectRoute} />
-          {/* <div>or</div> */}
           <h3><span>or</span></h3>
           <label>Email address
             <input

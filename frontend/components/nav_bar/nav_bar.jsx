@@ -9,9 +9,13 @@ class NavBar extends React.Component {
     }
   }
 
+  openLoginModel = () => {
+    this.props.openModal();
+  }
+
   sessionLinks = () => (
     <div className="nav-container">
-      <div><Link to="/signin" className="nav-link">Log In</Link></div>
+      <div><div className="nav-link" onClick={this.openLoginModel}>Log In</div></div>
       <div><Link to="/createuser/details" className="nav-link">Sign Up</Link></div>
     </div>
   )
