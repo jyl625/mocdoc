@@ -5,32 +5,36 @@ import ModalLoginFormContainer from '../session_form/modal_login_form_container'
 import { withRouter } from 'react-router';
 
 
-// class Home extends React.Component {
-//   constructor(props) {
-//     super(props)
-//   }
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.closeModal()
+  }
 
   
-//   render() {
-//     return (
-//       <>
-//         {this.props.ui.modal ? <ModalLoginFormContainer/> : null}
-//         <NavBarContainer />
-//         <div className="search-banner"></div>
-//         <div className="home-content"></div>
-//       </>
-//     )
-//   }
-// }
+  render() {
+    return (
+      <>
+        {this.props.ui.modal ? <ModalLoginFormContainer/> : null}
+        <NavBarContainer />
+        <div className="search-banner"></div>
+        <div className="home-content"></div>
+      </>
+    )
+  }
+}
 
-const Home = (props) => (
-  <>
-    {props.ui.modal ? <ModalLoginFormContainer/> : null}
-    <NavBarContainer/>
-    <div className="search-banner"></div>
-    <div className="home-content"></div>
-  </>
-)
+// const Home = (props) => (
+//   <>
+//     {props.ui.modal ? <ModalLoginFormContainer/> : null}
+//     <NavBarContainer/>
+//     <div className="search-banner"></div>
+//     <div className="home-content"></div>
+//   </>
+// )
 
 // export default withRouter(Home)
 export default Home
