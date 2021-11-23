@@ -68,7 +68,7 @@ class ModalLoginForm extends React.Component {
             </label>
             <input type="submit" value="Log in"/>
             <input type="button" value="Demo Login" onClick={this.handleDemoLogin}/>
-            <Link to="/createuser/details"><h3>New to Zocdoc? Create an account</h3></Link>
+            <Link to="/createuser/details"><h3>New to Mocdoc? Create an account</h3></Link>
             <ul>
               {this.showErrors()}
             </ul>
