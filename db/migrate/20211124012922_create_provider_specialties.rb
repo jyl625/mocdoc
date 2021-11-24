@@ -6,6 +6,7 @@ class CreateProviderSpecialties < ActiveRecord::Migration[5.2]
     end
 
     add_index :provider_specialties, :npi
+    # add_index :provider_specialties, :specialty_code
     add_index :provider_specialties, [:npi, :specialty_code], unique: true
   end
 end
