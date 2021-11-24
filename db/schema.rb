@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 2021_11_24_062754) do
 
   create_table "provider_insurances", force: :cascade do |t|
     t.string "npi", null: false
-    t.string "hios_id", null: false
-    t.index ["hios_id"], name: "index_provider_insurances_on_hios_id"
-    t.index ["npi", "hios_id"], name: "index_provider_insurances_on_npi_and_hios_id", unique: true
+    t.string "plan_id", null: false
+    t.index ["npi", "plan_id"], name: "index_provider_insurances_on_npi_and_plan_id", unique: true
     t.index ["npi"], name: "index_provider_insurances_on_npi"
+    t.index ["plan_id"], name: "index_provider_insurances_on_plan_id"
   end
 
   create_table "provider_specialties", force: :cascade do |t|
