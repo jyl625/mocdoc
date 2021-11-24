@@ -34,14 +34,26 @@ require 'byebug'
 # end
 
 # INSURANCES SEED
-INSURANCE_CSV = 'insurances_table.csv'
+# INSURANCE_CSV = 'insurances_table.csv'
 
-CSV.foreach(Rails.root.join("lib/seed_csv/#{INSURANCE_CSV}"), headers: true) do |row|
+# CSV.foreach(Rails.root.join("lib/seed_csv/#{INSURANCE_CSV}"), headers: true) do |row|
 
-  Insurance.create( {
-    hios_id: row["hios_id"], 
-    carrier: row["carrier"],
-    plan_id: row["plan_id"], 
-    plan: row["plan"],
+#   Insurance.create( {
+#     hios_id: row["hios_id"], 
+#     carrier: row["carrier"],
+#     plan_id: row["plan_id"], 
+#     plan: row["plan"],
+#   } ) 
+# end
+
+# SPECIALTIES SEED
+SPECIALTY_CSV = 'specialties_table.csv'
+
+CSV.foreach(Rails.root.join("lib/seed_csv/#{SPECIALTY_CSV}"), headers: true) do |row|
+
+  Specialty.create( {
+    specialty_code: row["specialty_code"], 
+    specialty_name: row["specialty_name"],
   } ) 
+
 end

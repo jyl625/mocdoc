@@ -1,0 +1,68 @@
+specialty_code,specialty_name
+0,General Practitioner (Dentists Only)
+1,General Practice
+2,General Surgery
+3,Allergy
+4,"Otology, Laryngology, Rhinology"
+5,Anesthesiology
+6,Cardiovascular Disease (M.D. only)
+7,Dermatology
+8,Family Practice
+9,Gynecology (D.O. only)
+10,"Gastroenterology (M.D. only), Oral Surgeon (Dentists Only)"
+11,Aviation (M.D. only)
+12,Manipulative Therapy (D.O. only)
+13,Neurology (M.D. only)
+14,Neurological Surgery
+15,"Obstetrics (D.O. only), Endodontist (Dentists Only)"
+16,Obstetrics-Gynecology (M.D. Only) Neonatal
+17,"Ophthalmology, Otolaryngology, Rhinology (D.O.only)"
+18,Ophthalmology
+19,Dentists (DMD)
+20,"Orthopedic Surgery,  Orthodontist (Dentists Only)"
+21,Pathologic Anatomy: Clinical Pathology (D.O. only)
+22,Pathology (M.D. only)
+23,Peripheral Vascular Disease or Surgery (D.O. only)
+24,Plastic Surgery
+25,"Physical Medicine and Rehabilitation,  Certified Orthodontist (Dentists Only)"
+26,Psychiatry (child)
+27,Psychiatry Neurology (D.O. only)
+28,Proctology (colon and rectal)
+29,Pulmonary Diseases (M.D. only)
+30,"Radiology,  Pedodontist (Dentists Only)"
+31,"Roentgenology, Radiology (M.D. only)"
+32,Radiation Therapy (D.O. only)
+33,Thoracic Surgery
+34,Urology and Urological Surgery
+35,Pediatric Cardiology (M.D. only)
+36,Psychiatry
+38,Geriatrics
+39,Preventive (M.D. only)
+40,"Pediatrics,  Periodontist (Dentists Only)"
+41,Internal Medicine
+42,Nuclear Medicine
+43,Pediatric Allergy
+44,Public Health
+45,Nephrology (Renal-Kidney)
+46,Hand Surgery
+47,Miscellaneous
+50,Prosthodontist (Dentists Only)
+60,Oral Pathologist (Dentists Only)
+66,Emergency Medicine (Urgent Care)
+67,Endocrinology
+68,Hematology
+70,"Clinic (mixed specialty), Public Health (Dentists Only)"
+77,Infectious Disease
+78,Neoplastic Diseases/Oncology
+79,Neurology-Child
+80,Full-Time Facility (Dentists Only)
+83,Rheumatology
+84,Surgery-Head and Neck
+85,Surgery-Pediatric
+89,Surgery-Traumatic
+90,Pathology-Forensic
+91,Pharmacology-Clinical
+93,"Marriage, family and child counselor"
+94,Licensed clinical social worker
+95,Registered nurse
+99,Unknown (on EDS claims)

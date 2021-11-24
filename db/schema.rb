@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_000836) do
+ActiveRecord::Schema.define(version: 2021_11_24_004205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 2021_11_24_000836) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["npi"], name: "index_providers_on_npi", unique: true
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.string "specialty_code", null: false
+    t.string "specialty_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["specialty_code"], name: "index_specialties_on_specialty_code", unique: true
   end
 
   create_table "users", force: :cascade do |t|

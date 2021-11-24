@@ -9,6 +9,6 @@ class CreateInsurances < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :insurances, [:hios_id, :plan_id], unique: true;
+    add_index :insurances, [:hios_id, :plan_id], unique: true
   end
 end
