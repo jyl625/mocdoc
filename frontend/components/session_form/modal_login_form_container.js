@@ -5,7 +5,7 @@ import ModalLoginForm from './modal_login_form';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
-
+  modal: state.ui.modal
 })
 
 const mapDispatchToProps = (dispatch) => ({

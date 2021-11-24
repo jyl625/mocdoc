@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/ui_actions'
 import Home from './home'
 
 const mapStateToProps = (state) => ({
-  ui: state.ui
+  modal: state.ui.modal
 })
 
 const mapDispatchToProps = (dispatch) => ({

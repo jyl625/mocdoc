@@ -11,7 +11,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.ui.modal) {
+    if (this.props.modal) {
       this.props.closeModal()
     }
   }
@@ -20,7 +20,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        {this.props.ui.modal ? <ModalLoginFormContainer/> : null}
+        {this.props.modal ? <ModalLoginFormContainer/> : null}
         <NavBarContainer />
         <div className="search-banner"></div>
         <div className="home-content"></div>

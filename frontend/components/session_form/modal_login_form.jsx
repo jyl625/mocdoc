@@ -15,12 +15,23 @@ class ModalLoginForm extends React.Component {
 
   componentDidMount() {
     this.props.clearSessionErrors();
+    if(this.props.modal) {
+      document.body.style.overflow = 'hidden'
+    }
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflow = 'unset';
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).then(() => this.props.closeModal());
 
+  }
+
+  handleCloseModal = () => {
+    this.props.closeModal();
   }
 
   redirectRoute = () => {
@@ -52,7 +63,7 @@ class ModalLoginForm extends React.Component {
       <>
         <div className="modal">
           <form onSubmit={this.handleSubmit} className="modal-login-form">
-            <div className="close" onClick={() => this.props.closeModal()}>&times;</div>
+            <div className="close" onClick={this.handleCloseModal}>&times;</div>
             <h2>Login to book your appointment</h2>
             <label>Email address
               <input
