@@ -71,3 +71,59 @@ CSV.foreach(Rails.root.join("lib/seed_csv/#{PROVIDER_SPECIALTIES_DEV}"), headers
   } ) 
 
 end
+
+
+
+##### PROVIDERINSURANCE SEED #####
+
+## SELECT ALL PROVIDERS
+# all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi) #TESTING
+# all_npi = Provider.select(:npi).distinct.pluck(:npi)
+
+## RANDOMLY SELECT PLANS
+# All Cali Plans
+# [["67138", "HealthNet"], 
+#  ["18126", "Molina"],               
+#  ["84014", "Valley"],               
+#  ["93689", "Western"],              
+#  ["99110", "HealthNet"],            
+#  ["47579", "Chinese Community"],  
+#  ["92499", "Sharp"],              
+#  ["92815", "L.A. Care"],          
+#  ["40513", "Kaiser"],             
+#  ["70285", "Blue Shield"],        
+#  ["67689", "Bright"],             
+#  ["10544", "Oscar"],              
+#  ["27603", "Anthem"]]    
+
+# All carrier hios_ids
+# carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
+
+# Pick a number of random plans
+# rand_carrier_hios_ids = carrier_hios_ids.sample(3)
+
+# Find all plans by the randomly selected carriers
+# rand_plan_ids = []
+# rand_carrier_hios_ids.each {|hios| rand_plan_ids +=  Insurance.where(hios_id: hios).pluck(:plan_id)}
+
+# PRY TEST CODE
+# provider_plan = []
+# all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi)
+# all_npi.each do |npi|
+#   carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
+#   rand_carrier_hios_ids = carrier_hios_ids.sample(3)
+#   rand_plan_ids = []
+#   rand_carrier_hios_ids.each {|hios| rand_plan_ids +=  Insurance.where(hios_id: hios).pluck(:plan_id)}
+#   provider_plan += rand_plan_ids.map {|plan_id| [npi, plan_id]}
+# end
+
+#SEED TEST CODE
+# provider_plan = []
+# all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi)
+# all_npi.each do |npi|
+#   carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
+#   rand_carrier_hios_ids = carrier_hios_ids.sample(3)
+#   all_rand_hios_ids = []
+#   rand_carrier_hios_ids.each {|hios| all_rand_hios_ids +=  Insurance.where(hios_id: hios).pluck(:plan_id)}
+#   all_rand_hios_ids.each {|hios_id| ProviderInsurance.new({npi: npi, hios_id: hios_id})}
+# end

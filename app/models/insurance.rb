@@ -4,3 +4,4 @@ class Insurance < ApplicationRecord
   validates :plan_id,   presence: true
   validates :plan,   presence: true
 end
+
