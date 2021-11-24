@@ -8,7 +8,7 @@ class CreateProviders < ActiveRecord::Migration[5.2]
       t.string :address_2
       t.string :city
       t.string :state
-      t.string :zipcode
+      t.string :zip_code
       t.float :latitude
       t.float :longitude
 

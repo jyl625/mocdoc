@@ -1,4 +1,4 @@
-npi,name,provider_type,address_1,address_2,city,state,zipcode,latitude,longitude
+npi,name,provider_type,address_1,address_2,city,state,zip_code,latitude,longitude
 1003000639,"BENHARASH, PEYMAN MD",Physician,10833 Le Conte Ave,,Los Angeles,CA,90095,34.063697,-118.442444
 1003011677,"KIM, JI YEON MD",Physician,4670 W Sunset Blvd,,Los Angeles,CA,90027,34.098158,-118.29239
 1003012931,"LOPEZ, NICETO MD",Physician,6041 Cadillac Ave,,Los Angeles,CA,90034,34.03777,-118.375427

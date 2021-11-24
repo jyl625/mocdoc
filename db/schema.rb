@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_233614) do
+ActiveRecord::Schema.define(version: 2021_11_24_000836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "insurances", force: :cascade do |t|
+    t.string "hios_id", null: false
+    t.string "carrier", null: false
+    t.string "plan_id", null: false
+    t.string "plan", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hios_id", "plan_id"], name: "index_insurances_on_hios_id_and_plan_id", unique: true
+  end
 
   create_table "providers", force: :cascade do |t|
     t.string "npi", null: false
@@ -23,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_233614) do
     t.string "address_2"
     t.string "city"
     t.string "state"
-    t.string "zipcode"
+    t.string "zip_code"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
