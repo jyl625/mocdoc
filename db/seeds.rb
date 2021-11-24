@@ -47,13 +47,25 @@ require 'byebug'
 # end
 
 # SPECIALTIES SEED
-SPECIALTY_CSV = 'specialties_table.csv'
+# SPECIALTY_CSV = 'specialties_table.csv'
 
-CSV.foreach(Rails.root.join("lib/seed_csv/#{SPECIALTY_CSV}"), headers: true) do |row|
+# CSV.foreach(Rails.root.join("lib/seed_csv/#{SPECIALTY_CSV}"), headers: true) do |row|
 
-  Specialty.create( {
-    specialty_code: row["specialty_code"], 
-    specialty_name: row["specialty_name"],
+#   Specialty.create( {
+#     specialty_code: row["specialty_code"], 
+#     specialty_name: row["specialty_name"],
+#   } ) 
+
+# end
+
+PROVIDER_SPECIALTIES_DEV = "npi_specialties_join-LA.csv"
+PROVIDER_SPECIALTIES_PROD = "npi_specialties_join.csv"
+
+CSV.foreach(Rails.root.join("lib/seed_csv/#{PROVIDER_SPECIALTIES_DEV}"), headers: true) do |row|
+
+  ProviderSpecialty.create( {
+    npi: row["npi"], 
+    specialty_code: row["specialty_code"],
   } ) 
 
 end

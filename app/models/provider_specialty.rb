@@ -1,0 +1,2 @@
+class ProviderSpecialty < ApplicationRecord
+end

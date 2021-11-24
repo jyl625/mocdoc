@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_004205) do
+ActiveRecord::Schema.define(version: 2021_11_24_012922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 2021_11_24_004205) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hios_id", "plan_id"], name: "index_insurances_on_hios_id_and_plan_id", unique: true
+  end
+
+  create_table "provider_specialties", force: :cascade do |t|
+    t.string "npi", null: false
+    t.string "specialty_code", null: false
+    t.index ["npi", "specialty_code"], name: "index_provider_specialties_on_npi_and_specialty_code", unique: true
+    t.index ["npi"], name: "index_provider_specialties_on_npi"
   end
 
   create_table "providers", force: :cascade do |t|
