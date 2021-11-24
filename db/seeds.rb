@@ -11,14 +11,14 @@ require 'csv'
 
 ##### DO NOT DELETE: DEMO USER #####
 
-User.create({
-  email: "demo@email.com", 
-  password:"111111",
-  first_name: "John",
-  last_name: "Doe",
-  date_of_birth: "2000-01-01",
-  plan_id: "40513CA0380001"
-})
+# User.create({
+#   email: "demo@email.com", 
+#   password:"111111",
+#   first_name: "John",
+#   last_name: "Doe",
+#   date_of_birth: "2000-01-01",
+#   plan_id: "40513CA0380001"
+# })
 
 
 ##### PROVIDERS SEED #####
@@ -100,16 +100,16 @@ User.create({
 
 #SEED CODE
 
-# all_npi = Provider.select(:npi).distinct.pluck(:npi)
-# # all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi)
-# all_npi.each do |npi|
-#   carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
-#   rand_carrier_hios_ids = carrier_hios_ids.sample(3)
-#   all_rand_plan_ids = []
-#   rand_carrier_hios_ids.each {|hios| all_rand_plan_ids +=  Insurance.where(hios_id: hios).pluck(:plan_id)}
-#   all_rand_plan_ids.each {|plan_id| ProviderInsurance.create({npi: npi, plan_id: plan_id})}
-#   # all_rand_plan_ids.each do |plan_id| 
-#   #   prov_ins = ProviderInsurance.new({npi: npi, plan_id: plan_id})
-#   #   debugger
-#   # end
-# end
+all_npi = Provider.select(:npi).distinct.pluck(:npi)
+# all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi)
+all_npi.each do |npi|
+  carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
+  rand_carrier_hios_ids = carrier_hios_ids.sample(3)
+  all_rand_plan_ids = []
+  rand_carrier_hios_ids.each {|hios| all_rand_plan_ids +=  Insurance.where(hios_id: hios).pluck(:plan_id)}
+  all_rand_plan_ids.each {|plan_id| ProviderInsurance.create({npi: npi, plan_id: plan_id})}
+  # all_rand_plan_ids.each do |plan_id| 
+  #   prov_ins = ProviderInsurance.new({npi: npi, plan_id: plan_id})
+  #   debugger
+  # end
+end
