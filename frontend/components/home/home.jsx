@@ -11,7 +11,9 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.closeModal()
+    if (this.props.ui.modal) {
+      this.props.closeModal()
+    }
   }
 
   

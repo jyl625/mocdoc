@@ -57,6 +57,13 @@ CSV.foreach(Rails.root.join("lib/seed_csv/#{INSURANCE_CSV}"), headers: true) do 
   } ) 
 end
 
+# Add Self-pay as a Insurance 
+Insurance.create({
+  hios_id: "00000", 
+  carrier:"Self-pay", 
+  plan_id:"00000ZZ0000000", 
+  plan:"Cash"
+})
 
 ##### SPECIALTIES SEED #####
 
@@ -91,6 +98,7 @@ end
 ##### PROVIDERINSURANCE SEED #####   
 
 #SEED CODE
+
 all_npi = Provider.select(:npi).distinct.pluck(:npi)
 # all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi)
 all_npi.each do |npi|
