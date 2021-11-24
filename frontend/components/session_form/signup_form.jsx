@@ -8,6 +8,10 @@ class SignupForm extends React.Component {
     this.state = {
       email: "", 
       password: "",
+      firstName: "",
+      lastName: "",
+      dateOfBirth: "1900-01-01",
+      planId: "40513CA0380001"
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,6 +49,24 @@ class SignupForm extends React.Component {
             <div className="form-title">Create an account</div>
             <Link to="/signin">Already have one? Log in.</Link>
           </div>
+          <label>Your first name
+            <input 
+              type="text" 
+              value={this.state.firstName}
+              onChange={this.update("firstName")} />
+          </label>
+          <label>Enter last name
+            <input 
+              type="text" 
+              value={this.state.lastName}
+              onChange={this.update("lastName")} />
+          </label>
+          <label>Date of birth
+            <input 
+              type="date" 
+              value={this.state.dateOfBirth}
+              onChange={this.update("dateOfBirth")} />
+          </label>
           <label>Enter your email
             <input 
               type="text" 

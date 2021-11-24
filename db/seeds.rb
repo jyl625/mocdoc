@@ -11,7 +11,14 @@ require 'byebug'
 
 ##### DO NOT DELETE: DEMO USER #####
 
-User.create({email: "demo@email.com", password:"111111"})
+User.create({
+  email: "demo@email.com", 
+  password:"111111",
+  first_name: "John",
+  last_name: "Doe",
+  date_of_birth: "2000-01-01",
+  plan_id: "40513CA0380001"
+})
 
 
 ##### PROVIDERS SEED #####

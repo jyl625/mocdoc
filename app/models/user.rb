@@ -15,6 +15,15 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :session_token,   presence: true, uniqueness: true
   validates :password,        length: {minimum: 6, allow_nil: true}
+  validates :first_name,      presence: true
+  validates :last_name,       presence: true
+  validates :date_of_birth,   presence: true
+
+  belongs_to :insurance,
+    primary_key: :plan_id,
+    class_name: :Insurance,
+    foreign_key: :plan_id
+
 
   attr_reader :password
 
