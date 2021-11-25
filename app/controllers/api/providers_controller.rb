@@ -1,8 +1,12 @@
-class ProvidersController < ApplicationController
+class Api::ProvidersController < ApplicationController
 
-  # def show
-  #   @provider = Provider.find_by(id: params[:id])
+  def show
+    # note: params come in string
+    # p params[:id]
 
-  #   render json: "api/providers/show"
-  # end
+    # @provider = Provider.find_by(id: params[:id].to_i)
+    @provider = Provider.find(params[:id])
+
+    render "api/providers/show"
+  end
 end

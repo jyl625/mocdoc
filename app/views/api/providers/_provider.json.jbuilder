@@ -1,1 +1,1 @@
-json.extract! provider, :id, :npi
+json.extract! provider, :id, :npi, :name
