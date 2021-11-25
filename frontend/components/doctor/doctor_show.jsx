@@ -8,8 +8,10 @@ class DoctorShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchProvider(this.props.providerId)
+    console.log("fetch made")
+    this.props.fetchProvider(this.props.match.params.id)
   }
+
 
   render() {
     if (this.props.provider) {
@@ -38,7 +40,11 @@ class DoctorShow extends React.Component {
       )
     } else {
       return (
-        <div>Doctor Show Page is Loading</div>
+        <div className="doctor-show">
+          <NavBarContainer />
+          <div>Doctor Show Page is Loading</div>
+          <div>{this.props.match.params.id}</div>
+        </div>
       )
     }
   }

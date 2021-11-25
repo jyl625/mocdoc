@@ -18,8 +18,8 @@
     // padding-right: 150px;
   }
     .profile {
-      width: 930px;
-      margin: 80px 0px 0px 0px;
+      width: 900px;
+      margin: 80px 0px 0px 35px;
       .intro {
         .name {
           font-size: 48px;
@@ -40,7 +40,8 @@
       height: 400px;
       background-color: #f7f8f9; 
       position: absolute;
-      margin-left: 930px;
+      margin-left: 935px;
+      margin-right: 35px;
       text-indent: 20px;
       font-size: 26px;
       font: "sharp-sans-bold", "fallback-font", Arial, sans-serif;

@@ -5,12 +5,13 @@ import { selectProvider } from '../../reducers/selectors';
 import DoctorShow from './doctor_show'
 
 const mapStateToProps = (state, ownProps) => {
-  const providerId = parseInt(ownProps.match.params.id)
-  const provider = selectProvider(state.entities, providerId)
+  // const providerId = parseInt(ownProps.match.params.id)
+  // const provider = selectProvider(state.entities, providerId)
 
   return {
-    providerId: providerId,
-    provider: provider
+    // providerId: providerId,
+    // provider: state.entities.providers[parseInt(ownProps.match.params.id)]
+    provider: state.entities.providers[ownProps.match.params.id]
   }
 }
 

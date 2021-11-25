@@ -24,8 +24,12 @@ class NavBar extends React.Component {
 
   sessionLinks = () => (
     <div className="nav-container">
-      <div><div className="nav-link" onClick={this.openLoginModel}>Log In</div></div>
-      <div><Link to="/createuser/details" className="nav-link">Sign Up</Link></div>
+      <div>
+        <div className="nav-link" onClick={this.openLoginModel}>Log In</div>
+      </div>
+      <div>
+        <Link to="/createuser/details" className="nav-link">Sign Up</Link>
+      </div>
     </div>
   )
 
