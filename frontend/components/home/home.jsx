@@ -1,8 +1,8 @@
 import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
-import ModalLoginFormContainer from '../session_form/modal_login_form_container'
+// import ModalLoginFormContainer from '../session_form/modal_login_form_container'
 
-import { withRouter } from 'react-router';
+// import { withRouter } from 'react-router';
 
 
 class Home extends React.Component {
@@ -10,17 +10,17 @@ class Home extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    if (this.props.modal) {
-      this.props.closeModal()
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.modal) {
+  //     this.props.closeModal()
+  //   }
+  // }
 
   
   render() {
     return (
       <>
-        {this.props.modal ? <ModalLoginFormContainer/> : null}
+        {/* {this.props.modal ? <ModalLoginFormContainer/> : null} */}
         <NavBarContainer />
         <div className="search-banner"></div>
         <div className="home-content"></div>

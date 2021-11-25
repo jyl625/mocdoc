@@ -1,11 +1,20 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
+import ModalLoginFormContainer from '../session_form/modal_login_form_container'
+
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       isListOpen: false
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.modal) {
+      this.props.closeModal()
     }
   }
 
@@ -49,10 +58,14 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div className="nav-bar">
-        <Link className="logo"to="/">Mocdoc</Link>
-        {this.props.currentUser ? this.patientNav() : this.sessionLinks()}
-      </div>
+      <>
+        { this.props.modal ? <ModalLoginFormContainer /> : null }
+
+        <div className="nav-bar">
+          <Link className="logo"to="/">Mocdoc</Link>
+          {this.props.currentUser ? this.patientNav() : this.sessionLinks()}
+        </div>
+      </>
     )
   }
 }

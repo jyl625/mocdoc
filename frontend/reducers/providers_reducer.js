@@ -5,7 +5,7 @@ const providersReducer = (oldState = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_PROVIDER:
-      return {[action.provider.id]: action.provider}
+      return { [action.payload.provider.id]: action.payload.provider}
     default:
       return oldState;
   }

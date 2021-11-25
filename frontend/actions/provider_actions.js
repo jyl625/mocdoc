@@ -2,13 +2,13 @@ import * as APIUtil from '../util/provider_api_util';
 
 export const RECEIVE_PROVIDER = "RECEIVE_PROVIDER";
 
-export const receiveProvider = provider => ({
+export const receiveProvider = payload => ({
   type: RECEIVE_PROVIDER,
-  provider
+  payload
 })
 
 export const fetchProvider = id => dispatch => (
-  APIUtil.fetchProvider(id).then(provider => (
-    dispatch(receiveProvider(provider))
+  APIUtil.fetchProvider(id).then(payload => (
+    dispatch(receiveProvider(payload))
   ))
 )
