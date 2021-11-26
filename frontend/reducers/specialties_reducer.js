@@ -8,6 +8,7 @@ const specialtiesReducer = (oldState = {}, action) => {
   switch(action.type) {
     case RECEIVE_PROVIDER:
       // Object.assign(nextState, action.payload.specialties)
+      console.log(action.payload)
       return action.payload.specialties;
     default:
       return oldState;

@@ -18,7 +18,7 @@ if @provider.insurances.length != 0
   json.insurances do 
     @provider.insurances.each do |insurance|
       json.set! insurance.id do 
-        json.extract! insurance, :carrier, :plan
+        json.extract! insurance, :hios_id, :carrier, :plan
       end
     end
   end

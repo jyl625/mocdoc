@@ -10,3 +10,6 @@ json.extract! provider,
   :zip_code,
   :latitude,
   :longitude 
+json.specialties provider.specialties.pluck(:id)
+json.insurances provider.insurances.pluck(:id)
+json.insurance_carriers provider.insurances.pluck(:hios_id).uniq
