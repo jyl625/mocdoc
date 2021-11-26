@@ -14,4 +14,4 @@ const providersReducer = (oldState = {}, action) => {
   }
 }
 
-export default providersReducer
+export default providersReducer;

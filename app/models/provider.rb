@@ -7,16 +7,16 @@ class Provider < ApplicationRecord
     class_name: "ProviderSpecialty",
     foreign_key: :npi
 
-  has_many :specialty,
+  has_many :specialties,
     through: :specialty_code,
     source: :specialty
 
-  has_many :insurance_plan_id,
+  has_many :insurance_plan_ids,
     primary_key: :npi,
     class_name: "ProviderInsurance",
     foreign_key: :npi
 
-  has_many :insurance,
-    through: :insurance_plan_id,
+  has_many :insurances,
+    through: :insurance_plan_ids,
     source: :insurance_plan
 end
