@@ -19,7 +19,7 @@
   }
     .profile {
       width: 900px;
-      margin: 80px 0px 0px 35px;
+      margin: 60px 0px 0px 35px;
       .intro {
         .name {
           font-size: 48px;
@@ -28,10 +28,36 @@
           // line-height: 60px;
         }
       }
-    
-      .about {
-    
+
+      .page-hooks {
+        display: flex;
+        justify-content: left;
+        border-top: solid #00234b 1px;
+        border-bottom: solid #00234b 1px;
+        div {
+          width: fit-content;
+          margin: 5px 10px;
+        }
       }
+    
+      .insurances, .location, .background {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        div {
+          font-size: 16px;
+        }
+      }
+
+      .insurances {
+        width: 900px;
+
+        div {
+            width: 450px;
+            margin: 0px;
+        }
+      }
+
   
     }
 
