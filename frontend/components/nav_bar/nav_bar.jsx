@@ -18,14 +18,14 @@ class NavBar extends React.Component {
     }
   }
 
-  openLoginModel = () => {
-    this.props.openModal("LoginForm");
+  openLoginModal = () => {
+    this.props.openModal("loginForm");
   }
 
   sessionLinks = () => (
     <div className="nav-container">
       <div>
-        <div className="nav-link" onClick={this.openLoginModel}>Log In</div>
+        <div className="nav-link" onClick={this.openLoginModal}>Log In</div>
       </div>
       <div>
         <Link to="/createuser/details" className="nav-link">Sign Up</Link>
@@ -61,10 +61,9 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log(this.props.modal)
     return (
       <>
-        {this.props.modal.includes("LoginForm") ? <ModalLoginFormContainer /> : null }
+        {this.props.modal.includes("loginForm") ? <ModalLoginFormContainer /> : null }
 
         <div className="nav-bar">
           <div className="nav-content-container">

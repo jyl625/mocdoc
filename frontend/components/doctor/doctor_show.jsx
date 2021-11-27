@@ -2,6 +2,7 @@ import React from 'react'
 import { HashLink } from 'react-router-hash-link';
 
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import ModalInsurances from './modal_insurances';
 
 class DoctorShow extends React.Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class DoctorShow extends React.Component {
   }
 
   componentDidMount() {
-    console.log("fetch made")
     this.props.fetchProvider(this.props.match.params.id)
   }
 
@@ -27,8 +27,21 @@ class DoctorShow extends React.Component {
       {this.props.provider.insurance_carriers.map((carrier, i) => (
         <div className="carrier" key={i}>{carrier}</div>
       ))}
+      <div className="more-plans">
+        <span>
+          {`${this.props.provider.insurances.length}+ more in-network plans  `}
+        </span>
+        <span className="all-insurances" onClick={this.openInsurancesModal}>
+          View All
+        </span>
+      </div>
       </>
     )
+  }
+
+  openInsurancesModal = () => {
+    console.log(this.props)
+    this.props.openModal("insurances");
   }
 
   renderLocation() {
@@ -84,6 +97,11 @@ class DoctorShow extends React.Component {
     if (this.props.provider) {
       return (
         <div className="doctor-show">
+          {this.props.modal.includes("insurances") ? <ModalInsurances
+            insurances={this.props.insurances}
+            modal={this.props.modal}
+            closeModal={this.props.closeModal}
+          /> : null}
           <NavBarContainer/>
           <div className="main-page">
             <div className="appointment-form">Book an appointment for free</div>

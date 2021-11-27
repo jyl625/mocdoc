@@ -15,7 +15,7 @@ class ModalLoginForm extends React.Component {
 
   componentDidMount() {
     this.props.clearSessionErrors();
-    if(this.props.modal) {
+    if(this.props.modal.length > 0) {
       document.body.style.overflow = 'hidden'
     }
   }
@@ -85,7 +85,7 @@ class ModalLoginForm extends React.Component {
             </ul>
           </form>
         </div>
-        <div className="active" id="overlay"/>
+        <div className="overlay"/>
       </>
     )
   }
