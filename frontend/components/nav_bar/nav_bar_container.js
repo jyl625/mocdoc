@@ -11,7 +11,7 @@ const mapStateToProps = ({entities, session, ui}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
-  openModal: () => dispatch(openModal()),
+  openModal: (modalType) => dispatch(openModal(modalType)),
   closeModal: () => dispatch(closeModal())
 })
 

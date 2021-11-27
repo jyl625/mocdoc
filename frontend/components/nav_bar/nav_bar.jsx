@@ -13,13 +13,13 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.modal) {
+    if (this.props.modal.length > 0) {
       this.props.closeModal()
     }
   }
 
   openLoginModel = () => {
-    this.props.openModal();
+    this.props.openModal("LoginForm");
   }
 
   sessionLinks = () => (
@@ -61,9 +61,10 @@ class NavBar extends React.Component {
   }
 
   render() {
+    console.log(this.props.modal)
     return (
       <>
-        { this.props.modal ? <ModalLoginFormContainer /> : null }
+        {this.props.modal.includes("LoginForm") ? <ModalLoginFormContainer /> : null }
 
         <div className="nav-bar">
           <div className="nav-content-container">
@@ -75,30 +76,5 @@ class NavBar extends React.Component {
     )
   }
 }
-
-// const NavBar = ({currentUser, logout}) => {
-//   const sessionLinks = () => (
-//     <div className="nav-container">
-//       <Link to="/signin" className="nav-link">Log In</Link>
-//       <Link to="/createuser/details" className="nav-link">Sign Up</Link>
-//     </div>
-//   )
-
-//   const patientNav = () => (
-//     <div className="nav-container-logged_in">
-//       <div className="nav-link">My Mocdoc</div>
-//       <div className="nav-link">Past Appointments</div>
-//       <div className="patient-name">{currentUser.email}</div>
-//       <div className="signout" onClick={() => logout()}>&times; Sign out</div>
-//     </div>
-//   )
-
-//   return (
-//     <div className="nav-bar">
-//       <Link className="logo"to="/">Mocdoc</Link>
-//       {currentUser ? patientNav() : sessionLinks()}
-//     </div>
-//   )
-// }
 
 export default NavBar
