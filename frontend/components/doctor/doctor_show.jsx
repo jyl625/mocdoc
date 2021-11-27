@@ -21,15 +21,21 @@ class DoctorShow extends React.Component {
   }
 
   renderInsuranceCarriers() {
-    return this.props.provider.insurance_carriers.map( carrier => (
-      <div>{carrier}</div>
-    ))
+    return (
+      <>
+      <div className="subsection">In-network Insurances</div>
+      {this.props.provider.insurance_carriers.map((carrier, i) => (
+        <div className="carrier" key={i}>{carrier}</div>
+      ))}
+      </>
+    )
   }
 
   renderLocation() {
     const provider = this.props.provider
     return (
       <>
+        <div className="subsection">Office Location</div>
         <div>{provider.address_1}</div>
         <div>{provider.address_2}</div>
         <div>{`${provider.city}, ${provider.state} ${provider.zip_code}`}</div>
@@ -43,6 +49,7 @@ class DoctorShow extends React.Component {
     const provider = this.props.provider
     return (
       <>
+        <div className="subsection">Background</div>
         {this.listSpecialties()}
         <div>NPI number</div>
         <div>{this.props.provider.npi}</div>
@@ -57,7 +64,7 @@ class DoctorShow extends React.Component {
       return (
         <>
           <div>Specialties</div>
-          {specialty_ids.map(id => (<div>{this.props.specialties[id].specialty_name}</div>))}
+          {specialty_ids.map(id => (<div key={id}>{this.props.specialties[id].specialty_name}</div>))}
         </>
       )
     } else {
@@ -76,22 +83,28 @@ class DoctorShow extends React.Component {
             <div className="appointment-form">Book an appointment for free</div>
             <div className="profile">
               <div className="intro">
-                <div className="name">{this.props.provider.name}</div>
-                <div>{this.renderSpecialties()}</div>
-                <div>{this.props.provider.city}, {this.props.provider.state}</div>
+                <div className="pic-container">
+                  <div className="place-holder-img"></div>
+                </div>
+                <div className="info-container">
+                  <div className="name">{this.props.provider.name}</div>
+                  <div className="info-specialties">{this.renderSpecialties()}</div>
+                  <div className="info-location">{this.props.provider.city}, {this.props.provider.state}</div>
+                </div>
               </div>
               <div className = "page-hooks">
                 <div><HashLink smooth to={`/doctor/${this.props.provider.id}#insurances`}>Insurances</HashLink></div>
                 <div><HashLink smooth to={`/doctor/${this.props.provider.id}#location`}>Location</HashLink></div>
                 <div><HashLink smooth to={`/doctor/${this.props.provider.id}#background`}>Background</HashLink></div>
               </div>
-              <div className="insurances" id="insurances">In-network Insurances
+
+              <div id="insurances">
                 {this.renderInsuranceCarriers()}
               </div>
-              <div className="location" id="location">Office Location
+              <div id="location">
                 {this.renderLocation()}
               </div>
-              <div className="background" id="background">Background
+              <div id="background">
                 {this.renderBackground()}
               </div>
             </div>
@@ -102,8 +115,10 @@ class DoctorShow extends React.Component {
       return (
         <div className="doctor-show">
           <NavBarContainer />
-          <div>Doctor Show Page is Loading</div>
-          <div>{this.props.match.params.id}</div>
+          <div className="main-page">
+            <div>Doctor Show Page is Loading</div>
+            <div>{this.props.match.params.id}</div>
+          </div>
         </div>
       )
     }
