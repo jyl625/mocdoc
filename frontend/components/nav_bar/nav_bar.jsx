@@ -66,8 +66,10 @@ class NavBar extends React.Component {
         { this.props.modal ? <ModalLoginFormContainer /> : null }
 
         <div className="nav-bar">
-          <Link className="logo"to="/">Mocdoc</Link>
-          {this.props.currentUser ? this.patientNav() : this.sessionLinks()}
+          <div className="nav-content-container">
+            <Link className="logo"to="/">Mocdoc</Link>
+            {this.props.currentUser ? this.patientNav() : this.sessionLinks()}
+          </div>
         </div>
       </>
     )
