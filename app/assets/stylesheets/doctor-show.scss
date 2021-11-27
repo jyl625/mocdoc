@@ -122,6 +122,25 @@
         }
 
       }
+
+      #location {
+        .address-container {
+          div {
+            margin: 6px 0px;
+          }
+        }
+      }
+
+      #background {
+        .details-container {
+          margin: 30px 0px;
+        }
+        .details-header {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+      }
     }
 
     .appointment-form {

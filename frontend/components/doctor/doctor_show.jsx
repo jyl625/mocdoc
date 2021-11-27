@@ -36,11 +36,13 @@ class DoctorShow extends React.Component {
     return (
       <>
         <div className="subsection">Office Location</div>
-        <div>{provider.address_1}</div>
-        <div>{provider.address_2}</div>
-        <div>{`${provider.city}, ${provider.state} ${provider.zip_code}`}</div>
-        <div>{provider.latitude}</div>
-        <div>{provider.longitude}</div>
+        <div className="address-container">
+          <div>{provider.address_1}</div>
+          <div>{provider.address_2}</div>
+          <div>{`${provider.city}, ${provider.state} ${provider.zip_code}`}</div>
+          <div>{provider.latitude}</div>
+          <div>{provider.longitude}</div>
+        </div>
       </>
     )
   }
@@ -50,9 +52,13 @@ class DoctorShow extends React.Component {
     return (
       <>
         <div className="subsection">Background</div>
-        {this.listSpecialties()}
-        <div>NPI number</div>
-        <div>{this.props.provider.npi}</div>
+        <div className="details-container">
+          {this.listSpecialties()}
+        </div>
+        <div className="details-container">
+          <div className="details-header">NPI number</div>
+          <div>{this.props.provider.npi}</div>
+        </div>
       </>
     )
   }
@@ -63,7 +69,7 @@ class DoctorShow extends React.Component {
     if (specialty_ids.length > 0) {
       return (
         <>
-          <div>Specialties</div>
+          <div className="details-header">Specialties</div>
           {specialty_ids.map(id => (<div key={id}>{this.props.specialties[id].specialty_name}</div>))}
         </>
       )
