@@ -117,9 +117,9 @@ class DoctorShow extends React.Component {
                 </div>
               </div>
               <div className = "page-hooks">
-                <div><HashLink smooth to={`/doctor/${this.props.provider.id}#insurances`}>Insurances</HashLink></div>
-                <div><HashLink smooth to={`/doctor/${this.props.provider.id}#location`}>Location</HashLink></div>
-                <div><HashLink smooth to={`/doctor/${this.props.provider.id}#background`}>Background</HashLink></div>
+                <HashLink smooth to={`/doctor/${this.props.provider.id}#insurances`}><div>Insurances</div></HashLink>
+                <HashLink smooth to={`/doctor/${this.props.provider.id}#location`}><div>Location</div></HashLink>
+                <HashLink smooth to={`/doctor/${this.props.provider.id}#background`}><div>Background</div></HashLink>
               </div>
 
               <div id="insurances">
