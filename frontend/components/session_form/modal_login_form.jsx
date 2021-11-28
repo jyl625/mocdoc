@@ -63,7 +63,11 @@ class ModalLoginForm extends React.Component {
       <>
         <div className="modal">
           <form onSubmit={this.handleSubmit} className="modal-login-form">
-            <div className="close" onClick={this.handleCloseModal}>&times;</div>
+            <div className="close-button-container">
+              <img className="close"
+                onClick={this.handleCloseModal}
+                src="/images/times-solid.svg" alt="close button" />
+            </div>
             <h2>Login to book your appointment</h2>
             <label>Email address
               <input

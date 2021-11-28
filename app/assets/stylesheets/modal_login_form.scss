@@ -37,9 +37,16 @@
     border: none;
   }
 
+  .close-button-container {
+    height: fit-content;
+    display: flex;
+    justify-content: right;
+  }
+
   .close {
-    height: 48px;
-    text-align: right;
+    height: 24px;
+    width: 24px;
+    text-align: center;
     font-size: 48px;
     margin-top: 0px;
     margin-bottom: 0px;

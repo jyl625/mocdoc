@@ -169,12 +169,13 @@
   width: 640px;
   height: 600px;
   position: fixed;
-  background-color: #f3f3f4;
+  background-color: rgb(255, 255, 255);
+  background-color: white;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-
+  overflow-y:auto
 }
 .insurance-list {
   display: block;
@@ -182,10 +183,17 @@
   margin: 0 auto;
   margin-top: 48px;
   margin-bottom: 48px;
-  background-color: #f3f3f4;
+  // background-color: #f3f3f4;
   
+  .close-button-container {
+    height: fit-content;
+    display: flex;
+    justify-content: right;
+  }
+
   .close {
-    height: 48px;
+    height: 24px;
+    width: 24px;
     text-align: center;
     font-size: 48px;
     margin-top: 0px;
@@ -194,5 +202,27 @@
 
   .close:hover {
     cursor: pointer;
+  }
+
+  .modal-content {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .carrier {
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 6px;
+    margin: 24px 0px 0px 18px;
+  }
+
+  .carrier:hover {
+    cursor: pointer;
+  }
+
+  .plan {
+    font-size: 16px;
+    margin: 6px 0px 0px 18px;
   }
 }

@@ -100,6 +100,7 @@ class DoctorShow extends React.Component {
           {this.props.modal.includes("insurances") ? <ModalInsurances
             insurances={this.props.insurances}
             modal={this.props.modal}
+            insurance_carriers={this.props.provider.insurance_carriers}
             closeModal={this.props.closeModal}
           /> : null}
           <NavBarContainer/>
