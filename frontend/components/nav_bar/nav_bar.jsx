@@ -39,7 +39,10 @@ class NavBar extends React.Component {
       <div><Link to="/" className="nav-link">Past Appointments</Link></div>
       <div className={this.state.isListOpen ? "dropdown-header-selected" : "dropdown-header"} 
         onClick={() => this.toggleDropDown()}>
-        <div className="patient-name" >{this.props.currentUser.first_name}</div>
+        <div className="patient-name-container" >
+          <div className="patient-name">{this.props.currentUser.first_name}</div>
+          {this.chevronImg()}
+        </div>
         <div className="dropdown">
           {this.dropDownMenu()}
         </div>
@@ -47,14 +50,30 @@ class NavBar extends React.Component {
     </div>
   )
 
+  chevronImg() {
+    if (this.state.isListOpen) {
+      return <img className="up" src="/images/chevron-up-solid.svg" />
+    } else {
+      return <img className="down" src ="/images/chevron-down-solid.svg" />
+    }
+  }
+
   toggleDropDown = () => {
     this.setState({ isListOpen: !this.state.isListOpen})
   }
 
   dropDownMenu = () => {
     if (this.state.isListOpen) {
-      return <div className="signout" 
-                  onClick={() => this.props.logout()}>&times; Sign out</div>
+      return (
+        <div className="dropdown-item">
+          <div className="signout" onClick={() => this.props.logout()}>
+            <img className="close-button"
+              onClick={this.handleCloseModal}
+              src="/images/times-solid.svg" alt="close button" />
+            <div className="dropdown-text">Sign Out</div>
+          </div>
+        </div>
+      ) 
     } else {
       return null;
     }
