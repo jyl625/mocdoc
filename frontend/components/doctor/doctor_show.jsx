@@ -116,7 +116,6 @@ class DoctorShow extends React.Component {
           /> : null}
           <NavBarContainer/>
           <div className="main-page">
-            <div className="appointment-form">Book an appointment for free</div>
             <div className="profile">
               <div className="intro">
                 <div className="pic-container">
@@ -143,6 +142,9 @@ class DoctorShow extends React.Component {
               <div id="background">
                 {this.renderBackground()}
               </div>
+            </div>
+            <div className="appointment-form-container">
+              <div className="appointment-form">Book an appointment for free</div>
             </div>
           </div>
         </div>
