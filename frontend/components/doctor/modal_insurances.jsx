@@ -86,7 +86,7 @@ class ModalInsurances extends React.Component {
         <div className="insurances-modal">
           <div className="insurance-list">
             <div className="close-button-container">
-              <img className="close" 
+              <img className="close-button" 
                   onClick={this.handleCloseModal}   
                   src="/images/times-solid.svg" alt="close button" />
             </div>

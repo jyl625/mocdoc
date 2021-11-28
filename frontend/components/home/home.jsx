@@ -29,12 +29,6 @@ class Home extends React.Component {
         <div className="search-banner">
           <div className="test">
             <Link to={`/doctor/${this.randDoctorId()}`}><button>I'm Feeling Lucky</button></Link>
-            <svg>
-              <polygon points="31.5,40 0.1,8.6 8.7,0 31.5,22.8 54.3,0 62.9,8.6"></polygon>
-            </svg>
-            <svg>
-              <polygon points="31.5,0 62.9,31.4 54.3,40 31.5,17.2 8.7,40 0.1,31.4"></polygon>
-            </svg>
           </div>
         </div>
         <div className="home-content"></div>

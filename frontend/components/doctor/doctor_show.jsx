@@ -51,7 +51,6 @@ class DoctorShow extends React.Component {
   }
 
   openInsurancesModal = () => {
-    console.log(this.props)
     this.props.openModal("insurances");
   }
 

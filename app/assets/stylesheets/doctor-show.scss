@@ -192,7 +192,7 @@
   display: block;
   width: 600px;
   margin: 0 auto;
-  margin-top: 48px;
+  margin-top: 24px;
   margin-bottom: 48px;
   // background-color: #f3f3f4;
   
@@ -202,16 +202,13 @@
     justify-content: right;
   }
 
-  .close {
-    height: 24px;
-    width: 24px;
-    text-align: center;
-    font-size: 48px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+  img {
+    width: 20px;
+    height: 20px;
   }
 
-  .close:hover {
+
+  img:hover {
     cursor: pointer;
   }
 
