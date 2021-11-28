@@ -56,7 +56,7 @@ class ModalInsurances extends React.Component {
   }
 
   chevronSrc(carrier) {
-    if (!this.state.selected.includes(carrier)) {
+    if (this.state.selected.includes(carrier)) {
       return "/images/chevron-up-solid.svg"
     } else {
       return "/images/chevron-down-solid.svg"

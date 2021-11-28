@@ -141,6 +141,7 @@ class DoctorShow extends React.Component {
               <div id="background">
                 {this.renderBackground()}
               </div>
+              <div id="place-holder"></div>
             </div>
             <div className="appointment-form-container">
               <div className="appointment-form">Book an appointment for free</div>
