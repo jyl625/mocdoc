@@ -215,6 +215,9 @@
     padding-top: 12px;
     padding-bottom: 6px;
     margin: 24px 0px 0px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .carrier:hover {

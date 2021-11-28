@@ -29,7 +29,7 @@ class DoctorShow extends React.Component {
       ))}
       <div className="more-plans">
         <span>
-          {`${this.props.provider.insurances.length}+ more in-network plans  `}
+          {`${this.insurancePlanCount()} more in-network plans  `}
         </span>
         <span className="all-insurances" onClick={this.openInsurancesModal}>
           View All
@@ -37,6 +37,17 @@ class DoctorShow extends React.Component {
       </div>
       </>
     )
+  }
+
+  insurancePlanCount() {
+    const count = this.props.provider.insurances.length;
+    if (count < 10) {
+      return count + "";
+    } else {
+      const numDigits = (count + "").length;
+      const rounded = Math.floor(count / (10 ** (numDigits - 1))) * (10 ** (numDigits - 1))
+      return rounded + "+";
+    }
   }
 
   openInsurancesModal = () => {

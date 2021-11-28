@@ -5,7 +5,7 @@ class ModalInsurances extends React.Component {
     super(props)
 
     this.state = {selected: []}
-    this.handleClick = this.handleClick.bind(this)
+    this.expandPlansList = this.expandPlansList.bind(this)
   }
 
   componentDidMount() {
@@ -30,7 +30,10 @@ class ModalInsurances extends React.Component {
             <div key={idx}>
               <div 
                 className="carrier"
-                onClick={() => this.handleClick(carrier)}>{carrier}</div>
+                onClick={() => this.expandPlansList(carrier)}>
+                  {carrier}
+                <img src={this.chevronSrc(carrier)}/>
+              </div>
               {this.renderSelectPlans(carrier)}
             </div>
           )
@@ -40,7 +43,7 @@ class ModalInsurances extends React.Component {
     )
   }
 
-  handleClick(carrier) {
+  expandPlansList(carrier) {
     let newSelected
     if (!this.state.selected.includes(carrier)) {
       newSelected = [...this.state.selected]
@@ -52,6 +55,14 @@ class ModalInsurances extends React.Component {
     }
   }
 
+  chevronSrc(carrier) {
+    if (!this.state.selected.includes(carrier)) {
+      return "/images/chevron-up-solid.svg"
+    } else {
+      return "/images/chevron-down-solid.svg"
+    }
+  }
+
   renderSelectPlans(carrier) {
     const selectedPlans = []
     Object.keys(this.props.insurances).forEach( id => {
@@ -60,9 +71,13 @@ class ModalInsurances extends React.Component {
         selectedPlans.push(this.props.insurances[id].plan)
       }
     })
-    return selectedPlans.sort().map((plan, idx) => (
-      <div key={idx} className="plan">{plan}</div>
-    ))
+    return (
+      <div>
+        {selectedPlans.sort().map((plan, idx) => (
+        <div key={idx} className="plan">{plan}</div>
+        ))}
+      </div>
+    )
   }
 
   render() {
