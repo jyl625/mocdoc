@@ -63,8 +63,8 @@ class DoctorShow extends React.Component {
           <div>{provider.address_1}</div>
           <div>{provider.address_2}</div>
           <div>{`${provider.city}, ${provider.state} ${provider.zip_code}`}</div>
-          <div>{provider.latitude}</div>
-          <div>{provider.longitude}</div>
+          {/* <div>{provider.latitude}</div>
+          <div>{provider.longitude}</div> */}
         </div>
       </>
     )
