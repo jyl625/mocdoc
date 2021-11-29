@@ -30,24 +30,34 @@
   }
 
   .panel-container {
-    background-color: yellow;
-
     display: flex;
     padding-top: 44px;
   }
 
   .panel-left {
     height: 300px;
-    background-color: red;
 
     width: 420px;
   }
 
   .panel-right { 
     height: 300px;
-    background-color: blue;
 
     width: 835px;
     margin-left: 45px;
+  }
+
+  .panel-left-item {
+    padding: 24px 16px;
+    background-color: #ffffff;
+  }
+
+  .panel-left-item h1 {
+    font-size: 24px;
+  }
+
+  .panel-left-item p {
+    color: #00234b;
+    font-size: 14px;
   }
 }

@@ -13,6 +13,17 @@ class PatientShow extends React.Component {
     return Math.floor(Math.random() * 14257 + 1)
   }
 
+  renderNameAndAge() {
+    const currentUser = this.props.currentUser;
+    
+    return (
+      <div className="panel-left-item">
+        <h1>{currentUser.first_name} {currentUser.last_name}</h1>
+        <p>DoB: {currentUser.date_of_birth}</p>
+      </div>
+    )
+  }
+
   render() {
     console.log(this.props.currentUser)
     return(
@@ -25,7 +36,9 @@ class PatientShow extends React.Component {
             </div>
           </div>
           <div className="panel-container">
-            <div className="panel-left"></div>
+            <div className="panel-left">
+              {this.renderNameAndAge()}
+            </div>
             <div className="panel-right"></div>
           </div>
         </div>
