@@ -50,3 +50,11 @@ export const signup = user => dispatch => (
     ))
 )
 
+export const fetchCurrentSession = () => dispatch => (
+  APIUtil.fetchCurrentSession().then(user => (
+    dispatch(receiveCurrentUser(user))
+  ), errorRes => (
+    dispatch(receiveSessionErrors(errorRes.responseJSON))
+  ))
+)
+

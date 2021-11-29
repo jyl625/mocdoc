@@ -24,18 +24,29 @@ class PatientShow extends React.Component {
     )
   }
 
+  componentDidMount() {
+    this.props.fetchCurrentSession();
+  }
+
   renderPatientInsurance() {
     const currentUser = this.props.currentUser;
+    const userInsurance = this.props.insurances[currentUser.plan_id]
 
-    return (
-      <div className="panel-left-item">
-        <div className="insurance-title">Your insurance plans</div>
-        <div className="insurance-subtitle">Stay in-network with your medical insurance plan</div>
-        <div className="patient-insurance-container">
-          
+    if (userInsurance) {
+      return (
+        <div className="panel-left-item">
+          <div className="insurance-title">Your insurance plans</div>
+          <div className="insurance-subtitle">Stay in-network with your medical insurance plan</div>
+          <div className="patient-insurance-container">
+            <div>{userInsurance.carrier}</div>
+            <div>{userInsurance.plan}</div>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return null;
+    }
+
   }
 
   render() {

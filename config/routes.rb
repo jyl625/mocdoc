@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     # no :show for user
     resources :providers, only: [:show]
-    resource :session, only: [:create, :destroy]
+    # resource :session, only: [:create, :destroy]
+    resource :session, only: [:create, :destroy, :show]
     # no :show for session
   end
 

@@ -21,3 +21,10 @@ export const signup = user => (
   })
 )
 
+export const fetchCurrentSession = () => (
+  $.ajax({
+    url:"/api/session",
+    method: "GET"
+  })
+)
+
