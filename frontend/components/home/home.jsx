@@ -17,6 +17,7 @@ class Home extends React.Component {
   //   }
   // }
 
+  // TESTING ONLY
   randDoctorId() {
     return Math.floor(Math.random() * 14257 + 1)
   }
@@ -26,7 +27,7 @@ class Home extends React.Component {
       <>
         {/* {this.props.modal ? <ModalLoginFormContainer/> : null} */}
         <NavBarContainer />
-        <div className="search-banner">
+        <div className="search-section">
           <div className="test">
             <Link to={`/doctor/${this.randDoctorId()}`}><button>I'm Feeling Lucky</button></Link>
           </div>
