@@ -3,6 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import ModalInsurances from './modal_insurances';
+import AppointmentFormContainer from '../appointment/appointment_form_container';
 
 class DoctorShow extends React.Component {
   constructor(props) {
@@ -23,18 +24,18 @@ class DoctorShow extends React.Component {
   renderInsuranceCarriers() {
     return (
       <>
-      <div className="subsection">In-network Insurances</div>
-      {this.props.provider.insurance_carriers.map((carrier, i) => (
-        <div className="carrier" key={i}>{carrier}</div>
-      ))}
-      <div className="more-plans">
-        <span>
-          {`${this.insurancePlanCount()} more in-network plans  `}
-        </span>
-        <span className="all-insurances" onClick={this.openInsurancesModal}>
-          View All
-        </span>
-      </div>
+        <div className="subsection">In-network Insurances</div>
+        {this.props.provider.insurance_carriers.map((carrier, i) => (
+          <div className="carrier" key={i}>{carrier}</div>
+        ))}
+        <div className="more-plans">
+          <span>
+            {`${this.insurancePlanCount()} more in-network plans  `}
+          </span>
+          <span className="all-insurances" onClick={this.openInsurancesModal}>
+            View All
+          </span>
+        </div>
       </>
     )
   }
@@ -144,7 +145,7 @@ class DoctorShow extends React.Component {
               <div id="place-holder"></div>
             </div>
             <div className="appointment-form-container">
-              <div className="appointment-form">Book an appointment for free</div>
+              <AppointmentFormContainer/>
             </div>
           </div>
         </div>
