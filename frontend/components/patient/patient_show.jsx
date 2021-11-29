@@ -13,13 +13,27 @@ class PatientShow extends React.Component {
     return Math.floor(Math.random() * 14257 + 1)
   }
 
-  renderNameAndAge() {
+  renderPatientBio() {
     const currentUser = this.props.currentUser;
     
     return (
       <div className="panel-left-item">
         <h1>{currentUser.first_name} {currentUser.last_name}</h1>
         <p>{currentUser.age} year old</p>
+      </div>
+    )
+  }
+
+  renderPatientInsurance() {
+    const currentUser = this.props.currentUser;
+
+    return (
+      <div className="panel-left-item">
+        <div className="insurance-title">Your insurance plans</div>
+        <div className="insurance-subtitle">Stay in-network with your medical insurance plan</div>
+        <div className="patient-insurance-container">
+          
+        </div>
       </div>
     )
   }
@@ -36,7 +50,8 @@ class PatientShow extends React.Component {
           </div>
           <div className="panel-container">
             <div className="panel-left">
-              {this.renderNameAndAge()}
+              {this.renderPatientBio()}
+              {this.renderPatientInsurance()}
             </div>
             <div className="panel-right"></div>
           </div>

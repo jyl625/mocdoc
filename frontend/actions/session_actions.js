@@ -5,9 +5,9 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_SESION_ERRORS = "CLEAR_SESION_ERRORS"
 
-export const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = payload => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser
+  payload
 })
 
 export const logoutCurrentUser = () => ({
@@ -19,7 +19,9 @@ export const receiveSessionErrors = (errors) => ({
   errors
 })
 
-//testing
+
+
+
 export const clearSessionErrors = () => ({
   type: CLEAR_SESION_ERRORS,
 })

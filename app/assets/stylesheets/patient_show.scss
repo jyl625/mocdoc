@@ -52,12 +52,26 @@
     background-color: #ffffff;
   }
 
-  .panel-left-item h1 {
-    font-size: 24px;
+  .panel-left-item:not(:first-child) {
+    margin-top: 8px;
   }
 
-  .panel-left-item p {
+  .panel-left-item h1 {
+    font-size: 24px;
+    height: 26px;
+  }
+
+  .insurance-title {
+    font-size: 16px;
+    font-weight: bold;
+    height: 21px;
+    margin: 0;
+  }
+
+  .insurance-subtitle {
     color: #00234b;
     font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 24px;
   }
 }
