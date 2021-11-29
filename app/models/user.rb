@@ -29,8 +29,6 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  #Association goes here
-
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password
@@ -58,6 +56,14 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64
+  end
+
+  require 'date'
+
+  def age
+    now = Time.now.utc.to_date
+    dob = self.date_of_birth
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
 end

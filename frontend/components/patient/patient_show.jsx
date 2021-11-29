@@ -19,7 +19,7 @@ class PatientShow extends React.Component {
     return (
       <div className="panel-left-item">
         <h1>{currentUser.first_name} {currentUser.last_name}</h1>
-        <p>DoB: {currentUser.date_of_birth}</p>
+        <p>{currentUser.age} year old</p>
       </div>
     )
   }
