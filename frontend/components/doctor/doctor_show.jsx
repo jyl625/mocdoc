@@ -154,8 +154,7 @@ class DoctorShow extends React.Component {
         <div className="doctor-show">
           <NavBarContainer />
           <div className="main-page">
-            <div>Doctor Show Page is Loading</div>
-            <div>{this.props.match.params.id}</div>
+            <div className="loading-message">Doctor's Page is Loading...</div>
           </div>
         </div>
       )

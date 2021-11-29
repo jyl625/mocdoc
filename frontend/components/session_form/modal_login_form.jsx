@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router';
 
 class ModalLoginForm extends React.Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class ModalLoginForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.redirectHome = this.redirectHome.bind(this)
   }
 
   componentDidMount() {
@@ -26,28 +26,35 @@ class ModalLoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state).then(() => this.props.closeModal());
-
+    this.handleLoginAndRedirect(this.state)
   }
 
   handleCloseModal = () => {
     this.props.closeModal();
   }
 
-  redirectRoute = () => {
-    this.props.history.push("/createuser/details");
-  }
 
   update(field) {
     return (e => this.setState({ [field]: e.currentTarget.value }))
   }
 
   handleDemoLogin = () => {
-    this.props.login({
+    this.handleLoginAndRedirect({
       email: "demo@email.com",
       password: "111111"
-    }).then(() => this.props.closeModal())
+    })
   }
+
+  handleLoginAndRedirect = (loginCredentials) => {
+    this.props.login(loginCredentials).then(res => {
+      console.log("res is", res)
+      if (res.type === "RECEIVE_CURRENT_USER") {
+        this.props.closeModal()
+        this.props.history.push("/patient")
+      }
+    })
+  }
+
 
   showErrors() {
     return (
@@ -95,4 +102,4 @@ class ModalLoginForm extends React.Component {
   }
 }
 
-export default ModalLoginForm
+export default withRouter(ModalLoginForm)

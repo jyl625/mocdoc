@@ -35,8 +35,8 @@ class NavBar extends React.Component {
 
   patientNav = () => (
     <div className="nav-container-logged_in">
-      <div><Link to="/" className="nav-link">My Mocdoc</Link></div>
-      <div><Link to="/" className="nav-link">Past Appointments</Link></div>
+      <div><Link to="/patient" className="nav-link">My Mocdoc</Link></div>
+      <div><Link to="/patient" className="nav-link">Past Appointments</Link></div>
       <div className={this.state.isListOpen ? "dropdown-header-selected" : "dropdown-header"} 
         onClick={() => this.toggleDropDown()}>
         <div className="patient-name-container" >

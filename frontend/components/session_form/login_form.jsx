@@ -19,10 +19,10 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state);
+    this.handleLoginAndRedirect(this.state)
   }
 
-  redirectRoute = () => {
+  redirectToSignUp = () => {
     this.props.history.push("/createuser/details");
   }
 
@@ -31,9 +31,18 @@ class LoginForm extends React.Component {
   }
 
   handleDemoLogin = () => {
-    this.props.login({
+    this.handleLoginAndRedirect({
       email: "demo@email.com",
       password: "111111"
+    })
+  }
+
+  handleLoginAndRedirect = (loginCredentials) => {
+    this.props.login(loginCredentials).then(res => {
+      console.log("res is", res)
+      if (res.type === "RECEIVE_CURRENT_USER") {
+        this.props.history.push("/patient")
+      }
     })
   }
 
@@ -51,7 +60,7 @@ class LoginForm extends React.Component {
       <>
         <FormNavBar currPath={this.props.currPath}/>
         <form onSubmit={this.handleSubmit} className="login-form">
-          <input type="button" value="Sign up with email" onClick={this.redirectRoute} />
+          <input type="button" value="Sign up with email" onClick={this.redirectToSignUp} />
           <h3><span>or</span></h3>
           <label>Email address
             <input
