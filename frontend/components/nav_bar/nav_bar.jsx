@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router';
 
 import ModalLoginFormContainer from '../session_form/modal_login_form_container'
 
@@ -66,7 +67,7 @@ class NavBar extends React.Component {
     if (this.state.isListOpen) {
       return (
         <div className="dropdown-item">
-          <div className="signout" onClick={() => this.props.logout()}>
+          <div className="signout" onClick={this.handleLogout}>
             <img className="close-button"
               onClick={this.handleCloseModal}
               src="/images/times-solid.svg" alt="close button" />
@@ -77,6 +78,15 @@ class NavBar extends React.Component {
     } else {
       return null;
     }
+  }
+
+  handleLogout = () => {
+    return this.props.logout().then(res => {
+      if (res.type === "LOGOUT_CURRENT_USER") {
+        this.props.closeModal()
+        this.props.history.push("/")
+      }
+    })
   }
 
   render() {
@@ -95,4 +105,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+export default withRouter(NavBar)

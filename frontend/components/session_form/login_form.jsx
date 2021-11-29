@@ -39,7 +39,6 @@ class LoginForm extends React.Component {
 
   handleLoginAndRedirect = (loginCredentials) => {
     this.props.login(loginCredentials).then(res => {
-      console.log("res is", res)
       if (res.type === "RECEIVE_CURRENT_USER") {
         this.props.history.push("/patient")
       }

@@ -47,10 +47,12 @@ class ModalLoginForm extends React.Component {
 
   handleLoginAndRedirect = (loginCredentials) => {
     this.props.login(loginCredentials).then(res => {
-      console.log("res is", res)
       if (res.type === "RECEIVE_CURRENT_USER") {
+        const currPath = this.props.match.path
         this.props.closeModal()
-        this.props.history.push("/patient")
+        if (currPath === "/") {
+          this.props.history.push("/patient")
+        }
       }
     })
   }
