@@ -1,4 +1,5 @@
 import React from "react";
+import NavBarContainer from "../nav_bar/nav_bar_container";
 
 class PatientShow extends React.Component {
   constructor(props) {
@@ -8,9 +9,12 @@ class PatientShow extends React.Component {
   render() {
     console.log(this.props.currentUser)
     return(
-      <>
-        <div>testing</div>
-      </>
+      <div className="patient-show">
+        <NavBarContainer/>
+        <div className="main-page">
+          testing testing
+        </div>
+      </div>
     );
   }
 }
