@@ -112,6 +112,7 @@ class DoctorShow extends React.Component {
             insurances={this.props.insurances}
             modal={this.props.modal}
             insurance_carriers={this.props.provider.insurance_carriers}
+            accepted_plan_ids={this.props.provider.insurances}
             closeModal={this.props.closeModal}
           /> : null}
           <NavBarContainer/>

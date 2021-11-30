@@ -109,11 +109,10 @@ class AppointmentForm extends React.Component {
   //     console.log(this.state)
   //   }
   // }
-  updatePlanId = (plan_id) => {
+  updatePlanId(plan_id) {
     this.setState({
       plan_id
     })
-    console.log(this.state)
   }
 
   planName(plan_id) {
@@ -124,6 +123,7 @@ class AppointmentForm extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return(
       <div className="appointment-form-container">
         <form action="" className="appointment-form">
@@ -138,6 +138,7 @@ class AppointmentForm extends React.Component {
             onClick={this.openInsurancesModal}
             readOnly/>
           {this.renderSelectInsuranceModal()}
+          {}
 
           <div className="question-label">What's the reason for your visit?</div>
           <input type="text"  

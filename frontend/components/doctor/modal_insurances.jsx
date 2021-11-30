@@ -65,10 +65,16 @@ class ModalInsurances extends React.Component {
 
   renderSelectPlans(carrier) {
     const selectedPlans = []
-    Object.keys(this.props.insurances).forEach( id => {
-      const plan_carrier = this.props.insurances[id].carrier
+    // Object.keys(this.props.insurances).forEach( id => {
+    //   const plan_carrier = this.props.insurances[id].carrier
+    //   if (plan_carrier === carrier && this.state.selected.includes(plan_carrier)) {
+    //     selectedPlans.push(this.props.insurances[id].plan)
+    //   }
+    // })
+    this.props.accepted_plan_ids.forEach( plan_id => {
+      const plan_carrier = this.props.insurances[plan_id].carrier
       if (plan_carrier === carrier && this.state.selected.includes(plan_carrier)) {
-        selectedPlans.push(this.props.insurances[id].plan)
+        selectedPlans.push(this.props.insurances[plan_id].plan)
       }
     })
     return (

@@ -4,13 +4,14 @@ import { fetchCurrentSession } from '../../actions/session_actions'
 import { openModal, closeModal } from '../../actions/ui_actions';
 import AppointmentForm from './appointment_form'
 
-const mapStateToProps = ({entities, session, ui}) => {
+const mapStateToProps = ({entities, session, ui}, ownProps) => {
   const currentUser = entities.users[session.currentUserId]
   const insurances = entities.insurances
   return {
     currentUser,
     insurances,
-    modal: ui.modal
+    modal: ui.modal,
+    // provider: entities.providers[ownProps.match.params.id],
   }
 }
 

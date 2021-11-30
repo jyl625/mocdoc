@@ -16,7 +16,6 @@ const insurancesReducer = (oldState = {}, action) => {
       Object.assign(newState, action.payload.insurances)
       return newState;
     case RECEIVE_INSURANCES:
-      console.log(action.insurances)
       Object.assign(newState, action.insurances)
       return newState;
     default:

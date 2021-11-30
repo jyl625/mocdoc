@@ -11,5 +11,6 @@ json.extract! provider,
   :latitude,
   :longitude 
 json.specialties provider.specialties.pluck(:id)
-json.insurances provider.insurances.pluck(:id)
+# json.insurances provider.insurances.pluck(:id)
+json.insurances provider.insurances.pluck(:plan_id)
 json.insurance_carriers provider.insurances.pluck(:carrier).uniq

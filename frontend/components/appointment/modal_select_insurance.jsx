@@ -20,7 +20,6 @@ class ModalSelectInsurance extends React.Component {
     const userInsurancePlan = userInsuranceObj.plan
     const userInsuranceValue = `${userInsuranceCarrier} - ${userInsurancePlan}`
 
-    console.log(userInsuranceValue)
     return (
       <div>
         <div onClick={() => this.handleSelection(this.props.plan_id)}>{userInsuranceValue}</div>
@@ -78,11 +77,11 @@ class ModalSelectInsurance extends React.Component {
 
   renderPlanSelection() {    
     if (this.state.insurance_list) {
-      console.log(this.state.insurance_list)
       return (
         <div>
           {this.state.insurance_list.map(insurance => (
-            <div key={insurance.plan_id}>{insurance.plan}</div>
+            <div key={insurance.plan_id}
+              onClick={() => this.handleSelection(insurance.plan_id)}>{insurance.plan}</div>
           ))}
         </div>
       )
@@ -94,11 +93,12 @@ class ModalSelectInsurance extends React.Component {
   }
 
   handleSelection(plan_id) {
+    console.log(plan_id)
     this.props.closeModal();
     this.props.updatePlanId(plan_id);
   }
 
-  renderPages() {
+  renderSteps() {
     if (this.state.step === "carrierSelection") {
       return this.renderCarrierSelection()
     }
@@ -113,7 +113,6 @@ class ModalSelectInsurance extends React.Component {
   }
 
   render () {
-    // console.log(this.props.plan_id)
     return (
       <div className="select-insurance-container ">
         <div className="close-icon-container">
@@ -121,7 +120,7 @@ class ModalSelectInsurance extends React.Component {
             alt="close" 
             onClick={this.props.closeModal}/>
         </div>
-        {this.renderPages()}
+        {this.renderSteps()}
 
       </div>
     )
