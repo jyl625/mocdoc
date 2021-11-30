@@ -18,6 +18,7 @@ class AppointmentForm extends React.Component {
     this.updatePlanId = this.updatePlanId.bind(this)
   }
 
+  // will use later
   getCurrentDate() {
     const newDate = new Date()
     const year = newDate.getFullYear();
@@ -41,7 +42,7 @@ class AppointmentForm extends React.Component {
     if (this.props.currentUser) {
       this.props.fetchCurrentSession()
     }
-    this.getCurrentDate();
+    // this.getCurrentDate(); 
   }
 
   componentDidUpdate() {
@@ -49,7 +50,6 @@ class AppointmentForm extends React.Component {
       this.setState(
         { plan_id: this.props.currentUser.plan_id }
       )
-      console.log(this.state)
     }
   }
 
@@ -101,12 +101,19 @@ class AppointmentForm extends React.Component {
     this.props.openModal("selectInsurance");
   }
 
+  // updatePlanId = (plan_id) => {
+  //   return(e) => {
+  //     this.setState({
+  //       plan_id
+  //     })
+  //     console.log(this.state)
+  //   }
+  // }
   updatePlanId = (plan_id) => {
-    return(e) => {
-      this.setState({
-        plan_id
-      })
-    }
+    this.setState({
+      plan_id
+    })
+    console.log(this.state)
   }
 
   planName(plan_id) {
@@ -117,7 +124,6 @@ class AppointmentForm extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return(
       <div className="appointment-form-container">
         <form action="" className="appointment-form">
