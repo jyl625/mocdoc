@@ -2,11 +2,11 @@ export const selectProvider = ({providers}, providerId) => {
   return providers[providerId];
 }
 
-export const selectPlans = (insurances, hios_id) => {
+export const selectPlans = (insurances, carrier) => {
   const selected = [];
 
   Object.keys(insurances).forEach(plan_id => {
-    if (insurances[plan_id].hios_id === hios_id) {
+    if (insurances[plan_id].carrier === carrier) {
       selected.push(insurances[plan_id])
     }
   })

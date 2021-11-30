@@ -5,6 +5,7 @@ class Api::ProvidersController < ApplicationController
     # p params[:id]
 
     # @provider = Provider.find_by(id: params[:id].to_i)
+    # debugger 
     @provider = Provider.find(params[:id])
 
     render "api/providers/show"

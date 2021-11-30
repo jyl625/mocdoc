@@ -8,7 +8,6 @@ class ModalSelectInsurance extends React.Component {
 
     this.state = {
       step: null,
-      hios_id: "",
       carrier: "",
       plan_id: "",
       insurance_list: null
@@ -37,45 +36,45 @@ class ModalSelectInsurance extends React.Component {
   }
 
   renderCarrierSelection() {
-    const insuranceCarrierObjects = {
-      "Anthem": "27603",
-      "Blue Shield": "70285",
-      "Bright": "67689",
-      "Chinese Community": "47579",
-      "HealthNet": "99110",
-      "HealthNet": "67138",
-      "Kaiser": "40513",
-      "L.A. Care": "92815",
-      "Molina": "18126",
-      "Oscar": "10544",
-      "Self-pay": "00000",
-      "Sharp": "92499",
-      "Valley": "84014",
-      "Western": "93689"
-    }
+    const carriers = [
+      "Anthem", 
+      "Blue Shield", 
+      "Bright", 
+      "Chinese Community", 
+      "HealthNet", 
+      "Kaiser", 
+      "L.A. Care", 
+      "Molina", 
+      "Oscar", 
+      "Sharp", 
+      "Valley", 
+      "Western", 
+      "Self-pay"
+    ]
     return(
       <div>
-        {Object.keys(insuranceCarrierObjects).map((carrier, i) => {
+        {carriers.map((carrier, i) => {
           return <div className="carrier-selection" 
                       key={i}
-            onClick={() => this.toPlanSelection(insuranceCarrierObjects[carrier], carrier)}>{carrier}</div>
+            onClick={() => this.toPlanSelection(carrier)}>{carrier}</div>
           })}
       </div>
     )
   }
 
-  toPlanSelection = (hios_id, carrier) => {
+  toPlanSelection = (carrier) => {
     this.setState({
-      hios_id,
       carrier,
       step: "planSelection"
     })
-    this.props.fetchInsurances(hios_id).then(() => {
+    this.props.fetchInsurances(carrier).then(() => {
       this.setState(
-        { insurance_list: selectPlans(this.props.insurances, this.state.hios_id) }
+        { insurance_list: selectPlans(this.props.insurances, this.state.carrier) }
       )
     })
   }
+
+
 
   renderPlanSelection() {    
     if (this.state.insurance_list) {
@@ -114,7 +113,7 @@ class ModalSelectInsurance extends React.Component {
   }
 
   render () {
-    console.log(this.props.plan_id)
+    // console.log(this.props.plan_id)
     return (
       <div className="select-insurance-container ">
         <div className="close-icon-container">

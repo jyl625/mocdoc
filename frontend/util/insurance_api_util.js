@@ -1,6 +1,12 @@
-export const fetchInsurances = hios_id => (
+// export const fetchInsurances = id => (
+//   $.ajax({
+//     method: 'GET',
+//     url: `/api/insurances/${id}`
+//   })
+// );
+export const fetchInsurances = carrier => (
   $.ajax({
     method: 'GET',
-    url: `/api/insurances/${hios_id}`
+    url: `/api/insurances?carrier=${carrier}`
   })
 );

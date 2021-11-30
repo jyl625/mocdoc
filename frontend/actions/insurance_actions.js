@@ -7,8 +7,8 @@ export const receiveInsurances = insurances => ({
   insurances
 })
 
-export const fetchInsurances = hios_id => dispatch => (
-  APIUtil.fetchInsurances(hios_id).then(insurances => (
+export const fetchInsurances = carrier => dispatch => (
+  APIUtil.fetchInsurances(carrier).then(insurances => (
     dispatch(receiveInsurances(insurances))
   ))
 )
