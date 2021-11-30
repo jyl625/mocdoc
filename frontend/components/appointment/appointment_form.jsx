@@ -177,11 +177,11 @@ class AppointmentForm extends React.Component {
             </div>
           </div>
 
-          {/* <div className="question-label">Select an available date</div>
+          <div className="question-label">Select an available date</div>
           <input type="date" id="appointmentDate" />
 
           <div className="question-label">Select an available time</div>
-          <input type="time" id="appointmentTime" /> */}
+          <input type="time" id="appointmentTime" />
 
           <input type="submit" value="Continue booking" />
         </form>

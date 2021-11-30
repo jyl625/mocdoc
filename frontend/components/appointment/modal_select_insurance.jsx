@@ -108,6 +108,8 @@ class ModalSelectInsurance extends React.Component {
     }
     if (this.props.plan_id) {
       return this.renderCurrentInsurance()
+    } else {
+      return this.renderCarrierSelection()
     }
   }
 
