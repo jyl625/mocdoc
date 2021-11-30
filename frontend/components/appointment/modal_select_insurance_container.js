@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import ModalSelectInsurance from './modal_select_insurance';
 import { openModal, closeModal } from '../../actions/ui_actions';
+import {fetchInsurances} from '../../actions/insurance_actions'
 
 const mapStateToProps = ({entities, session, ui}) => {
   return {
@@ -11,7 +12,8 @@ const mapStateToProps = ({entities, session, ui}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    fetchInsurances: (hios_id) => dispatch(fetchInsurances(hios_id))
   }
 }
 

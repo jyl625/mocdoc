@@ -1,13 +1,17 @@
 import React from "react";
 
+import {selectPlans} from '../../reducers/selectors'
+
 class ModalSelectInsurance extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
       step: null,
+      hios_id: "",
       carrier: "",
-      plan_id: ""
+      plan_id: "",
+      insurance_list: null
     }
   }
 
@@ -21,12 +25,12 @@ class ModalSelectInsurance extends React.Component {
     return (
       <div>
         <div onClick={() => this.handleSelection(this.props.plan_id)}>{userInsuranceValue}</div>
-        <div onClick={this.nextStep}>choose a different insurance</div>
+        <div onClick={this.toCarrierSelection}>choose a different insurance</div>
       </div>
     )
   }
 
-  nextStep = () => {
+  toCarrierSelection = () => {
     this.setState({
       step: "carrierSelection"
     })
@@ -51,13 +55,43 @@ class ModalSelectInsurance extends React.Component {
     }
     return(
       <div>
-        {
-          Object.keys(insuranceCarrierObjects).map((carrier, i) => {
-            return <div className="carrier-selection" key={i}>{carrier}</div>
-          })
-        }
+        {Object.keys(insuranceCarrierObjects).map((carrier, i) => {
+          return <div className="carrier-selection" 
+                      key={i}
+            onClick={() => this.toPlanSelection(insuranceCarrierObjects[carrier], carrier)}>{carrier}</div>
+          })}
       </div>
     )
+  }
+
+  toPlanSelection = (hios_id, carrier) => {
+    this.setState({
+      hios_id,
+      carrier,
+      step: "planSelection"
+    })
+    this.props.fetchInsurances(hios_id).then(() => {
+      this.setState(
+        { insurance_list: selectPlans(this.props.insurances, this.state.hios_id) }
+      )
+    })
+  }
+
+  renderPlanSelection() {    
+    if (this.state.insurance_list) {
+      console.log(this.state.insurance_list)
+      return (
+        <div>
+          {this.state.insurance_list.map(insurance => (
+            <div key={insurance.plan_id}>{insurance.plan}</div>
+          ))}
+        </div>
+      )
+    } else {
+      return (
+        <div>Loading...</div>
+      )
+    }
   }
 
   handleSelection(plan_id) {
@@ -68,6 +102,9 @@ class ModalSelectInsurance extends React.Component {
   renderPages() {
     if (this.state.step === "carrierSelection") {
       return this.renderCarrierSelection()
+    }
+    if (this.state.step === "planSelection") {
+      return this.renderPlanSelection()
     }
     if (this.props.plan_id) {
       return this.renderCurrentInsurance()
