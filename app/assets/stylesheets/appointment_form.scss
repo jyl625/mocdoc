@@ -82,4 +82,31 @@
     color: #ffffff;
     cursor: pointer;
   }
+  
+  .insurance-choice:hover {
+    cursor: pointer;
+  }
+}
+
+.select-insurance-container {
+  position: absolute;
+  width: 531px;
+  padding: 12px 25px;
+  background-color: #ffffff;
+  transform: translateX(-89px);
+  border: rgb(225, 225, 228) 1px solid;
+
+  .close-icon-container {
+    display: flex;
+    justify-content: right;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  img:hover {
+    cursor: pointer;
+  }
 }

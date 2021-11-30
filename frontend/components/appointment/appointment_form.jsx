@@ -1,5 +1,7 @@
 import React from "react";
 
+import ModalSelectInsuranceContainer from "./modal_select_insurance_container";
+
 class AppointmentForm extends React.Component {
   constructor(props) {
     super(props)
@@ -12,6 +14,8 @@ class AppointmentForm extends React.Component {
       visit_date: "",
       visit_time: ""
     }
+
+    this.updatePlanId = this.updatePlanId.bind(this)
   }
 
   getCurrentDate() {
@@ -22,29 +26,33 @@ class AppointmentForm extends React.Component {
     return `${year}-${month}-${date}`;
   }
 
+  // componentDidMount() {
+  //   if (this.props.currentUser) {
+  //     this.props.fetchCurrentSession().then(() => {
+  //       this.setState(
+  //         {plan_id: this.props.currentUser.plan_id}
+  //       )
+  //       console.log(this.state)
+  //     });
+  //   }
+  //   this.getCurrentDate();
+  // }
   componentDidMount() {
     if (this.props.currentUser) {
-      this.props.fetchCurrentSession();
+      this.props.fetchCurrentSession()
     }
     this.getCurrentDate();
   }
 
-  renderInsuranceCarriers() {
-    const carriers = {"Anthem": "27603",
-    "Blue Shield": "70285",
-    "Bright": "67689",
-    "Chinese Community": "47579",
-    "HealthNet": "99110",
-    "HealthNet": "67138",
-    "Kaiser": "40513",
-    "L.A. Care": "92815",
-    "Molina": "18126",
-    "Oscar": "10544",
-    "Self-pay": "00000",
-    "Sharp": "92499",
-    "Valley": "84014",
-    "Western": "93689"}
+  componentDidUpdate() {
+    if (this.props.currentUser && this.state.plan_id === "") {
+      this.setState(
+        { plan_id: this.props.currentUser.plan_id }
+      )
+      console.log(this.state)
+    }
   }
+
 
   toggleNewPatient = (new_patient) => {
     return (e) => {
@@ -73,27 +81,57 @@ class AppointmentForm extends React.Component {
     return (e) => this.setState({ reason: e.currentTarget.value })
   }
 
+  renderSelectInsuranceModal() {
+    if (this.props.modal.includes("selectInsurance")) {
+      let plan_id;
+      if (this.props.currentUser) {
+        plan_id = this.props.currentUser.plan_id
+      } else {
+        plan_id = null;
+      }
+      return <ModalSelectInsuranceContainer 
+                plan_id={plan_id} 
+                updatePlanId={this.updatePlanId}/>
+    } else {
+      return null
+    } 
+  }
+
+  openInsurancesModal = (e) => {
+    this.props.openModal("selectInsurance");
+  }
+
+  updatePlanId = (plan_id) => {
+    return(e) => {
+      this.setState({
+        plan_id
+      })
+    }
+  }
+
+  planName(plan_id) {
+    const userInsuranceObj = this.props.insurances[plan_id]
+    let userInsuranceCarrier = userInsuranceObj.carrier
+    let userInsurancePlan = userInsuranceObj.plan
+    return `${userInsuranceCarrier} - ${userInsurancePlan}`
+  }
+
   render() {
     console.log(this.state)
-
-    const currentUser = this.props.currentUser;
-    let userInsuranceValue = "Click to select"
-    if (currentUser) {
-      const userInsuranceObj = this.props.insurances[currentUser.plan_id]
-      if (userInsuranceObj) {
-        let userInsuranceCarrier = userInsuranceObj.carrier
-        let userInsurancePlan = userInsuranceObj.plan
-        userInsuranceValue = `${userInsuranceCarrier} - ${userInsurancePlan}`
-      }
-    }
-
     return(
       <div className="appointment-form-container">
         <form action="" className="appointment-form">
           <h2 >Book an appointment for free</h2>
 
-          {/* <div className="question-label">What's your insurance plan?</div>
-          <input type="text"  value={userInsuranceValue} /> */}
+          <div className="question-label" >What's your insurance plan?</div>
+          <input type="text" 
+            className="insurance-choice"
+            value={this.state.plan_id ? (
+              this.planName(this.state.plan_id)
+              ) : "choose insurance"}
+            onClick={this.openInsurancesModal}
+            readOnly/>
+          {this.renderSelectInsuranceModal()}
 
           <div className="question-label">What's the reason for your visit?</div>
           <input type="text"  
@@ -105,12 +143,14 @@ class AppointmentForm extends React.Component {
           <div className="radio-selections-container">
             <div className="radio-selection" onClick={this.toggleNewPatient(true)}>
               <input type="radio"  
-                checked={this.state.new_patient === true}/>
+                checked={this.state.new_patient === true}
+                readOnly/>
               <div>No</div>
             </div>
             <div className="radio-selection" onClick={this.toggleNewPatient(false)} >
               <input type="radio"  
-                checked={this.state.new_patient === false}/>
+                checked={this.state.new_patient === false}
+                readOnly/>
               <div>Yes</div>
             </div>
           </div>
@@ -119,12 +159,14 @@ class AppointmentForm extends React.Component {
           <div className="radio-selections-container">
             <div className="radio-selection" onClick={this.toggleVisitType(true)}>
               <input type="radio" 
-                checked={this.state.in_person === true}/>
+                checked={this.state.in_person === true}
+                readOnly/>
               <div>In-person</div>
             </div>
             <div className="radio-selection" onClick={this.toggleVisitType(false)}>
               <input type="radio" 
-                checked={this.state.in_person === false}/>
+                checked={this.state.in_person === false}
+                readOnly/>
               <div>Video visit</div>
             </div>
           </div>
