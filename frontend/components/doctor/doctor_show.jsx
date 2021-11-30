@@ -144,9 +144,7 @@ class DoctorShow extends React.Component {
               </div>
               <div id="place-holder"></div>
             </div>
-            <div className="appointment-form-container">
-              <AppointmentFormContainer/>
-            </div>
+            <AppointmentFormContainer/>
           </div>
         </div>
       )

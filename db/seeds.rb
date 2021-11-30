@@ -102,8 +102,9 @@ require 'csv'
 
 all_npi = Provider.select(:npi).distinct.pluck(:npi)
 # all_npi = Provider.select(:npi).distinct.limit(4).pluck(:npi)
+carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
+
 all_npi.each do |npi|
-  carrier_hios_ids = Insurance.select(:hios_id).distinct.pluck(:hios_id)
   rand_carrier_hios_ids = carrier_hios_ids.sample(3)
   all_rand_plan_ids = []
   rand_carrier_hios_ids.each {|hios| all_rand_plan_ids +=  Insurance.where(hios_id: hios).pluck(:plan_id)}
