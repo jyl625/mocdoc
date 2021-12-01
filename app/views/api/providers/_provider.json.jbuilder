@@ -14,3 +14,4 @@ json.specialties provider.specialties.pluck(:id)
 # json.insurances provider.insurances.pluck(:id)
 json.insurances provider.insurances.pluck(:plan_id)
 json.insurance_carriers provider.insurances.pluck(:carrier).uniq
+json.appointments provider.appointments.pluck(:id)

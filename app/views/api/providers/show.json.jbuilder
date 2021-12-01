@@ -26,4 +26,15 @@ else
   json.insurances ({})
 end
 
+if @provider.appointments.length != 0
+  json.appointments do
+    @provider.appointments.each do |appointment|
+      json.set! appointment.id do
+        json.id appointment.id
+        json.appointment_time appointment.appointment_time_pacific
+      end
+    end
+  end
+end
+
 # json.extract! @provider, :id, :npi, :name
