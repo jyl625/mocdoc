@@ -12,3 +12,16 @@ export const selectPlans = (insurances, carrier) => {
   })
   return selected.sort((a,b) => ((a.plan > b.plan) ? 1 : -1));
 }
+
+export const selectProvidersAppointmentTimes = (appointments, provider) => {
+  const appointmentTimes = [];
+  provider.appointments.forEach(appointment_id => {
+    if(appointments[appointment_id]) {
+      // ex. '2021-12-02T10:00:00.000-08:00' => 2021-12-02T10:00
+      let comparableFormat = appointments[appointment_id].appointment_time.slice(0,16)
+      appointmentTimes.push(comparableFormat)
+    }
+  })
+  return appointmentTimes
+  
+}

@@ -1,5 +1,7 @@
 import React from "react";
 
+import {selectProvidersAppointmentTimes} from '../../reducers/selectors'
+
 class AvailabilityGrid extends React.Component {
   constructor(props) {
     super(props)
@@ -51,29 +53,72 @@ class AvailabilityGrid extends React.Component {
     return dateStringObj;
   }
 
+  providersAppointments() {
+    return selectProvidersAppointmentTimes(this.props.appointments, this.props.provider)
+  }
+
   availabilityDay(offset) {
     let dateObj = this.day(offset)
-    
+
     const firstAppointmentSlot = 9
     const lastAppointmentSlot = 16
     const maxAvailability = 5
 
     const availabilities = []
+    const comparableFormats = []
 
     let nextAppointmentSlot = firstAppointmentSlot
+
     while (availabilities.length < maxAvailability && nextAppointmentSlot <= lastAppointmentSlot) {
-      availabilities.push(Object.assign({}, dateObj, {hr: nextAppointmentSlot, min: 0}))
+
+      // comparable format is ex. 2021-12-02T10:00
+      let comparableFormat = this.formatToComparableFormat(offset, nextAppointmentSlot)
+
+      if (!this.providersAppointments().includes(comparableFormat)) {
+        comparableFormats.push(comparableFormat)
+        availabilities.push(Object.assign({}, dateObj, { hr: nextAppointmentSlot, min: 0 }))
+      }
       nextAppointmentSlot += 1;
+
     }
 
-    console.log(availabilities)
+    // console.log(availabilities)
+    // console.log(this.providersAppointments());
 
     return (
-      availabilities.map(availability => (
-          <div className="availability-container">{this.renderTime(availability)}</div>
-        ))
+      availabilities.map((availability, idx) => {
+          return <div className="availability-container"
+                      key={idx}
+            onClick={this.handleSelect(comparableFormats[idx])}>{this.renderTime(availability)}</div>
+      })
     )
   }
+
+  handleSelect = (availability) => {
+    return (e) => console.log(availability)
+  }
+
+  formatToComparableFormat(offset, nextAppointmentSlot) {
+    let tempDateObj = new Date();
+    tempDateObj.setDate(tempDateObj.getDate() + offset)
+
+    let dateString = tempDateObj.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    })
+
+    let [month, day, year] = dateString.split("/")
+
+    month = (parseInt(month) < 10) ? `0${month}` : month
+    day = (parseInt(day) < 10) ? `0${day}` : day
+    let time = (nextAppointmentSlot < 10) ? `0${nextAppointmentSlot}` : `${nextAppointmentSlot}`
+
+    // comparable format is ex. 2021-12-02T10:00
+    return `${year}-${month}-${day}T${time}:00`
+  }
+
 
   renderTime({hr, min}) {
     let timeStr="";
@@ -89,7 +134,7 @@ class AvailabilityGrid extends React.Component {
   }
 
   render() {
-    console.log(this.props.provider)
+    // console.log(this.props.provider)
     return (
       <div className="availability-grid-container">
         <div className="address">{this.providerAddress()}</div>

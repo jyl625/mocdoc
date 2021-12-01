@@ -1,5 +1,5 @@
 import React from "react";
-import AvailabilityGrid from "./availability_grid";
+import AvailabilityGridContainer from "./availability_grid_container";
 
 import ModalSelectInsuranceContainer from "./modal_select_insurance_container";
 
@@ -165,7 +165,7 @@ class AppointmentForm extends React.Component {
             </div>
           </div>
 
-          <AvailabilityGrid provider={this.props.provider}/>
+          <AvailabilityGridContainer provider={this.props.provider}/>
 
           <input type="submit" value="Continue booking" />
         </form>
