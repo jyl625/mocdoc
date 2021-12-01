@@ -24,6 +24,7 @@ class User < ApplicationRecord
     class_name: :Insurance,
     foreign_key: :plan_id
 
+  has_many :appointments
 
   attr_reader :password
 

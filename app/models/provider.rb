@@ -19,4 +19,6 @@ class Provider < ApplicationRecord
   has_many :insurances,
     through: :insurance_plan_ids,
     source: :insurance_plan
+
+  has_many :appointments
 end

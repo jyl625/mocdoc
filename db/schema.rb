@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_062754) do
+ActiveRecord::Schema.define(version: 2021_12_01_051048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "appointment_time", null: false
+    t.integer "user_id", null: false
+    t.integer "provider_id", null: false
+    t.string "reason", null: false
+    t.boolean "new_patient", null: false
+    t.boolean "in_person", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_time", "provider_id"], name: "index_appointments_on_appointment_time_and_provider_id", unique: true
+    t.index ["provider_id"], name: "index_appointments_on_provider_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
 
   create_table "insurances", force: :cascade do |t|
     t.string "hios_id", null: false
