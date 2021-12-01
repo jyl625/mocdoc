@@ -26,6 +26,11 @@ class User < ApplicationRecord
 
   has_many :appointments
 
+  has_many :providers,
+    -> { distinct },
+    through: :appointments,
+    source: :provider
+
   attr_reader :password
 
   after_initialize :ensure_session_token

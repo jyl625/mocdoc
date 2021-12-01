@@ -54,11 +54,9 @@ class AvailabilityGrid extends React.Component {
     return dateStringObj;
   }
 
-  providersAppointments() {
-    return selectProvidersAppointmentTimes(this.props.appointments, this.props.provider)
-  }
 
-  availabilityDay(offset) {
+
+  availabilityDay(offset, appointments) {
     let dateObj = this.day(offset)
 
     const firstAppointmentSlot = 9
@@ -74,24 +72,31 @@ class AvailabilityGrid extends React.Component {
 
       // comparable format is ex. 2021-12-02T10:00
       let comparableFormat = this.formatToComparableFormat(offset, nextAppointmentSlot)
-
-      if (!this.providersAppointments().includes(comparableFormat)) {
+      // debugger
+      if (!appointments.includes(comparableFormat)) {
         comparableFormats.push(comparableFormat)
         availabilities.push(Object.assign({}, dateObj, { hr: nextAppointmentSlot, min: 0 }))
       }
       nextAppointmentSlot += 1;
 
+    }  
+
+    
+    const empty_slots_count = maxAvailability - availabilities.length
+    for (let i = 0; i < empty_slots_count; i++) {
+      availabilities.push(null);
     }
-
-    // console.log(availabilities)
-    // console.log(this.providersAppointments());
-
+    
     return (
       availabilities.map((availability, idx) => {
-        const selected = (this.state.selected === comparableFormats[idx]) ? " selected" : ""
-        return <div className={`availability-container${selected}`}
-                    key={idx}
-          onClick={this.handleSelect(comparableFormats[idx])}>{this.renderTime(availability)}</div>
+        if (availability === null) {
+          return <div className="empty-availability" key={idx}></div>
+        } else {
+          const selected = (this.state.selected === comparableFormats[idx]) ? " selected" : ""
+          return <div className={`availability-container${selected}`}
+                      key={idx}
+            onClick={this.handleSelect(comparableFormats[idx])}>{this.renderTime(availability)}</div>
+        }
       })
     )
   }
@@ -140,8 +145,13 @@ class AvailabilityGrid extends React.Component {
     return timeStr;
   }
 
+  providersAppointments() {
+    return selectProvidersAppointmentTimes(this.props.appointments, this.props.provider)
+  }
+
   render() {
-    // console.log(this.props.provider)
+    const appointments = this.providersAppointments();
+
     return (
       <div className="availability-grid-container">
         <div className="address">{this.providerAddress()}</div>
@@ -156,10 +166,10 @@ class AvailabilityGrid extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>{this.availabilityDay(1)}</td>
-              <td>{this.availabilityDay(2)}</td>
-              <td>{this.availabilityDay(3)}</td>
-              <td>{this.availabilityDay(4)}</td>
+              <td>{this.availabilityDay(1, appointments)}</td>
+              <td>{this.availabilityDay(2, appointments)}</td>
+              <td>{this.availabilityDay(3, appointments)}</td>
+              <td>{this.availabilityDay(4, appointments)}</td>
             </tr>
           </tbody>
         </table>

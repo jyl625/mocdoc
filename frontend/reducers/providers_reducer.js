@@ -1,14 +1,18 @@
 import { RECEIVE_PROVIDER } from '../actions/provider_actions'
+import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
 const providersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
 
-  const nextState = Object.assign({}, oldState)
+  const newState = Object.assign({}, oldState)
 
   switch(action.type) {
     case RECEIVE_PROVIDER:
-      nextState[action.payload.provider.id] = action.payload.provider
-      return nextState
+      newState[action.payload.provider.id] = action.payload.provider
+      return newState
+    case RECEIVE_CURRENT_USER:
+      Object.assign(newState, action.payload.providers);
+      return newState;
     default:
       return oldState;
   }

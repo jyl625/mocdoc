@@ -93,7 +93,6 @@ class ModalSelectInsurance extends React.Component {
   }
 
   handleSelection(plan_id) {
-    console.log(plan_id)
     this.props.closeModal();
     this.props.updatePlanId(plan_id);
   }

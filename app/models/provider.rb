@@ -21,4 +21,9 @@ class Provider < ApplicationRecord
     source: :insurance_plan
 
   has_many :appointments
+
+  has_many :users, 
+    -> { distinct },
+    through: :appointments,
+    source: :user
 end

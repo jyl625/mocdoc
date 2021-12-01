@@ -11,3 +11,28 @@ if @user.insurance
 else
   json.insurance ({})
 end
+
+if @user.appointments
+  json.appointments do
+    @user.appointments.each do |appointment|
+      json.set! appointment.id do
+        json.id appointment.id
+        json.provider_id appointment.provider_id
+        json.reason appointment.reason
+        json.new_patient appointment.new_patient
+        json.in_person appointment.in_person
+        json.appointment_time appointment.appointment_time_pacific
+      end
+    end
+  end
+end
+
+if @user.providers
+  json.providers do 
+    @user.providers.each do |provider|
+      json.set! provider.id do 
+        json.partial! "api/providers/provider", provider: provider
+      end
+    end
+  end
+end

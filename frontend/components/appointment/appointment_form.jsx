@@ -1,6 +1,7 @@
 import React from "react";
-import AvailabilityGridContainer from "./availability_grid_container";
+import { withRouter } from 'react-router';
 
+import AvailabilityGridContainer from "./availability_grid_container";
 import ModalSelectInsuranceContainer from "./modal_select_insurance_container";
 
 class AppointmentForm extends React.Component {
@@ -116,7 +117,6 @@ class AppointmentForm extends React.Component {
   }
 
   updateDateTime(dateTimeString) {
-    console.log("in appointment form: ",dateTimeString);
     const [date, time] = dateTimeString.split("T");
     const [year, month, day] = date.split("-")
     const [hour, min] = time.split(":")
@@ -151,7 +151,6 @@ class AppointmentForm extends React.Component {
         loggedOut: false
       })
       if (reason === "Input a reason" || reason === "" || plan_id === "" || new_patient === null || in_person === null) {
-        console.log("there was an error")
         this.setState({
           formErrors: true
         })
@@ -159,14 +158,11 @@ class AppointmentForm extends React.Component {
         this.setState({
           formErrors: false
         })
-        console.log("YAY FORM SUBMITTED")
         this.createFormObjectAndSubmit()
       }
     }
   }
-    // if (this.state.formErrors === false && this.state.loggedOut === false) {
-    //   console.log("YAY FORM SUBMITTED")
-    // }
+
 
   createFormObjectAndSubmit() {
     const appointment = {
@@ -181,13 +177,12 @@ class AppointmentForm extends React.Component {
       newPatient: this.state.new_patient,
       inPerson: this.state.in_person,
     }
-    console.log(appointment)
     this.props.createAppointment(appointment)
+    this.props.history.push("/patient")
   }
 
 
   render() {
-    // console.log(this.state)
     return(
       <div className="appointment-form-container">
         <form onSubmit={this.handleSubmit} className="appointment-form">
@@ -259,4 +254,4 @@ class AppointmentForm extends React.Component {
   }
 }
 
-export default AppointmentForm
+export default withRouter(AppointmentForm)
