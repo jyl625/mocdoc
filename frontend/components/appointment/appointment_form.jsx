@@ -1,4 +1,5 @@
 import React from "react";
+import AvailabilityGrid from "./availability_grid";
 
 import ModalSelectInsuranceContainer from "./modal_select_insurance_container";
 
@@ -18,31 +19,11 @@ class AppointmentForm extends React.Component {
     this.updatePlanId = this.updatePlanId.bind(this)
   }
 
-  // will use later
-  getCurrentDate() {
-    const newDate = new Date()
-    const year = newDate.getFullYear();
-    const month = newDate.getMonth();
-    const date = newDate.getDate();
-    return `${year}-${month}-${date}`;
-  }
 
-  // componentDidMount() {
-  //   if (this.props.currentUser) {
-  //     this.props.fetchCurrentSession().then(() => {
-  //       this.setState(
-  //         {plan_id: this.props.currentUser.plan_id}
-  //       )
-  //       console.log(this.state)
-  //     });
-  //   }
-  //   this.getCurrentDate();
-  // }
   componentDidMount() {
     if (this.props.currentUser) {
       this.props.fetchCurrentSession()
     }
-    // this.getCurrentDate(); 
   }
 
   componentDidUpdate() {
@@ -101,14 +82,6 @@ class AppointmentForm extends React.Component {
     this.props.openModal("selectInsurance");
   }
 
-  // updatePlanId = (plan_id) => {
-  //   return(e) => {
-  //     this.setState({
-  //       plan_id
-  //     })
-  //     console.log(this.state)
-  //   }
-  // }
   updatePlanId(plan_id) {
     this.setState({
       plan_id
@@ -120,6 +93,20 @@ class AppointmentForm extends React.Component {
     let userInsuranceCarrier = userInsuranceObj.carrier
     let userInsurancePlan = userInsuranceObj.plan
     return `${userInsuranceCarrier} - ${userInsurancePlan}`
+  }
+
+  checkCoverage() {
+    let coverageStatus
+    if (this.state.plan_id) {
+      if (this.props.accepted_plan_ids.includes(this.state.plan_id)) {
+        coverageStatus = `In-network for ${this.props.provider.name}`
+      } else {
+        coverageStatus = `Out-of-network for ${this.props.provider.name}`
+      }
+    } else {
+      coverageStatus = ""
+    }
+    return <div className="coverage-status">{coverageStatus}</div>
   }
 
   render() {
@@ -138,7 +125,7 @@ class AppointmentForm extends React.Component {
             onClick={this.openInsurancesModal}
             readOnly/>
           {this.renderSelectInsuranceModal()}
-          {}
+          {this.checkCoverage()}
 
           <div className="question-label">What's the reason for your visit?</div>
           <input type="text"  
@@ -178,11 +165,7 @@ class AppointmentForm extends React.Component {
             </div>
           </div>
 
-          <div className="question-label">Select an available date</div>
-          <input type="date" id="appointmentDate" />
-
-          <div className="question-label">Select an available time</div>
-          <input type="time" id="appointmentTime" />
+          <AvailabilityGrid provider={this.props.provider}/>
 
           <input type="submit" value="Continue booking" />
         </form>
