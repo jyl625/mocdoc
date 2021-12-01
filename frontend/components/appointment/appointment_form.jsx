@@ -12,11 +12,17 @@ class AppointmentForm extends React.Component {
       reason: "Input a reason",
       new_patient: null,
       in_person: null,
-      visit_date: "",
-      visit_time: ""
+      appointmentYear: null,
+      appointmentMonth: null,
+      appointmentDay: null,
+      appointmentHour: null,
+      appointmentMin: null,
+      formErrors: null,
+      loggedOut: null
     }
 
     this.updatePlanId = this.updatePlanId.bind(this)
+    this.updateDateTime = this.updateDateTime.bind(this)
   }
 
 
@@ -109,11 +115,82 @@ class AppointmentForm extends React.Component {
     return <div className="coverage-status">{coverageStatus}</div>
   }
 
+  updateDateTime(dateTimeString) {
+    console.log("in appointment form: ",dateTimeString);
+    const [date, time] = dateTimeString.split("T");
+    const [year, month, day] = date.split("-")
+    const [hour, min] = time.split(":")
+
+    this.setState({
+      appointmentYear: year,
+      appointmentMonth: month,
+      appointmentDay: day,
+      appointmentHour: hour,
+      appointmentMin: min,
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.validateFormAndSubmit()
+  }
+
+  validateFormAndSubmit() {
+    const reason = this.state.reason;
+    const plan_id = this.state.plan_id;
+    const new_patient = this.state.new_patient;
+    const in_person = this.state.in_person;
+
+    // NEED TO REFACTOR 
+    if (!this.props.currentUser) {
+      this.setState({
+        loggedOut: true
+      })
+    } else {
+      this.setState({
+        loggedOut: false
+      })
+      if (reason === "Input a reason" || reason === "" || plan_id === "" || new_patient === null || in_person === null) {
+        console.log("there was an error")
+        this.setState({
+          formErrors: true
+        })
+      } else {
+        this.setState({
+          formErrors: false
+        })
+        console.log("YAY FORM SUBMITTED")
+        this.createFormObjectAndSubmit()
+      }
+    }
+  }
+    // if (this.state.formErrors === false && this.state.loggedOut === false) {
+    //   console.log("YAY FORM SUBMITTED")
+    // }
+
+  createFormObjectAndSubmit() {
+    const appointment = {
+      year: this.state.appointmentYear,
+      month: this.state.appointmentMonth,
+      day: this.state.appointmentDay,
+      hour: this.state.appointmentHour,
+      min: this.state.appointmentMin,
+      userId: this.props.currentUser.id,
+      providerId: this.props.provider.id,
+      reason: this.state.reason,
+      newPatient: this.state.new_patient,
+      inPerson: this.state.in_person,
+    }
+    console.log(appointment)
+    this.props.createAppointment(appointment)
+  }
+
+
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return(
       <div className="appointment-form-container">
-        <form action="" className="appointment-form">
+        <form onSubmit={this.handleSubmit} className="appointment-form">
           <h2 >Book an appointment for free</h2>
 
           <div className="question-label" >What's your insurance plan?</div>
@@ -165,9 +242,17 @@ class AppointmentForm extends React.Component {
             </div>
           </div>
 
-          <AvailabilityGridContainer provider={this.props.provider}/>
+          <AvailabilityGridContainer 
+              provider={this.props.provider}
+              updateDateTime={this.updateDateTime}/>
 
           <input type="submit" value="Continue booking" />
+          <div className="form-errors">
+            {this.state.formErrors ? "Please fill out all the required fields": ""}
+          </div>
+          <div className="form-errors">
+            {this.state.loggedOut ? "Please log in to book an appointment": ""}
+          </div>
         </form>
       </div >
     )

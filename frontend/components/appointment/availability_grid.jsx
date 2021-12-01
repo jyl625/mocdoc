@@ -8,6 +8,7 @@ class AvailabilityGrid extends React.Component {
 
     this.state = {
       pageOffSet: 0,
+      selected: ""
     }
   }
 
@@ -87,15 +88,21 @@ class AvailabilityGrid extends React.Component {
 
     return (
       availabilities.map((availability, idx) => {
-          return <div className="availability-container"
-                      key={idx}
-            onClick={this.handleSelect(comparableFormats[idx])}>{this.renderTime(availability)}</div>
+        const selected = (this.state.selected === comparableFormats[idx]) ? " selected" : ""
+        return <div className={`availability-container${selected}`}
+                    key={idx}
+          onClick={this.handleSelect(comparableFormats[idx])}>{this.renderTime(availability)}</div>
       })
     )
   }
 
   handleSelect = (availability) => {
-    return (e) => console.log(availability)
+    return (e) => {
+      this.setState({
+        selected: availability
+      })
+      this.props.updateDateTime(availability)
+    }
   }
 
   formatToComparableFormat(offset, nextAppointmentSlot) {

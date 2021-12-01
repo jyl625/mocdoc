@@ -89,6 +89,11 @@
     color: #ffffff;
     cursor: pointer;
   }
+
+  .form-errors {
+    color: red;
+    font-size: 13px;
+  }
   
   .insurance-choice:hover {
     cursor: pointer;
@@ -173,6 +178,11 @@
   .availability-container:hover {
     background-color:rgb(0, 35, 75);
     cursor: pointer;
+    color: white;
+  }
+
+  .selected {
+    background-color:rgb(0, 35, 75);
     color: white;
   }
 }

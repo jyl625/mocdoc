@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import HomeContainer from "./home/home_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import LoginFormContainer from "./session_form/login_form_container";
@@ -12,9 +12,10 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/createuser/details" component={SignupFormContainer} />
       <AuthRoute exact path="/signin" component={LoginFormContainer} />
-      <Route path="/doctor/:id" component={DoctorShowContainer}/>
-      <ProtectedRoute path="/patient" component={PatientShowContainer}/>
-      <Route path="/" component={HomeContainer}/>
+      <Route exact path="/doctor/:id" component={DoctorShowContainer}/>
+      <ProtectedRoute exact path="/patient" component={PatientShowContainer}/>
+      <Route exact path="/" component={HomeContainer}/>
+      <Route render={() => <Redirect to={{ pathname: "/" }} />} />
     </Switch>
   </>
 )

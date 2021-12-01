@@ -15,7 +15,7 @@ class Appointment < ApplicationRecord
       year: dateHash[:year],
       month: dateHash[:month],
       day: dateHash[:day],
-      hour: dateHash[:hr],
+      hour: dateHash[:hour],
       min: dateHash[:min]
     )
   end
@@ -27,7 +27,7 @@ class Appointment < ApplicationRecord
   end
 
   #testing..
-  # dateHash = {year: 2021, month: 12, day: 2, hr: 10, min: 0}
+  # dateHash = {year: 2021, month: 12, day: 2, hour: 10, min: 0}
 
   # test = Appointment.new(appointment_time: Appointment.pacificDateTime(dateHash), user_id: 1, provider_id: 2, reason: "illness", new_patient: true, in_person: true)
 
