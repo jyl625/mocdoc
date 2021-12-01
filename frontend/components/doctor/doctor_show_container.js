@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
     provider: state.entities.providers[ownProps.match.params.id],
     specialties: state.entities.specialties,
     insurances: state.entities.insurances,
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    providers: state.entities.providers
   }
 }
 

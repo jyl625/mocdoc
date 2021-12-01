@@ -14,6 +14,12 @@ class DoctorShow extends React.Component {
     this.props.fetchProvider(this.props.match.params.id)
   }
 
+  componentDidUpdate() {
+    if (!Object.keys(this.props.providers).includes(this.props.match.params.id)) {
+      this.props.fetchProvider(this.props.match.params.id)
+    }
+  }
+
   renderSpecialties() {
     const specialties = this.props.provider.specialties.map( specialty_code => (
       this.props.specialties[specialty_code].specialty_name
