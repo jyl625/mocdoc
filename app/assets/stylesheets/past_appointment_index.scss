@@ -1,0 +1,60 @@
+.past-appointment-index {
+  display: flex;
+  justify-content: center;
+
+
+
+  .past-appointment-container {
+    margin-top: 128px;
+    width: 835px;
+  }
+
+  .past-appointment-item {
+    background-color: #ffffff;
+    width: 835px;
+    height: 207px;
+    margin-bottom: 34px;
+    padding: 21px 24px;
+  }
+
+  .past-appointment-item h1 {
+    font-size: 24px;
+    height: 26px;
+  }
+  .past-appointment-item span {
+    font-size: 14px;
+    height: 26px;
+  }
+
+  .past-appointment-item .doctor-link {
+    color: rgb(43, 191, 237);
+    font-size: 16px;
+    // font-weight: bold;
+  }
+
+  .past-appointment-item .doctor-link:hover {
+    cursor:pointer;
+    text-decoration: underline;
+  }
+  .past-appointment-item p {
+    font-size: 14px;
+    color: rgb(102, 115, 133);
+    height: 26px;
+  }
+
+  .appointment-icon-container {
+  display: flex;
+  justify-content: right;
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+  }
+
+  img:hover {
+    cursor: pointer;
+  }
+}
+
+}

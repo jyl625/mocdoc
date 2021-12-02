@@ -4,7 +4,6 @@ import { fetchCurrentSession } from '../../actions/session_actions'
 import { deleteAppointment } from '../../actions/appointment_actions'
 import PatientShow from "./patient_show";
 
-import { selectPatientAppointments } from '../../reducers/selectors'
 
 const mapStateToProps = ({entities, session}) => {
   // const currentUser = entities.users[session.currentUserId]

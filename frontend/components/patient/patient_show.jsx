@@ -60,9 +60,7 @@ class PatientShow extends React.Component {
     const currentUser = this.props.currentUser
     if (Object.keys(allAppointments).length !== 0) {
       const userAppointments = (selectUpcomingAppts(currentUser, allAppointments))
-      // console.log(userAppointments)
       return userAppointments.map(appointment => (
-        // <div className="panel-right-item">in MAP</div>
         <div key={appointment.id} className="panel-right-item">            
           <div className="appointment-icon-container">
             <img className="edit"
@@ -74,7 +72,11 @@ class PatientShow extends React.Component {
           </div>
           <h1>You have an appointment on {this.stringifyDate(appointment.appointment_time)}</h1>
           <span>with </span>
-          <span><Link className="doctor-link" to={`/doctor/${appointment.provider_id}`}>{`${this.props.providers[appointment.provider_id].name}`}</Link></span>
+          <span>
+            <Link className="doctor-link" to={`/doctor/${appointment.provider_id}`}>
+              {`${this.props.providers[appointment.provider_id].name}`}
+            </Link>
+          </span>
           <p>Reason for your visit: {`${appointment.reason}`}</p>
         </div>
       ))

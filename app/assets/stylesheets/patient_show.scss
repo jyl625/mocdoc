@@ -93,6 +93,12 @@
     height: 26px;
   }
 
+  .panel-right-item .doctor-link {
+    color: rgb(43, 191, 237);
+    font-size: 16px;
+    // font-weight: bold;
+  }
+
   .panel-right-item .doctor-link:hover {
     cursor:pointer;
     text-decoration: underline;

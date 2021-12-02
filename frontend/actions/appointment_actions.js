@@ -33,7 +33,6 @@ export const updateAppointment = (appointment) => (dispatch) => (
 export const deleteAppointment = (appointmentId) => (dispatch) => (
   APIUtil.deleteAppointment(appointmentId)
   .then(appointment => {
-    console.log(appointment);
     dispatch(removeAppointment(appointment.id))
   })
 )

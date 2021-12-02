@@ -146,14 +146,11 @@ class AvailabilityGrid extends React.Component {
   }
 
   providersAppointments() {
-    // console.log(this.props.appointments)
-    // console.log(this.props.provider)
     return selectProvidersAppointmentTimes(this.props.appointments, this.props.provider)
   }
 
   render() {
     const appointments = this.providersAppointments();
-    console.log("selected",this.state.selected)
     return (
       <div className="availability-grid-container">
         <div className="address">{this.providerAddress()}</div>

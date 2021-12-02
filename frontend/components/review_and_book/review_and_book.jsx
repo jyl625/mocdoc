@@ -31,10 +31,8 @@ class ReviewAndBook extends React.Component {
   componentDidMount() {
     this.props.fetchCurrentSession();
     this.props.requestAppointment(this.props.match.params.id).then(() => {
-      // console.log("appointment",this.props.appointment)
       this.props.fetchInsurance(this.props.appointment.plan_id).then(() => {
         if (!this.state.loaded) {
-          // console.log("this happens only once")
           this.setState({
             loaded: true,
             planId: this.props.appointment.plan_id,
@@ -85,7 +83,6 @@ class ReviewAndBook extends React.Component {
 
     let coverageStatus
     if (this.state.planId) {
-      // console.log("provider", provider)
       if (provider.insurances.includes(this.state.planId)) {
         coverageStatus = `In-network for ${provider.name}`
       } else {
@@ -225,10 +222,8 @@ class ReviewAndBook extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
     if (this.props.appointment) {
       const appointment = this.props.appointment
-      // console.log("appointment",appointment)
       return (
         <>
           <div className="form-nav-bar">
