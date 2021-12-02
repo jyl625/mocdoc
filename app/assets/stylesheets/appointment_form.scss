@@ -94,7 +94,19 @@
     color: red;
     font-size: 13px;
   }
+
+  .insurance-choice-covered {
+    background-color: #bff9eb;
+  }
+
+  .insurance-choice {
+    background-color: #fee1e1;
+  }
   
+  .insurance-choice-covered:hover {
+    cursor: pointer;
+  }
+
   .insurance-choice:hover {
     cursor: pointer;
   }
@@ -122,8 +134,45 @@
     cursor: pointer;
   }
 
+  .current-insurance {
+    cursor: pointer;
+    height: 32px;
+    padding: 6px 25px;
+    margin: 8px 0px;
+  }
+
+  .current-insurance:hover {
+    background-color: #ffecf1;
+  }
+
   .carrier-selection {
     cursor: pointer;
+    height: 32px;
+    padding: 6px 25px;
+    margin: 8px 0px;
+  }
+
+  .carrier-selection:hover {
+    background-color: #ffecf1;
+  }
+
+  .chosen-carrier {
+    cursor:default;
+    height: 32px;
+    padding: 6px 25px 6px 13px;
+    margin: 8px 0px;
+    font-weight: bold;
+  }
+
+  .plan-selection {
+    cursor: pointer;
+    height: 32px;
+    padding: 6px 25px;
+    margin: 8px 0px;
+  }
+  
+  .plan-selection:hover {
+    background-color: #ffecf1;
   }
 }
 

@@ -80,7 +80,7 @@ class ReviewAndBook extends React.Component {
     })
   }
 
-  checkCoverage() {
+  showCoverage() {
     const provider = this.props.providers[this.props.appointment.provider_id]
 
     let coverageStatus
@@ -192,8 +192,9 @@ class ReviewAndBook extends React.Component {
     this.props.updateUser({
       id: this.props.currentUser.id,
       planId: this.state.planId
+    }).then(() => {
+      this.props.history.push("/patient")
     })
-    this.props.history.push("/patient")
   }
 
   // formFriendlyTime(timeString) {
@@ -218,6 +219,11 @@ class ReviewAndBook extends React.Component {
     return `${dateString} at ${timeString}`
   }
 
+  coveredInsurance() {
+    const provider = this.props.providers[this.props.appointment.provider_id]
+    return provider.insurances.includes(this.state.planId)
+  }
+
   render() {
     // console.log(this.state)
     if (this.props.appointment) {
@@ -234,14 +240,14 @@ class ReviewAndBook extends React.Component {
     
               <div className="question-label" >What's your insurance plan?</div>
               <input type="text"
-                className="insurance-choice"
+                className={this.coveredInsurance() ? "insurance-choice-covered" : "insurance-choice"}
                 value={this.state.planId ? (
                   this.planName(this.state.planId)
                 ) : "choose insurance"}
                 onClick={this.openInsurancesModal}
                 readOnly />
               {this.renderSelectInsuranceModal()}
-              {this.checkCoverage()}
+              {this.showCoverage()}
 
               <div className="question-label">What's the reason for your visit?</div>
               <input type="text"

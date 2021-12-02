@@ -102,7 +102,7 @@ class AppointmentForm extends React.Component {
     return `${userInsuranceCarrier} - ${userInsurancePlan}`
   }
 
-  checkCoverage() {
+  showCoverage() {
     let coverageStatus
     if (this.state.plan_id) {
       if (this.props.accepted_plan_ids.includes(this.state.plan_id)) {
@@ -182,8 +182,13 @@ class AppointmentForm extends React.Component {
     this.props.updateUser({
       id: this.props.currentUser.id,
       planId: this.state.plan_id
+    }).then(() => {
+      this.props.history.push("/patient")
     })
-    this.props.history.push("/patient")
+  }
+
+  coveredInsurance() {
+    return this.props.accepted_plan_ids.includes(this.state.plan_id)
   }
 
 
@@ -195,14 +200,14 @@ class AppointmentForm extends React.Component {
 
           <div className="question-label" >What's your insurance plan?</div>
           <input type="text" 
-            className="insurance-choice"
+            className={this.coveredInsurance() ? "insurance-choice-covered" : "insurance-choice"}
             value={this.state.plan_id ? (
               this.planName(this.state.plan_id)
               ) : "choose insurance"}
             onClick={this.openInsurancesModal}
             readOnly/>
           {this.renderSelectInsuranceModal()}
-          {this.checkCoverage()}
+          {this.showCoverage()}
 
           <div className="question-label">What's the reason for your visit?</div>
           <input type="text"  

@@ -22,8 +22,8 @@ class ModalSelectInsurance extends React.Component {
 
     return (
       <div>
-        <div onClick={() => this.handleSelection(this.props.plan_id)}>{userInsuranceValue}</div>
-        <div onClick={this.toCarrierSelection}>choose a different insurance</div>
+        <div className="current-insurance" onClick={() => this.handleSelection(this.props.plan_id)}>{userInsuranceValue}</div>
+        <div className="current-insurance" onClick={this.toCarrierSelection}>choose a different insurance</div>
       </div>
     )
   }
@@ -79,8 +79,10 @@ class ModalSelectInsurance extends React.Component {
     if (this.state.insurance_list) {
       return (
         <div>
+          <div className="chosen-carrier">{this.state.carrier}</div>
           {this.state.insurance_list.map(insurance => (
             <div key={insurance.plan_id}
+              className="plan-selection"
               onClick={() => this.handleSelection(insurance.plan_id)}>{insurance.plan}</div>
           ))}
         </div>
