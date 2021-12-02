@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     # no :show for session
 
-    resources :appointments, only: [:create, :destroy]
+    resources :appointments, only: [:create, :destroy, :show, :update]
   end
 
 end

@@ -3,6 +3,7 @@ class Appointment < ApplicationRecord
   validates :user_id,           presence: true
   validates :provider_id,       presence: true
   validates :reason,            presence: true
+  validates :plan_id,           presence: true
   validates :new_patient,       inclusion: {in: [true, false]} 
   validates :in_person,         inclusion: {in: [true, false]} 
 
@@ -29,6 +30,6 @@ class Appointment < ApplicationRecord
   #testing..
   # dateHash = {year: 2021, month: 12, day: 2, hour: 10, min: 0}
 
-  # test = Appointment.new(appointment_time: Appointment.pacificDateTime(dateHash), user_id: 1, provider_id: 2, reason: "illness", new_patient: true, in_person: true)
+  # test = Appointment.new(appointment_time: Appointment.pacificDateTime(dateHash), user_id: 1, provider_id: 2, reason: "illness", new_patient: true, in_person: true, plan_id: "40513CA0380001")
 
 end

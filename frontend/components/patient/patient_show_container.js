@@ -7,15 +7,13 @@ import PatientShow from "./patient_show";
 import { selectPatientAppointments } from '../../reducers/selectors'
 
 const mapStateToProps = ({entities, session}) => {
-  const currentUser = entities.users[session.currentUserId]
-  const insurances = entities.insurances
-  const appointments = entities.appointments
-  const providers = entities.providers
+  // const currentUser = entities.users[session.currentUserId]
+ 
   return {
-    currentUser,
-    insurances,
-    appointments,
-    providers
+    currentUser: entities.users[session.currentUserId],
+    insurances: entities.insurances,
+    appointments: entities.appointments,
+    providers: entities.providers
   }
 }
 

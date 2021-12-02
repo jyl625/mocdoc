@@ -21,8 +21,9 @@ class DoctorShow extends React.Component {
   }
 
   renderSpecialties() {
-    // is this necessary? sometimes the error happens, sometimes doesn't
-    if (this.props.provider.specialties.length > 0 && Object.keys(this.props.specialties).length > 0) {
+    //this and below can maybe refactored
+    const provider = this.props.provider
+    if (provider.specialties.every(specialty_code => Object.keys(this.props.specialties).includes(specialty_code))) {
       const specialties = this.props.provider.specialties.map( specialty_code => (
         this.props.specialties[specialty_code].specialty_name
       ))
@@ -100,8 +101,10 @@ class DoctorShow extends React.Component {
 
   listSpecialties() {
     const specialty_ids = this.props.provider.specialties
-    
-    if (specialty_ids.length > 0) {
+    const provider = this.props.provider
+
+    //This can may be refactored
+    if (provider.specialties.every(specialty_code => Object.keys(this.props.specialties).includes(specialty_code)) && specialty_ids.length > 0) {
       return (
         <>
           <div className="details-header">Specialties</div>

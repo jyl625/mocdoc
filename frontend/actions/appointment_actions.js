@@ -15,8 +15,18 @@ export const removeAppointment = (appointmentId) => {
     appointmentId
 }}
 
+export const requestAppointment = (appointmentId) => (dispatch) => (
+  APIUtil.requestAppointment(appointmentId)
+  .then(appointment => dispatch(receiveAppointment(appointment)))
+)
+
 export const createAppointment = (appointment) => (dispatch) => (
   APIUtil.createAppointment(appointment)
+  .then(appointment => (dispatch(receiveAppointment(appointment))))
+)
+
+export const updateAppointment = (appointment) => (dispatch) => (
+  APIUtil.updateAppointment(appointment)
   .then(appointment => (dispatch(receiveAppointment(appointment))))
 )
 

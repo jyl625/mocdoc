@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_051048) do
+ActiveRecord::Schema.define(version: 2021_12_02_074924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_051048) do
     t.boolean "in_person", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "plan_id", null: false
     t.index ["appointment_time", "provider_id"], name: "index_appointments_on_appointment_time_and_provider_id", unique: true
     t.index ["provider_id"], name: "index_appointments_on_provider_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"

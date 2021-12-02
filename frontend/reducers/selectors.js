@@ -31,6 +31,8 @@ export const selectUpcomingAppts = (currentUser, appointments) => {
 
 export const selectProvidersAppointmentTimes = (appointments, provider) => {
   const appointmentTimes = [];
+  // console.log(appointments)
+  // console.log(provider)
   provider.appointments.forEach(appointment_id => {
     if(appointments[appointment_id]) {
       // ex. '2021-12-02T10:00:00.000-08:00' => 2021-12-02T10:00

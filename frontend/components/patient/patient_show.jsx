@@ -60,18 +60,21 @@ class PatientShow extends React.Component {
     const currentUser = this.props.currentUser
     if (Object.keys(allAppointments).length !== 0) {
       const userAppointments = (selectUpcomingAppts(currentUser, allAppointments))
-      console.log(userAppointments)
+      // console.log(userAppointments)
       return userAppointments.map(appointment => (
         // <div className="panel-right-item">in MAP</div>
         <div key={appointment.id} className="panel-right-item">            
           <div className="appointment-icon-container">
+            <img className="edit"
+              onClick={() => this.handleEditAppointment(appointment.id)}
+              src="/images/edit-regular.svg" alt="edit button" />
             <img className="delete"
               onClick={() => this.handleDeleteAppointment(appointment.id)}
               src="/images/trash-regular.svg" alt="delete button" />
           </div>
           <h1>You have an appointment on {this.stringifyDate(appointment.appointment_time)}</h1>
-          <h2>with </h2>
-          <h2>{`${this.props.providers[appointment.provider_id].name}`}</h2>
+          <span>with </span>
+          <span><Link className="doctor-link" to={`/doctor/${appointment.provider_id}`}>{`${this.props.providers[appointment.provider_id].name}`}</Link></span>
           <p>Reason for your visit: {`${appointment.reason}`}</p>
         </div>
       ))
@@ -84,6 +87,10 @@ class PatientShow extends React.Component {
     this.props.deleteAppointment(appointmentId).then(() => {
       this.props.fetchCurrentSession();
     })
+  }
+
+  handleEditAppointment = (appointmentId) => {
+    this.props.history.push(`/reviewandbook/${appointmentId}`)
   }
 
   stringifyDate(dateTimeString) {

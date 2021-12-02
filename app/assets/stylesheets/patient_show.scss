@@ -88,9 +88,14 @@
     font-size: 24px;
     height: 26px;
   }
-  .panel-right-item h2 {
+  .panel-right-item span {
     font-size: 14px;
     height: 26px;
+  }
+
+  .panel-right-item .doctor-link:hover {
+    cursor:pointer;
+    text-decoration: underline;
   }
   .panel-right-item p {
     font-size: 14px;
@@ -105,6 +110,7 @@
     img {
       width: 20px;
       height: 20px;
+      margin-left: 15px;
     }
 
     img:hover {
