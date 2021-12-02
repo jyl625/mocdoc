@@ -24,7 +24,10 @@ class User < ApplicationRecord
     class_name: :Insurance,
     foreign_key: :plan_id
 
-  has_many :appointments
+  has_many :appointments,
+    primary_key: :id,
+    class_name: :Appointment,
+    foreign_key: :user_id
 
   has_many :providers,
     -> { distinct },

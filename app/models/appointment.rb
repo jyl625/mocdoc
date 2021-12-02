@@ -8,8 +8,15 @@ class Appointment < ApplicationRecord
   validates :in_person,         inclusion: {in: [true, false]} 
 
 
-  belongs_to :provider
-  belongs_to :user
+  belongs_to :provider,
+    primary_key: :id,
+    class_name: :Provider,
+    foreign_key: :provider_id
+
+  belongs_to :user,
+    primary_key: :id,
+    class_name: :User,
+    foreign_key: :user_id
 
   def self.pacificDateTime(dateHash)
     DateTime.new.in_time_zone('Pacific Time (US & Canada)').change(
@@ -28,7 +35,7 @@ class Appointment < ApplicationRecord
   end
 
   #testing..
-  # dateHash = {year: 2021, month: 12, day: 2, hour: 10, min: 0}
+  # dateHash = {year: 2021, month: 12, day: 1, hour: 12, min: 0}
 
   # test = Appointment.new(appointment_time: Appointment.pacificDateTime(dateHash), user_id: 1, provider_id: 2, reason: "illness", new_patient: true, in_person: true, plan_id: "40513CA0380001")
 

@@ -20,7 +20,10 @@ class Provider < ApplicationRecord
     through: :insurance_plan_ids,
     source: :insurance_plan
 
-  has_many :appointments
+  has_many :appointments,
+    primary_key: :id,
+    class_name: :Appointment,
+    foreign_key: :provider_id
 
   has_many :users, 
     -> { distinct },
