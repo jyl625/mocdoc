@@ -9,4 +9,10 @@ class Api::InsurancesController < ApplicationController
 
     render "api/insurances/index"
   end
+
+  def show
+    @insurance = Insurance.find_by(plan_id: params[:id])
+
+    render "api/insurances/show"
+  end
 end

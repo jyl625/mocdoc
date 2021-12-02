@@ -50,7 +50,6 @@ class Api::AppointmentsController < ApplicationController
 
     @appointment = Appointment.find(params[:id])
 
-    p @appointment
     if @appointment.update(
       appointment_time: Appointment.pacificDateTime(dateHash), 
       user_id: appointment_params[:user_id], 

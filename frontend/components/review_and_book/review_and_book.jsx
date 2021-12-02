@@ -20,7 +20,8 @@ class ReviewAndBook extends React.Component {
       appointmentMin: null,
       formErrors: null,
       loggedOut: null,
-      loaded: false
+      loaded: false,
+      insuranceLoaded: false
     }
 
     this.updatePlanId = this.updatePlanId.bind(this)
@@ -30,17 +31,19 @@ class ReviewAndBook extends React.Component {
   componentDidMount() {
     this.props.fetchCurrentSession();
     this.props.requestAppointment(this.props.match.params.id).then(() => {
-      console.log("appointment",this.props.appointment)
-      if (!this.state.loaded) {
-        console.log("this happens only once")
-        this.setState({
-          loaded: true,
-          planId: this.props.appointment.plan_id,
-          reason: this.props.appointment.reason,
-          newPatient: this.props.appointment.new_patient,
-          inPerson: this.props.appointment.in_person
-        })
-      }
+      // console.log("appointment",this.props.appointment)
+      this.props.fetchInsurance(this.props.appointment.plan_id).then(() => {
+        if (!this.state.loaded) {
+          // console.log("this happens only once")
+          this.setState({
+            loaded: true,
+            planId: this.props.appointment.plan_id,
+            reason: this.props.appointment.reason,
+            newPatient: this.props.appointment.new_patient,
+            inPerson: this.props.appointment.in_person
+          })
+        }
+      })
     })
   }
 
@@ -186,15 +189,37 @@ class ReviewAndBook extends React.Component {
       planId: this.state.planId //this!!!
     }
     this.props.updateAppointment(appointment)
+    this.props.updateUser({
+      id: this.props.currentUser.id,
+      planId: this.state.planId
+    })
     this.props.history.push("/patient")
   }
 
-  formFriendlyTime(timeString) {
-    return timeString.slice(0,16)
+  // formFriendlyTime(timeString) {
+  //   return timeString.slice(0,16)
+  // }
+
+  showCurrentApptTime() {
+    const dateObj = new Date(this.props.appointment.appointment_time)
+    const dateString = dateObj.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      weekday: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+    // return dateString
+    const timeString = dateObj.toLocaleTimeString("en-US", {
+      timeZone: "America/Los_Angeles",
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+    return `${dateString} at ${timeString}`
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     if (this.props.appointment) {
       const appointment = this.props.appointment
       // console.log("appointment",appointment)
@@ -255,6 +280,9 @@ class ReviewAndBook extends React.Component {
                   <div>Video visit</div>
                 </div>
               </div>
+
+              <div className="question-label">Currently Set As:</div>
+              <div>{this.showCurrentApptTime()}</div>
 
               <AvailabilityGridContainer
                 provider={this.props.providers[this.props.appointment.provider_id]}

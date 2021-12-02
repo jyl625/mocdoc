@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchCurrentSession } from '../../actions/session_actions'
+import { fetchCurrentSession, updateUser } from '../../actions/session_actions'
 import { openModal, closeModal } from '../../actions/ui_actions';
 import { createAppointment } from '../../actions/appointment_actions'
 import AppointmentForm from './appointment_form'
@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchCurrentSession: () => dispatch(fetchCurrentSession()),
     openModal: modalType => dispatch(openModal(modalType)),
     closeModal: () => dispatch(closeModal()),
-    createAppointment: (appointment) => dispatch(createAppointment(appointment))
+    createAppointment: (appointment) => dispatch(createAppointment(appointment)),
+    updateUser: (user) => dispatch(updateUser(user))
   }
 }
 

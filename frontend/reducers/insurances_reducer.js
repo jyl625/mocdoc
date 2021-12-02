@@ -1,6 +1,6 @@
 import { RECEIVE_PROVIDER } from '../actions/provider_actions'
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions'
-import { RECEIVE_INSURANCES } from '../actions/insurance_actions'
+import { RECEIVE_INSURANCES, RECEIVE_INSURANCE } from '../actions/insurance_actions'
 
 const insurancesReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -16,6 +16,9 @@ const insurancesReducer = (oldState = {}, action) => {
       Object.assign(newState, action.payload.insurances)
       return newState;
     case RECEIVE_INSURANCES:
+      Object.assign(newState, action.insurances)
+      return newState;
+    case RECEIVE_INSURANCE:
       Object.assign(newState, action.insurances)
       return newState;
     default:

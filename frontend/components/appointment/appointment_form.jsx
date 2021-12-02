@@ -179,6 +179,10 @@ class AppointmentForm extends React.Component {
       planId: this.state.plan_id //this!!!
     }
     this.props.createAppointment(appointment)
+    this.props.updateUser({
+      id: this.props.currentUser.id,
+      planId: this.state.plan_id
+    })
     this.props.history.push("/patient")
   }
 
