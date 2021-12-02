@@ -234,76 +234,78 @@ class ReviewAndBook extends React.Component {
           <div className="form-nav-bar">
             <Link className="logo"to="/">Mocdoc</Link>
           </div>
-          <div className="appointment-form-container">
-            <form onSubmit={this.handleSubmit} className="appointment-form">
-              <h2 >Book an appointment for free</h2>
-    
-              <div className="question-label" >What's your insurance plan?</div>
-              <input type="text"
-                className={this.coveredInsurance() ? "insurance-choice-covered" : "insurance-choice"}
-                value={this.state.planId ? (
-                  this.planName(this.state.planId)
-                ) : "choose insurance"}
-                onClick={this.openInsurancesModal}
-                readOnly />
-              {this.renderSelectInsuranceModal()}
-              {this.showCoverage()}
+          <div className="review-and-book-main">
+            <div className="appointment-form-container">
+              <form onSubmit={this.handleSubmit} className="appointment-form">
+                <h2 >Book an appointment for free</h2>
+      
+                <div className="question-label" >What's your insurance plan?</div>
+                <input type="text"
+                  className={this.coveredInsurance() ? "insurance-choice-covered" : "insurance-choice"}
+                  value={this.state.planId ? (
+                    this.planName(this.state.planId)
+                  ) : "choose insurance"}
+                  onClick={this.openInsurancesModal}
+                  readOnly />
+                {this.renderSelectInsuranceModal()}
+                {this.showCoverage()}
 
-              <div className="question-label">What's the reason for your visit?</div>
-              <input type="text"
-                value={this.state.reason}
-                onChange={this.updateReason()}
-                onClick={this.clearReason()} />
+                <div className="question-label">What's the reason for your visit?</div>
+                <input type="text"
+                  value={this.state.reason}
+                  onChange={this.updateReason()}
+                  onClick={this.clearReason()} />
 
-              <div className="question-label">Has the patient seen this doctor before?</div>
-              <div className="radio-selections-container">
-                <div className="radio-selection" onClick={this.toggleNewPatient(true)}>
-                  <input type="radio"
-                    checked={this.state.newPatient === true}
-                    readOnly />
-                  <div>No</div>
+                <div className="question-label">Has the patient seen this doctor before?</div>
+                <div className="radio-selections-container">
+                  <div className="radio-selection" onClick={this.toggleNewPatient(true)}>
+                    <input type="radio"
+                      checked={this.state.newPatient === true}
+                      readOnly />
+                    <div>No</div>
+                  </div>
+                  <div className="radio-selection" onClick={this.toggleNewPatient(false)} >
+                    <input type="radio"
+                      checked={this.state.newPatient === false}
+                      readOnly />
+                    <div>Yes</div>
+                  </div>
                 </div>
-                <div className="radio-selection" onClick={this.toggleNewPatient(false)} >
-                  <input type="radio"
-                    checked={this.state.newPatient === false}
-                    readOnly />
-                  <div>Yes</div>
+
+                <div className="question-label">Choose the type of appointment</div>
+                <div className="radio-selections-container">
+                  <div className="radio-selection" onClick={this.toggleVisitType(true)}>
+                    <input type="radio"
+                      checked={this.state.inPerson === true}
+                      readOnly />
+                    <div>In-person</div>
+                  </div>
+                  <div className="radio-selection" onClick={this.toggleVisitType(false)}>
+                    <input type="radio"
+                      checked={this.state.inPerson === false}
+                      readOnly />
+                    <div>Video visit</div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="question-label">Choose the type of appointment</div>
-              <div className="radio-selections-container">
-                <div className="radio-selection" onClick={this.toggleVisitType(true)}>
-                  <input type="radio"
-                    checked={this.state.inPerson === true}
-                    readOnly />
-                  <div>In-person</div>
+                <div className="question-label">Currently set as</div>
+                <div className="current-appointment">{this.showCurrentApptTime()}</div>
+
+                <AvailabilityGridContainer
+                  provider={this.props.providers[this.props.appointment.provider_id]}
+                  updateDateTime={this.updateDateTime} />
+                  {/* {this.formFriendlyTime(appointment.appointment_time)} */}
+
+                <input type="submit" value="Save Changes" />
+                <div className="form-errors">
+                  {this.state.formErrors ? "Please fill out all the required fields" : ""}
                 </div>
-                <div className="radio-selection" onClick={this.toggleVisitType(false)}>
-                  <input type="radio"
-                    checked={this.state.inPerson === false}
-                    readOnly />
-                  <div>Video visit</div>
+                <div className="form-errors">
+                  {this.state.loggedOut ? "Please log in to book an appointment" : ""}
                 </div>
-              </div>
 
-              <div className="question-label">Currently Set As:</div>
-              <div>{this.showCurrentApptTime()}</div>
-
-              <AvailabilityGridContainer
-                provider={this.props.providers[this.props.appointment.provider_id]}
-                updateDateTime={this.updateDateTime} />
-                {/* {this.formFriendlyTime(appointment.appointment_time)} */}
-
-              <input type="submit" value="Save Changes" />
-              <div className="form-errors">
-                {this.state.formErrors ? "Please fill out all the required fields" : ""}
-              </div>
-              <div className="form-errors">
-                {this.state.loggedOut ? "Please log in to book an appointment" : ""}
-              </div>
-
-            </form>
+              </form>
+            </div>
           </div>
         </>
       )

@@ -23,7 +23,7 @@ class ModalSelectInsurance extends React.Component {
     return (
       <div>
         <div className="current-insurance" onClick={() => this.handleSelection(this.props.plan_id)}>{userInsuranceValue}</div>
-        <div className="current-insurance" onClick={this.toCarrierSelection}>choose a different insurance</div>
+        <div className="choose-insurance" onClick={this.toCarrierSelection}>choose a different insurance</div>
       </div>
     )
   }
