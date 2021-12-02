@@ -17,6 +17,7 @@ if @user.appointments
     @user.appointments.each do |appointment|
       json.set! appointment.id do
         json.id appointment.id
+        json.user_id appointment.user_id
         json.provider_id appointment.provider_id
         json.reason appointment.reason
         json.new_patient appointment.new_patient

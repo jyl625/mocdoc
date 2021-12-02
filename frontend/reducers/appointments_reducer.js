@@ -1,5 +1,5 @@
 import { RECEIVE_PROVIDER } from "../actions/provider_actions";
-import { RECEIVE_APPOINTMENT } from '../actions/appointment_actions'
+import { RECEIVE_APPOINTMENT, REMOVE_APPOINTMENT } from '../actions/appointment_actions'
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
 const appointmentsReducer = (oldState = {}, action) => {
@@ -16,6 +16,9 @@ const appointmentsReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_APPOINTMENT:
       newState[action.appointment.id] = action.appointment;
+      return newState;
+    case REMOVE_APPOINTMENT:
+      delete newState[action.appointmentId];
       return newState;
     default:
       return newState;

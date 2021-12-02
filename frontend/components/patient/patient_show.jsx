@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import NavBarContainer from "../nav_bar/nav_bar_container";
 
+import { selectUpcomingAppts } from '../../reducers/selectors'
+
 class PatientShow extends React.Component {
   constructor(props) {
     super(props)
@@ -28,6 +30,10 @@ class PatientShow extends React.Component {
     this.props.fetchCurrentSession();
   }
 
+  // componentDidUpdate() {
+  //   this.props.fetchCurrentSession();
+  // }
+
   renderPatientInsurance() {
     const currentUser = this.props.currentUser;
     const userInsurance = this.props.insurances[currentUser.plan_id]
@@ -49,26 +55,80 @@ class PatientShow extends React.Component {
 
   }
 
-  render() {
-    return(
-      <div className="patient-show">
-        <NavBarContainer/>
-        <div className="main-page">
-          <div className="search-section">
-            <div className="test">
-              <Link to={`/doctor/${this.randDoctorId()}`}><button>I'm Feeling Lucky</button></Link>
-            </div>
+  renderUpcomingAppointments() {
+    const allAppointments = this.props.appointments
+    const currentUser = this.props.currentUser
+    if (Object.keys(allAppointments).length !== 0) {
+      const userAppointments = (selectUpcomingAppts(currentUser, allAppointments))
+      console.log(userAppointments)
+      return userAppointments.map(appointment => (
+        // <div className="panel-right-item">in MAP</div>
+        <div key={appointment.id} className="panel-right-item">            
+          <div className="appointment-icon-container">
+            <img className="delete"
+              onClick={() => this.handleDeleteAppointment(appointment.id)}
+              src="/images/trash-regular.svg" alt="delete button" />
           </div>
-          <div className="panel-container">
-            <div className="panel-left">
-              {this.renderPatientBio()}
-              {this.renderPatientInsurance()}
+          <h1>You have an appointment on {this.stringifyDate(appointment.appointment_time)}</h1>
+          <h2>with </h2>
+          <h2>{`${this.props.providers[appointment.provider_id].name}`}</h2>
+          <p>Reason for your visit: {`${appointment.reason}`}</p>
+        </div>
+      ))
+    } else {
+      return null
+    }
+  }
+
+  handleDeleteAppointment = (appointmentId) => {
+    this.props.deleteAppointment(appointmentId).then(() => {
+      this.props.fetchCurrentSession();
+    })
+  }
+
+  stringifyDate(dateTimeString) {
+    const dateObj = new Date(dateTimeString)
+    const dateString = dateObj.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      weekday: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+    // return dateString
+    const timeString = dateObj.toLocaleTimeString("en-US", {
+      timeZone: "America/Los_Angeles", 
+      hour: '2-digit', 
+      minute: '2-digit' })
+    return `${dateString} at ${timeString}`
+  }
+
+  render() {
+    // if (this.props.currentUser && this.props.appointments) {
+      return(
+        <div className="patient-show">
+          <NavBarContainer/>
+          <div className="main-page">
+            <div className="search-section">
+              <div className="test">
+                <Link to={`/doctor/${this.randDoctorId()}`}><button>I'm Feeling Lucky</button></Link>
+              </div>
             </div>
-            <div className="panel-right"></div>
+            <div className="panel-container">
+              <div className="panel-left">
+                {this.renderPatientBio()}
+                {this.renderPatientInsurance()}
+              </div>
+              <div className="panel-right">
+                {this.renderUpcomingAppointments()}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    // } else {
+    //   <div>Patient's page loading...</div>
+    // }
   }
 }
 

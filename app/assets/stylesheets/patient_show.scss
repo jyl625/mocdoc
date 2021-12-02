@@ -75,4 +75,42 @@
     margin-top: 8px;
     margin-bottom: 24px;
   }
+
+  .panel-right-item {
+    background-color: #ffffff;
+    width: 835px;
+    height: 207px;
+    margin-bottom: 34px;
+    padding: 21px 24px;
+  }
+
+  .panel-right-item h1 {
+    font-size: 24px;
+    height: 26px;
+  }
+  .panel-right-item h2 {
+    font-size: 14px;
+    height: 26px;
+  }
+  .panel-right-item p {
+    font-size: 14px;
+    color: rgb(102, 115, 133);
+    height: 26px;
+  }
+
+  .appointment-icon-container {
+    display: flex;
+    justify-content: right;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    img:hover {
+      cursor: pointer;
+    }
+  }
+
+  
 }

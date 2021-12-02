@@ -21,10 +21,15 @@ class DoctorShow extends React.Component {
   }
 
   renderSpecialties() {
-    const specialties = this.props.provider.specialties.map( specialty_code => (
-      this.props.specialties[specialty_code].specialty_name
-    ))
-    return specialties.join(", ") + ` ${this.props.provider.provider_type}`
+    // is this necessary? sometimes the error happens, sometimes doesn't
+    if (this.props.provider.specialties.length > 0 && Object.keys(this.props.specialties).length > 0) {
+      const specialties = this.props.provider.specialties.map( specialty_code => (
+        this.props.specialties[specialty_code].specialty_name
+      ))
+      return specialties.join(", ") + ` ${this.props.provider.provider_type}`
+    } else {
+      return this.props.provider.provider_type
+    }
   }
 
   renderInsuranceCarriers() {

@@ -25,6 +25,13 @@ class Api::AppointmentsController < ApplicationController
     end
   end
 
+  def destroy 
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+
+    render "api/appointments/show"
+  end
+
   private
   def appointment_params
     params.require(:appointment).permit(

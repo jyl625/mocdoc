@@ -13,6 +13,22 @@ export const selectPlans = (insurances, carrier) => {
   return selected.sort((a,b) => ((a.plan > b.plan) ? 1 : -1));
 }
 
+export const selectUpcomingAppts = (currentUser, appointments) => {
+  const selected = [];
+  const currentDateTime = new Date();
+
+  currentUser.appointments.forEach(appointmentId => {
+    if (appointments[appointmentId]){
+      let apptDateTime = new Date(appointments[appointmentId].appointment_time)
+      if (appointments[appointmentId].user_id === currentUser.id && currentDateTime < apptDateTime) {
+        selected.push(appointments[appointmentId])
+      }
+    }
+  })
+  // return selected;
+  return selected.sort((a,b) => ((a.appointment_time > b.appointment_time) ? 1: -1));
+}
+
 export const selectProvidersAppointmentTimes = (appointments, provider) => {
   const appointmentTimes = [];
   provider.appointments.forEach(appointment_id => {
