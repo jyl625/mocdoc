@@ -141,7 +141,7 @@ class SearchBar extends React.Component {
         specialtySuggestion: false
       })
     } 
-    if(this.props.currentUser) {
+    if (this.props.currentUser && this.state.planId !== "") {
       this.props.updateUser({
         id: this.props.currentUser.id,
         planId: this.state.planId
