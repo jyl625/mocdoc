@@ -8,6 +8,7 @@ import PatientShowContainer from "./patient/patient_show_container";
 import PatientPastAppointmentIndexContainer from "./past_appointment/patient_past_appt_index_container"
 import BookAndReviewContainer from "./review_and_book/review_and_book_container";
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
+import SearchContainer from "./search/search_container";
 
 const App = () => (
   <>
@@ -19,6 +20,7 @@ const App = () => (
       <ProtectedRoute exact path="/patient" component={PatientShowContainer}/>
       <Route exact path="/" component={HomeContainer}/>
       <ProtectedRoute exact path="/reviewandbook/:id" component={BookAndReviewContainer}/>
+      <Route path="/search" component={SearchContainer} />
       <Route render={() => <Redirect to={{ pathname: "/" }} />} />
     </Switch>
   </>

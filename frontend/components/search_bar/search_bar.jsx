@@ -123,19 +123,39 @@ class SearchBar extends React.Component {
   }
 
   handleSearch() {
-    console.log((this.state.specialty === "Search specialty") ? "" : this.state.specialty)
-    console.log(this.state.planId)
+    const specialtyQ = ((this.state.specialty === "Search specialty") ? "" : this.state.specialty)
+    const planIdQ= (this.state.planId)
+
+    this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
+  }
+
+  renderGreetings() {
+    if (this.props.match.path === '/search') {
+      return null
+    } else {
+      return (
+        <div className="greetings">
+          <h1>Find local doctors </h1>
+          <h1>Who takes your insurance</h1>
+        </div>
+      )
+    }
+  }
+
+  determineBarType() {
+    if (this.props.match.path === '/search') {
+      return "search-bar-container-short"
+    } else {
+      return "search-bar-container"
+    }
   }
 
   render () {
     console.log("state", this.state)
     return (
       // <div>testing</div>
-      <div className="search-bar-container">
-        <div className="greetings">
-          <h1>Find local doctors </h1>
-          <h1>Who takes your insurance</h1>
-        </div>
+      <div className={this.determineBarType()}>
+        {this.renderGreetings()}
         <div className="search-section">
           <div className="search-form">
             <input type="text"
