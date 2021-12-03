@@ -9,6 +9,7 @@ import PatientPastAppointmentIndexContainer from "./past_appointment/patient_pas
 import BookAndReviewContainer from "./review_and_book/review_and_book_container";
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import SearchContainer from "./search/search_container";
+import Footer from './footer/footer'
 
 const App = () => (
   <>
@@ -23,6 +24,7 @@ const App = () => (
       <Route path="/search" component={SearchContainer} />
       <Route render={() => <Redirect to={{ pathname: "/" }} />} />
     </Switch>
+    <Footer/>
   </>
 )
 
