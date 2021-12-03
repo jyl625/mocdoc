@@ -31,13 +31,31 @@ class Provider < ApplicationRecord
     source: :user
 
   def self.searchByPlanAndSpecialty(plan, specialty)
-    matching_specialties = Provider
-      .joins(:specialties)
-      .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
-      "#{specialty}%", "% #{specialty}%")
+    search_result_cap = 42
+    if specialty && specialty != "" && plan != ""
+      matching_specialties = Provider
+        .joins(:specialties)
+        .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
+        "#{specialty}%", "% #{specialty}%")
 
-    result = matching_specialties.select do |matched_provider| 
-      matched_provider.insurances.where(plan_id: plan).length == 1
+      result = matching_specialties.select do |matched_provider| 
+        matched_provider.insurances.where(plan_id: plan).length == 1
+      end
+      return result
+    elsif specialty != "" && plan == ""
+      result = Provider
+        .joins(:specialties)
+        .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
+        "#{specialty}%", "% #{specialty}%").limit(search_result_cap)
+      return result
+    elsif specialty == "" && plan != "" 
+      result = []
+      Provider.all.each do |provider|
+        result << provider if provider.insurances.any? { |insurance| insurance.plan_id == plan }
+        return result if result.length == search_result_cap
+      end
+    else 
+      return Provider.all.sample(search_result_cap)
     end
 
     # result = result[0...10] if result.length > 20
