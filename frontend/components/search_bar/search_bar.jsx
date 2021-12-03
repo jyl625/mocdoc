@@ -48,7 +48,6 @@ class SearchBar extends React.Component {
   }
 
   renderSelectInsuranceModal() {
-    // console.log(this.props)
     if (this.props.modal.includes("selectInsurance")) {
       
       let planId;
@@ -69,7 +68,6 @@ class SearchBar extends React.Component {
   renderSpecialtySuggestion() {
     if (this.state.specialtySuggestion) {
     // if (this.props.modal.includes("specialtySuggestion")) {
-      console.log(this.props.specialties)
       const nameOnly = Object.values(this.props.specialties).map(specialtyObj => (
         specialtyObj.specialty_name
       ))
@@ -109,7 +107,6 @@ class SearchBar extends React.Component {
 
   updateSpecialty() {
     return (e) => {
-      console.log(e)
       this.setState({specialty: e.currentTarget.value})
       this.props.fetchSpecialties(e.currentTarget.value)
 
@@ -117,7 +114,6 @@ class SearchBar extends React.Component {
   }
 
   openSpecialtyModal() {
-    console.log(this.state.specialtySuggestion)
     this.props.closeModal();
     this.setState({ specialtySuggestion: true })
     if (this.state.specialty === "Search specialty") {
@@ -127,7 +123,6 @@ class SearchBar extends React.Component {
       this.props.fetchSpecialties(this.state.specialty)
     }
       
-    console.log("specialty modal opened")
     // this.props.openModal("specialtySuggestion");
     
   }
@@ -145,9 +140,15 @@ class SearchBar extends React.Component {
         specialty: "Search specialty",
         specialtySuggestion: false
       })
-      this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
+    } 
+    if(this.props.currentUser) {
+      this.props.updateUser({
+        id: this.props.currentUser.id,
+        planId: this.state.planId
+      }).then(() => {
+        this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
+      })
     } else {
-
       this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
     }
   }
@@ -181,7 +182,6 @@ class SearchBar extends React.Component {
   }
 
   render () {
-    console.log("state", this.state)
     return (
       // <div>testing</div>
       <div className={this.determineBarType()}>

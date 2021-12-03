@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
   fetchSpecialties: (name) => dispatch(fetchSpecialties(name)),
   fetchProviders: (plan, specialty) => dispatch(fetchProviders(plan, specialty)),
-
+  updateUser: (user) => dispatch(updateUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

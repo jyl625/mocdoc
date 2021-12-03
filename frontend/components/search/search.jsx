@@ -18,8 +18,6 @@ class Search extends React.Component {
 
   componentDidMount() {
     const [planIdQ, specialtyQ] = this.checkUrl()
-    console.log(planIdQ)
-    console.log(specialtyQ)
 
     if (this.props.currentUser) {
       this.props.fetchCurrentSession().then(() => {
@@ -152,7 +150,6 @@ class Search extends React.Component {
     // } else if (this.state.searchResults.length === 0) {
     //   return <div>No Result Found :(</div>
     // } else if (this.state.searchResults.length > 0) {
-    //   console.log(this.state.searchResults)
     //   return (
     //     this.state.searchResults.map(id => {
     //       return (
@@ -167,7 +164,6 @@ class Search extends React.Component {
 
   render() {
 
-    console.log(this.props)
     return (
       <>
         <NavBarContainer />
