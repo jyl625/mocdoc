@@ -20,5 +20,5 @@ const providersReducer = (oldState = {}, action) => {
       return oldState;
   }
 }
-
+ 
 export default providersReducer;
