@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { selectPastAppts } from '../../reducers/selectors'
+import NavBarContainer from '../nav_bar/nav_bar_container';
 import { Link } from 'react-router-dom';
 
 class PatientPastAppointmentIndex extends React.Component {
@@ -36,7 +37,7 @@ class PatientPastAppointmentIndex extends React.Component {
                 src="" alt="edit button" /> */}
             </div>
             <h1>You had an appointment on {this.stringifyDate(appointment.appointment_time)}</h1>
-            <span>with </span>
+            <span>with    </span>
             <span>
               <Link className="doctor-link" to={`/doctor/${appointment.provider_id}`}>
                 {`${this.props.providers[appointment.provider_id].name}`}
@@ -71,17 +72,15 @@ class PatientPastAppointmentIndex extends React.Component {
 
   render() {
     return (
-      <>
-        <div className="form-nav-bar">
-          <Link className="logo" to="/">Mocdoc</Link>
-        </div>
+      <div className="past-appointment-page">
+        <NavBarContainer/>
         <div className="past-appointment-index">
           <div className="past-appointment-container">
             <h1>Your past appointments</h1>
             {this.renderPastAppointments()}
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }

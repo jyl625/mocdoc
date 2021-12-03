@@ -37,6 +37,6 @@ class Appointment < ApplicationRecord
   #testing..
   # dateHash = {year: 2021, month: 12, day: 1, hour: 12, min: 0}
 
-  # test = Appointment.new(appointment_time: Appointment.pacificDateTime(dateHash), user_id: 1, provider_id: 2, reason: "illness", new_patient: true, in_person: true, plan_id: "40513CA0380001")
+  # test = Appointment.create(appointment_time: Appointment.pacificDateTime(dateHash), user_id: 1, provider_id: 2, reason: "illness", new_patient: true, in_person: true, plan_id: "40513CA0380001")
 
 end

@@ -9,6 +9,7 @@ import Root from './components/root'
 import { login, logout, signup, fetchCurrentSession } from './actions/session_actions'
 // import { fetchProvider } from './actions/provider_actions'
 import { fetchInsurance} from './actions/insurance_actions'
+import { fetchSpecialties } from './actions/specialty_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.logout = logout
   window.signup = signup
   // window.fetchProvider = APIUtil.fetchProvider
-  window.fetchInsurance = fetchInsurance
+  window.fetchSpecialties = fetchSpecialties
   // window.fetchInsurances = APIUtil.fetchInsurances
 
   window.getState = store.getState;

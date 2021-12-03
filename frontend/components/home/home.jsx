@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import SearchBarContainer from '../search_bar/search_bar_container';
 // import ModalLoginFormContainer from '../session_form/modal_login_form_container'
 
 // import { withRouter } from 'react-router';
@@ -11,27 +12,19 @@ class Home extends React.Component {
     super(props)
   }
 
-  // componentDidMount() {
-  //   if (this.props.modal) {
-  //     this.props.closeModal()
-  //   }
-  // }
-
-  // TESTING ONLY
-  randDoctorId() {
-    return Math.floor(Math.random() * 14257 + 1)
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchCurrentSession()
+    }
   }
+
   
   render() {
     return (
       <>
         {/* {this.props.modal ? <ModalLoginFormContainer/> : null} */}
         <NavBarContainer />
-        <div className="search-section">
-          <div className="test">
-            <Link to={`/doctor/${this.randDoctorId()}`}><button>I'm Feeling Lucky</button></Link>
-          </div>
-        </div>
+        <SearchBarContainer/>
         <div className="home-content"></div>
       </>
     )

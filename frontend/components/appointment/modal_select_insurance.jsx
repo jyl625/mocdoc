@@ -115,7 +115,7 @@ class ModalSelectInsurance extends React.Component {
 
   render () {
     return (
-      <div className="select-insurance-container ">
+      <div className="select-insurance-container">
         <div className="close-icon-container">
           <img src="/images/times-solid.svg" 
             alt="close" 

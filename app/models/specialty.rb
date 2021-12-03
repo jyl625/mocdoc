@@ -10,4 +10,9 @@ class Specialty < ApplicationRecord
   has_many :providers,
     through: :npis,
     source: :provider
+
+  def self.searchSpecialtyName(name)
+    Specialty.where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
+     "#{name}%", "% #{name}%")
+  end
 end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     # resources :insurances, only: [:show]
     resources :insurances, only: [:index, :show]
 
+    resources :specialties, only: [:index]
+
     resource :session, only: [:create, :destroy, :show]
     # no :show for session
 

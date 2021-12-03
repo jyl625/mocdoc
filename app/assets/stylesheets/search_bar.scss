@@ -1,0 +1,123 @@
+.search-bar-container {
+  background-color: #d6e5f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 414px;
+
+}
+
+.greetings {
+  height: 60%;
+  width: 1380px;
+  margin: 0 auto;
+  padding-left: 30px;
+
+  h1:first-child {
+    padding-top: 20px;
+  }
+
+  h1 {
+    font-size: 64px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+.search-section {
+  width: 100%;
+  background-color: #d6e5f3;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form {
+  height: 80px;
+  height: 46px;
+  width: 1200px;
+  border: rgb(225, 225, 228) 1px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  input[type="text"] {
+    width: 383px;
+    height: 46px;
+    border: rgb(225, 225, 228) 1px solid;
+    padding: 0px 16px;
+  }
+
+  .search-icon-container {
+    width: 46px;
+    height: 46px;
+    background-color: #fff04b;;
+    cursor: pointer;
+    border-radius: 5px;
+
+    img {
+      margin: 5px;
+    }
+  }
+
+  .search-icon-container:hover {
+    filter: brightness(90%)
+  }
+
+
+}
+
+.modal-section {
+
+
+  .select-insurance-container {
+    transform: translate(-577px, 24px);
+    position: absolute;
+  }
+}
+
+
+.specialty-suggestion-container {
+  position: absolute;
+  // border: rgb(225, 225, 228) 1px solid;
+  background-color: #ffffff;
+  // padding: 12px 25px;
+  width: 480px;
+  max-height: 531px;
+  transform: translate(-1198px, 24px);
+  overflow-y: auto;
+
+  .close-icon-container {
+    height: fit-content;
+    margin-top: 12px;
+    margin-right: 25px;
+    display: flex;
+    justify-content: right;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  img:hover {
+    cursor: pointer;
+  }
+}
+
+.specialty-suggestion {
+  padding: 12px 25px;
+  cursor: pointer;
+}
+
+.specialty-suggestion:hover {
+  background-color: lightgray
+}
+
+.test {
+  width: fit-content;
+}

@@ -4,15 +4,11 @@ import { Link } from 'react-router-dom';
 import NavBarContainer from "../nav_bar/nav_bar_container";
 
 import { selectUpcomingAppts } from '../../reducers/selectors'
+import SearchBarContainer from '../search_bar/search_bar_container';
 
 class PatientShow extends React.Component {
   constructor(props) {
     super(props)
-  }
-
-  // TESTING ONLY
-  randDoctorId() {
-    return Math.floor(Math.random() * 14257 + 1)
   }
 
   renderPatientBio() {
@@ -118,11 +114,7 @@ class PatientShow extends React.Component {
         <div className="patient-show">
           <NavBarContainer/>
           <div className="main-page">
-            <div className="search-section">
-              <div className="test">
-                <Link to={`/doctor/${this.randDoctorId()}`}><button>I'm Feeling Lucky</button></Link>
-              </div>
-            </div>
+            <SearchBarContainer/>
             <div className="panel-container">
               <div className="panel-left">
                 {this.renderPatientBio()}
