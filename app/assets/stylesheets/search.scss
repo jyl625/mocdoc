@@ -1,0 +1,73 @@
+.search-result-main {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.result-summary {
+  margin: 24px 0px 48px;
+}
+
+.summary-detail {
+  font-size: 24px;
+}
+
+.search-item {
+  border: rgb(225, 225, 228) 3px solid;
+  border-radius: 25px;
+  width: 800px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 300px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px auto;
+  box-shadow: 4px 4px #888888
+  // box-shadow: 4px 4px #fff04b
+}
+
+.search-image-container {
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .place-holder-img {
+    width: 280px;
+    height: 280px;
+    background: image-url("no-profile.jpeg");
+    border-radius: 50%;
+    transform: scale(0.60) translate(0px, 0px);
+    z-index: 1;
+  }
+}
+
+.details-container {
+  width: 520px;
+}
+
+.details-name {
+  color: rgb(43, 191, 237);
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.details-name:hover {
+  text-decoration: underline;
+}
+
+.details-type {
+  margin-bottom: 16px;
+}
+
+.detail-address-container {
+  details {
+    margin-bottom: 4px;
+  }
+}
+
+.details-carriers {
+  margin-top: 12px;
+}

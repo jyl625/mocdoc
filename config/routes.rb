@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update]
     # no :show for user
 
-    resources :providers, only: [:show]
+    resources :providers, only: [:show, :index]
     # resource :session, only: [:create, :destroy]
 
     # resources :insurances, only: [:show]

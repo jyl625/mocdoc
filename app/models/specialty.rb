@@ -16,3 +16,4 @@ class Specialty < ApplicationRecord
      "#{name}%", "% #{name}%")
   end
 end
+

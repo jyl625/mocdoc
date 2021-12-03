@@ -99,6 +99,7 @@
   max-height: 531px;
   transform: translate(-1198px, 24px);
   overflow-y: auto;
+  z-index: 2;
 
   .close-icon-container {
     height: fit-content;
@@ -122,6 +123,7 @@
 .specialty-suggestion {
   padding: 12px 25px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .specialty-suggestion:hover {

@@ -29,4 +29,17 @@ class Provider < ApplicationRecord
     -> { distinct },
     through: :appointments,
     source: :user
+
+  def self.searchByPlanAndSpecialty(plan, specialty)
+    matching_specialties = Provider
+      .joins(:specialties)
+      .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
+      "#{specialty}%", "% #{specialty}%")
+
+    result = matching_specialties.select do |matched_provider| 
+      matched_provider.insurances.where(plan_id: plan).length == 1
+    end
+
+    # result = result[0...10] if result.length > 20
+  end
 end

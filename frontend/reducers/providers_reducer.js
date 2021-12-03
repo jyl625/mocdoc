@@ -1,4 +1,4 @@
-import { RECEIVE_PROVIDER } from '../actions/provider_actions'
+import { RECEIVE_PROVIDER, RECEIVE_PROVIDERS } from '../actions/provider_actions'
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
 const providersReducer = (oldState = {}, action) => {
@@ -13,6 +13,10 @@ const providersReducer = (oldState = {}, action) => {
     case RECEIVE_CURRENT_USER:
       Object.assign(newState, action.payload.providers);
       return newState;
+    case RECEIVE_PROVIDERS:
+      // Object.assign(newState, action.payload.providers);
+      // return newState;
+      return action.payload.providers;
     default:
       return oldState;
   }

@@ -7,7 +7,7 @@ import Root from './components/root'
 // import * as APIUtil from './util/session_api_util'
 // import * as APIUtil from './util/insurance_api_util'
 import { login, logout, signup, fetchCurrentSession } from './actions/session_actions'
-// import { fetchProvider } from './actions/provider_actions'
+import { fetchProviders } from './actions/provider_actions'
 import { fetchInsurance} from './actions/insurance_actions'
 import { fetchSpecialties } from './actions/specialty_actions'
 
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = login
   window.logout = logout
   window.signup = signup
-  // window.fetchProvider = APIUtil.fetchProvider
+  window.fetchProviders = fetchProviders
   window.fetchSpecialties = fetchSpecialties
   // window.fetchInsurances = APIUtil.fetchInsurances
 

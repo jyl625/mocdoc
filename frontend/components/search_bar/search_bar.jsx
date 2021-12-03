@@ -28,6 +28,14 @@ class SearchBar extends React.Component {
     // this.props.fetchSpecialties("")
   }
 
+  componentDidUpdate() {
+    if (this.state.specialtySuggestion === true && this.props.modal.includes("selectInsurance")) {
+      this.setState({
+        specialtySuggestion: false
+      })
+    }
+  }
+
   planName(plan_id) {
     const userInsuranceObj = this.props.insurances[plan_id]
     let userInsuranceCarrier = userInsuranceObj.carrier
@@ -42,6 +50,7 @@ class SearchBar extends React.Component {
   renderSelectInsuranceModal() {
     // console.log(this.props)
     if (this.props.modal.includes("selectInsurance")) {
+      
       let planId;
       if (this.props.currentUser) {
         planId = this.props.currentUser.plan_id
@@ -109,6 +118,7 @@ class SearchBar extends React.Component {
 
   openSpecialtyModal() {
     console.log(this.state.specialtySuggestion)
+    this.props.closeModal();
     this.setState({ specialtySuggestion: true })
     if (this.state.specialty === "Search specialty") {
       this.setState({ specialty: "" })
@@ -125,8 +135,21 @@ class SearchBar extends React.Component {
   handleSearch() {
     const specialtyQ = ((this.state.specialty === "Search specialty") ? "" : this.state.specialty)
     const planIdQ= (this.state.planId)
+    if (this.props.match.path === '/search') {
+      this.props.resetSearchResult(null);
+      this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+        this.props.resetSearchResult(Object.keys(this.props.providers))
+      })
+      this.setState({
+        planId: "",
+        specialty: "Search specialty",
+        specialtySuggestion: false
+      })
+      this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
+    } else {
 
-    this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
+      this.props.history.push(`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
+    }
   }
 
   renderGreetings() {
@@ -148,6 +171,13 @@ class SearchBar extends React.Component {
     } else {
       return "search-bar-container"
     }
+  }
+
+  renderLink() {
+    const specialtyQ = ((this.state.specialty === "Search specialty") ? "" : this.state.specialty)
+    const planIdQ = (this.state.planId)
+
+    return (`/search?insurance=${planIdQ}&specialty=${specialtyQ}`)
   }
 
   render () {
@@ -186,6 +216,12 @@ class SearchBar extends React.Component {
                 alt="search"
                 onClick={() => this.handleSearch()} />
             </div>
+            {/* <div className="search-icon-container">
+              <Link to={this.renderLink()} replace>
+                <img src="/images/search-solid.svg"
+                  alt="search" />
+              </Link>
+            </div> */}
 
             {/* <div className="test">
               <Link to={`/doctor/${this.randDoctorId()}`}>
