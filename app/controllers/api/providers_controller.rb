@@ -21,7 +21,6 @@ class Api::ProvidersController < ApplicationController
 
     @providers = Provider.searchByPlanAndSpecialty(params[:plan], params[:specialty])
 
-    p @providers
 
     specialty_ids = []
     @providers.map do |provider| 
@@ -30,11 +29,9 @@ class Api::ProvidersController < ApplicationController
       end
     end
 
-    p specialty_ids
 
     @specialties = Specialty.find(specialty_ids)
 
-    p @specialties
     # matching_specialties = Provider.joins(:specialties).where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ","#{specialty}%", "% #{specialty}%")
 
     # p matching_specialties.length

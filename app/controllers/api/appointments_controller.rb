@@ -6,7 +6,6 @@ class Api::AppointmentsController < ApplicationController
   end
 
   def create 
-    p appointment_params
 
     dateHash = {
       year: appointment_params[:year],
