@@ -16,7 +16,6 @@ const providersReducer = (oldState = {}, action) => {
     case RECEIVE_PROVIDERS:
       Object.assign(newState, action.payload.providers);
       return newState;
-      // return action.payload.providers;
     default:
       return oldState;
   }
