@@ -19,21 +19,27 @@ class Search extends React.Component {
   componentDidMount() {
     const [planIdQ, specialtyQ] = this.checkUrl()
 
-    if (this.props.currentUser) {
-      this.props.fetchCurrentSession().then(() => {
-        this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-          this.setState({
-            searchResults: Object.keys(this.props.providers)
-          })
-        })
-      })
-    } else {
-      this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-        this.setState({
+    this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      this.setState({
           searchResults: Object.keys(this.props.providers)
         })
-      })
-    }
+      // this.props.fetchCurrentSession()
+    })
+    // if (this.props.currentUser) {
+    //   this.props.fetchCurrentSession().then(() => {
+    //     this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+    //       this.setState({
+    //         searchResults: Object.keys(this.props.providers)
+    //       })
+    //     })
+    //   })
+    // } else {
+    //   this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+    //     this.setState({
+    //       searchResults: Object.keys(this.props.providers)
+    //     })
+    //   })
+    // }
 
     // if (this.state.searchResults === null) {
       // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {

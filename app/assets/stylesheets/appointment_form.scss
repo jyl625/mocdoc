@@ -267,3 +267,9 @@
     color: white;
   }
 }
+
+@media (max-height: 970px) {
+    .appointment-form {
+        position: relative;
+    }
+}
