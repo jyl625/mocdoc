@@ -10,11 +10,11 @@ class Search extends React.Component {
     super(props)
 
     this.state = ({
-      searchResults: null,
+      // searchResults: null,
       searchResultsLoaded: false
     })
 
-    this.resetSearchResult = this.resetSearchResult.bind(this)
+    // this.resetSearchResult = this.resetSearchResult.bind(this)
   }
 
   componentDidMount() {
@@ -25,37 +25,6 @@ class Search extends React.Component {
         searchResultsLoaded: true
       })
     })
-    // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-    //   this.setState({
-    //       searchResults: Object.keys(this.props.providers)
-    //     })
-
-      // this.props.fetchCurrentSession()
-    // })
-
-    // if (this.props.currentUser) {
-    //   this.props.fetchCurrentSession().then(() => {
-    //     this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-    //       this.setState({
-    //         searchResults: Object.keys(this.props.providers)
-    //       })
-    //     })
-    //   })
-    // } else {
-    //   this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-    //     this.setState({
-    //       searchResults: Object.keys(this.props.providers)
-    //     })
-    //   })
-    // }
-
-    // if (this.state.searchResults === null) {
-      // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-      //   this.setState({
-      //     searchResults: Object.keys(this.props.providers)
-      //   })
-      // })
-    // }
   }
 
   componentDidUpdate() {
@@ -66,11 +35,11 @@ class Search extends React.Component {
     // this.props.fetchProviders(planIdQ, specialtyQ)
   }
 
-  resetSearchResult(newState) {
-    this.setState({
-      searchResults: newState
-    })
-  }
+  // resetSearchResult(newState) {
+  //   this.setState({
+  //     searchResults: newState
+  //   })
+  // }
 
   checkUrl() {
     let [planIdQ, specialtyQ] = this.props.location.search.slice(1).split("&")
@@ -89,7 +58,6 @@ class Search extends React.Component {
     console.log("rendering results", this.state.searchResultsLoaded)
     console.log(this.props.providers)
     if (!this.state.searchResultsLoaded) {
-    // if (this.props.providers === null) {
       return <div>Searching...</div>
     } else if (Object.keys(this.props.providers).length === 0) {
       return <div>No Result Found :(</div>
@@ -104,28 +72,11 @@ class Search extends React.Component {
     }
   }
 
-  //old renderResults (using old states)
-  // renderResults() {
-  //   if (this.state.searchResults === null) {
-  //     return <div>Searching...</div>
-  //   } else if (this.state.searchResults.length === 0) {
-  //     return <div>No Result Found :(</div>
-  //   } else if (this.state.searchResults.length > 0) {
-  //     return (
-  //       <>
-  //         {this.renderResultSumamry()}
-  //         {this.listProviders()}
-  //       </>
-  //     )
-  //   }
-  // }
-
   renderResultSumamry() {
     return (
       <div className="result-summary">
         <div className="summary-detail">
           {`Total of ${Object.keys(this.props.providers).length} providers found in Los Angeles`}
-          {/* {`Total of ${this.state.searchResults.length} providers found in Los Angeles`} */}
         </div>
       </div>
     )
@@ -156,7 +107,6 @@ class Search extends React.Component {
   listProviders() {
     return (
       Object.keys(this.props.providers).map(id => {
-      // this.state.searchResults.map(id => {
         const provider = this.props.providers[id]
         return (
           <div key={id} className="search-item">
@@ -183,23 +133,6 @@ class Search extends React.Component {
         )
       })
     )
-
-    
-    // if (this.state.searchResults === null) {
-    //   return <div>Searching...</div>
-    // } else if (this.state.searchResults.length === 0) {
-    //   return <div>No Result Found :(</div>
-    // } else if (this.state.searchResults.length > 0) {
-    //   return (
-    //     this.state.searchResults.map(id => {
-    //       return (
-    //         <div key={id} className="search-item-container">
-    //           {this.props.providers[id].name}
-    //         </div>
-    //       )
-    //     })
-    //   )
-    // }
   }
 
   render() {
@@ -207,6 +140,7 @@ class Search extends React.Component {
     return (
       <>
         <NavBarContainer />
+        <SearchBarContainer/>
         {/* <SearchBarContainer resetSearchResult={this.resetSearchResult}/> */}
         <div className = "search-result-main">
           {this.renderResults()}
