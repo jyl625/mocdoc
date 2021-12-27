@@ -19,6 +19,10 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchCurrentSession()
+    }
+    
     if (!this.state.searchResultsLoaded) {
       const [planIdQ, specialtyQ] = this.checkUrl()
 
@@ -48,7 +52,7 @@ class Search extends React.Component {
 
   redoSearch(planIdQ, specialtyQ) {
     this.setState({
-      searchResults: false
+      searchResultsLoaded: false
     })
 
     this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
