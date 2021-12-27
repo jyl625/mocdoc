@@ -10,7 +10,7 @@ import Search from './search'
 const mapStateToProps = ({ entities, session, ui }) => ({
   currentUser: entities.users[session.currentUserId],
   session: entities.session,
-  providers: entities.providers,
+  providers: entities.providers.all,
   specialties: entities.specialties
 })
 
