@@ -10,7 +10,8 @@ class Search extends React.Component {
     super(props)
 
     this.state = ({
-      searchResults: null
+      searchResults: null,
+      searchResultsLoaded: false
     })
 
     this.resetSearchResult = this.resetSearchResult.bind(this)
@@ -19,7 +20,11 @@ class Search extends React.Component {
   componentDidMount() {
     const [planIdQ, specialtyQ] = this.checkUrl()
 
-    this.props.fetchProviders(planIdQ, specialtyQ)
+    this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      this.setState({
+        searchResultsLoaded: true
+      })
+    })
     // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
     //   this.setState({
     //       searchResults: Object.keys(this.props.providers)
@@ -81,11 +86,15 @@ class Search extends React.Component {
   }
 
   renderResults() {
-    if (this.props.providers === null) {
+    console.log("rendering results", this.state.searchResultsLoaded)
+    console.log(this.props.providers)
+    if (!this.state.searchResultsLoaded) {
+    // if (this.props.providers === null) {
       return <div>Searching...</div>
     } else if (this.props.providers.length === 0) {
       return <div>No Result Found :(</div>
     } else if (this.props.providers.length > 0) {
+      console.log("foudn these", this.props.providers)
       return (
         <>
           {this.renderResultSumamry()}
