@@ -79,14 +79,11 @@ class Search extends React.Component {
   }
 
   renderResults() {
-    console.log("rendering results", this.state.searchResultsLoaded)
-    console.log(this.props.providers)
     if (!this.state.searchResultsLoaded) {
       return <div>Searching...</div>
     } else if (Object.keys(this.props.providers).length === 0) {
-      return <div>No Result Found :(</div>
+      return <div>No Result Found</div>
     } else if (Object.keys(this.props.providers).length > 0) {
-      console.log("foudn these", this.props.providers)
       return (
         <>
           {this.renderResultSumamry()}
