@@ -15,45 +15,48 @@ class Search extends React.Component {
     })
 
     // this.resetSearchResult = this.resetSearchResult.bind(this)
-    this.resetSearchLoadState = this.resetSearchLoadState.bind(this)
+    this.redoSearch = this.redoSearch.bind(this)
   }
 
   componentDidMount() {
     if (!this.state.searchResultsLoaded) {
       const [planIdQ, specialtyQ] = this.checkUrl()
 
-      this.props.fetchProviders(planIdQ, specialtyQ)
-      this.setState({
-          searchResultsLoaded: true
+      this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+        this.setState({
+            searchResultsLoaded: true
+        })
       })
-      // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-      //   this.setState({
+
+      // this.props.fetchProviders(planIdQ, specialtyQ)
+      // this.setState({
       //     searchResultsLoaded: true
-      //   })
       // })
     }
   }
 
   componentDidUpdate() {
-    if (!this.state.searchResultsLoaded) {
-      const [planIdQ, specialtyQ] = this.checkUrl()
+    // if (!this.state.searchResultsLoaded) {
+    //   const [planIdQ, specialtyQ] = this.checkUrl()
 
-      this.props.fetchProviders(planIdQ, specialtyQ)
-      this.setState({
-          searchResultsLoaded: true
-      })
-      // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-      //   this.setState({
-      //     searchResultsLoaded: true
-      //   })
-      // })
-    }
+    //   this.props.fetchProviders(planIdQ, specialtyQ)
+    //   this.setState({
+    //       searchResultsLoaded: true
+    //   })
+    // }
   }
 
-  resetSearchLoadState() {
+  redoSearch(planIdQ, specialtyQ) {
     this.setState({
       searchResults: false
     })
+
+    this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      this.setState({
+          searchResultsLoaded: true
+      })
+    })
+
   }
 
   // resetSearchResult(newState) {
@@ -161,7 +164,7 @@ class Search extends React.Component {
     return (
       <>
         <NavBarContainer />
-        <SearchBarContainer resetSearchLoadState={this.resetSearchLoadState}/>
+        <SearchBarContainer redoSearch={this.redoSearch}/>
         {/* <SearchBarContainer resetSearchResult={this.resetSearchResult}/> */}
         <div className = "search-result-main">
           {this.renderResults()}
