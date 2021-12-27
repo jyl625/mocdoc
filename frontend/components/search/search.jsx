@@ -91,9 +91,9 @@ class Search extends React.Component {
     if (!this.state.searchResultsLoaded) {
     // if (this.props.providers === null) {
       return <div>Searching...</div>
-    } else if (this.props.providers.length === 0) {
+    } else if (Object.keys(this.props.providers).length === 0) {
       return <div>No Result Found :(</div>
-    } else if (this.props.providers.length > 0) {
+    } else if (Object.keys(this.props.providers).length > 0) {
       console.log("foudn these", this.props.providers)
       return (
         <>
@@ -124,7 +124,8 @@ class Search extends React.Component {
     return (
       <div className="result-summary">
         <div className="summary-detail">
-          {`Total of ${this.state.searchResults.length} providers found in Los Angeles`}
+          {`Total of ${Object.keys(this.props.providers).length} providers found in Los Angeles`}
+          {/* {`Total of ${this.state.searchResults.length} providers found in Los Angeles`} */}
         </div>
       </div>
     )
@@ -154,7 +155,7 @@ class Search extends React.Component {
 
   listProviders() {
     return (
-      this.props.providers.map(id => {
+      Object.keys(this.props.providers).map(id => {
       // this.state.searchResults.map(id => {
         const provider = this.props.providers[id]
         return (
