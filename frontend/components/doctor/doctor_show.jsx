@@ -15,9 +15,9 @@ class DoctorShow extends React.Component {
   }
 
   componentDidUpdate() {
-    if (!Object.keys(this.props.providers).includes(this.props.match.params.id)) {
-      this.props.fetchProvider(this.props.match.params.id)
-    }
+    // if (!Object.keys(this.props.providers).includes(this.props.match.params.id)) {
+    //   this.props.fetchProvider(this.props.match.params.id)
+    // }
   }
 
   renderSpecialties() {

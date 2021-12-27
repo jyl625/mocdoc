@@ -12,7 +12,7 @@ const mapStateToProps = ({entities, session}) => {
     currentUser: entities.users[session.currentUserId],
     insurances: entities.insurances,
     appointments: entities.appointments,
-    providers: entities.providers
+    providers: entities.providers.user
   }
 }
 
