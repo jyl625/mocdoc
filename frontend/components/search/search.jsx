@@ -15,24 +15,45 @@ class Search extends React.Component {
     })
 
     // this.resetSearchResult = this.resetSearchResult.bind(this)
+    this.resetSearchLoadState = this.resetSearchLoadState.bind(this)
   }
 
   componentDidMount() {
-    const [planIdQ, specialtyQ] = this.checkUrl()
+    if (!this.state.searchResultsLoaded) {
+      const [planIdQ, specialtyQ] = this.checkUrl()
 
-    this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      this.props.fetchProviders(planIdQ, specialtyQ)
       this.setState({
-        searchResultsLoaded: true
+          searchResultsLoaded: true
       })
-    })
+      // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      //   this.setState({
+      //     searchResultsLoaded: true
+      //   })
+      // })
+    }
   }
 
   componentDidUpdate() {
-    this.checkUrl()
+    if (!this.state.searchResultsLoaded) {
+      const [planIdQ, specialtyQ] = this.checkUrl()
 
-    // const [planIdQ, specialtyQ] = this.checkUrl()
+      this.props.fetchProviders(planIdQ, specialtyQ)
+      this.setState({
+          searchResultsLoaded: true
+      })
+      // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      //   this.setState({
+      //     searchResultsLoaded: true
+      //   })
+      // })
+    }
+  }
 
-    // this.props.fetchProviders(planIdQ, specialtyQ)
+  resetSearchLoadState() {
+    this.setState({
+      searchResults: false
+    })
   }
 
   // resetSearchResult(newState) {
@@ -140,7 +161,7 @@ class Search extends React.Component {
     return (
       <>
         <NavBarContainer />
-        <SearchBarContainer/>
+        <SearchBarContainer resetSearchLoadState={this.resetSearchLoadState}/>
         {/* <SearchBarContainer resetSearchResult={this.resetSearchResult}/> */}
         <div className = "search-result-main">
           {this.renderResults()}
