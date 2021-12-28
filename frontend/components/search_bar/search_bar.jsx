@@ -131,10 +131,13 @@ class SearchBar extends React.Component {
     const specialtyQ = ((this.state.specialty === "Search specialty") ? "" : this.state.specialty)
     const planIdQ= (this.state.planId)
     if (this.props.match.path === '/search') {
-      this.props.resetSearchResult(null);
-      this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
-        this.props.resetSearchResult(Object.keys(this.props.providers))
-      })
+      this.props.redoSearch(planIdQ, specialtyQ);
+      // this.props.fetchProviders(planIdQ, specialtyQ) //this needs to be uncommneted
+
+      // this.props.resetSearchResult(null);
+      // this.props.fetchProviders(planIdQ, specialtyQ).then(() => {
+      //   this.props.resetSearchResult(Object.keys(this.props.providers))
+      // })
       this.setState({
         planId: "",
         specialty: "Search specialty",

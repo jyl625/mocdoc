@@ -12,11 +12,11 @@ const mapStateToProps = (state, ownProps) => {
   return {
     // providerId: providerId,
     // provider: state.entities.providers[parseInt(ownProps.match.params.id)]
-    provider: state.entities.providers[ownProps.match.params.id],
-    specialties: state.entities.specialties,
+    provider: state.entities.providers.single[ownProps.match.params.id],
+    specialties: state.entities.specialties.single,
     insurances: state.entities.insurances,
     modal: state.ui.modal,
-    providers: state.entities.providers
+    providers: state.entities.providers.all
   }
 }
 

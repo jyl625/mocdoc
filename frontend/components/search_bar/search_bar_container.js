@@ -16,8 +16,8 @@ const mapStateToProps = ({ entities, session, ui }) => {
     currentUser: entities.users[session.currentUserId],
     insurances: entities.insurances,
     modal: ui.modal,
-    specialties: entities.specialties, 
-    providers: entities.providers
+    specialties: entities.specialties.all, 
+    providers: entities.providers.all
   }
 }
 

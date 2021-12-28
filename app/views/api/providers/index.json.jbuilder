@@ -7,7 +7,7 @@ if @providers.length > 0
     end
   end
 else 
-  ({})
+  json.providers ({})
 end
 
 if @specialties.length != 0

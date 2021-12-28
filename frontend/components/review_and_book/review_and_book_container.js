@@ -17,7 +17,7 @@ const mapStateToProps = ({entities, session, ui}, ownProps) => {
     appointments: entities.appointments,
     appointment,
     modal: ui.modal,
-    providers: entities.providers
+    providers: entities.providers.user
   }
 }
 
