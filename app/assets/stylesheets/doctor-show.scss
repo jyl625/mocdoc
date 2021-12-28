@@ -132,7 +132,7 @@
         }
 
         .all-insurances {
-          color: #3983eb;
+          color: #2bbfed;
           text-decoration: underline;
         }
 
@@ -143,11 +143,31 @@
       }
 
       #location {
+        .location-container {
+          width: 780px;
+          height: 300px;
+          margin-top: 20px;
+          display: flex;
+          flex-wrap: nowrap;
+        }
+
+        .map-container {
+          background-color: gray;
+          width: 532px;
+          height: 300px;
+        }
+
         .address-container {
-          margin: 30px 0px;
-          div {
-            margin: 6px 0px;
+          margin: 16px 0 0 24px;
+          .address-detail {
+            margin: 0px 0px;
           }
+        }
+
+        .get-directions {
+          margin-top: 12px;
+          color: #2bbfed;
+          text-decoration: underline;
         }
       }
 

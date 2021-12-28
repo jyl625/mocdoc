@@ -69,16 +69,32 @@ class DoctorShow extends React.Component {
 
   renderLocation() {
     const provider = this.props.provider
+
+    const lat = provider.latitude
+    const lng = provider.longitude
+    const googleAPIKey = window.googleAPIKey;
+
     return (
       <>
         <div className="subsection">Office Location</div>
-        <div className="address-container">
-          <div>{provider.address_1}</div>
-          <div>{provider.address_2}</div>
-          <div>{`${provider.city}, ${provider.state} ${provider.zip_code}`}</div>
-          {/* <div>{provider.latitude}</div>
-          <div>{provider.longitude}</div> */}
+        <div className="location-container">
+          <div className="map-container">
+            {/* <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank"> */}
+              <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=14&size=532x300&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${googleAPIKey}`} alt="map" />
+            {/* </a> */}
+          </div>
+          <div className="address-container">
+            <div className="address-detail">{provider.address_1}</div>
+            <div className="address-detail">{provider.address_2}</div>
+            <div className="address-detail">{`${provider.city}, ${provider.state} ${provider.zip_code}`}</div>
+            <div className="get-directions">
+              <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">Get directions</a>
+            </div>
+            {/* <div>{provider.latitude}</div>
+            <div>{provider.longitude}</div> */}
+          </div>
         </div>
+        
       </>
     )
   }
