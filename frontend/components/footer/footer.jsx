@@ -16,6 +16,7 @@ class Footer extends React.Component {
             <li className="footer-detail">Jean Youn Lee</li>
           </ul></div>
           <div><ul>
+            <li className="footer-detail">Find me on:</li>
             <li>
               <div className="footer-detail">
                 <a href="https://github.com/jyl625/mocdoc" target="_blank">GitHub</a>
