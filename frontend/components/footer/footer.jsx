@@ -15,14 +15,19 @@ class Footer extends React.Component {
             
             <li className="footer-detail">Jean Youn Lee</li>
             <li>
-                <div className="footer-detail">
-                  <a href="https://github.com/jyl625/mocdoc" target="_blank">GitHub</a>
-                </div>
+              <div className="footer-detail">
+                <a href="https://github.com/jyl625/mocdoc" target="_blank">GitHub</a>
+              </div>
             </li>
             <li>
-              <Link to="https://www.linkedin.com/in/jeanyounlee/">
-                <div className="footer-detail">LinkedIn</div>
-                </Link>
+              <div className="footer-detail">
+                <a href="https://www.linkedin.com/in/jeanyounlee/" target="_blank">LinkedIn</a> 
+              </div>
+            </li>
+            <li>
+              <div className="footer-detail">
+                <a href="https://www.linkedin.com/in/jeanyounlee/" target="_blank">LinkedIn</a> 
+              </div>
             </li>
           </ul>
         </div>
