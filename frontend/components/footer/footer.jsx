@@ -26,7 +26,7 @@ class Footer extends React.Component {
             </li>
             <li>
               <div className="footer-detail">
-                <a href="https://www.linkedin.com/in/jeanyounlee/" target="_blank">LinkedIn</a> 
+                <a href="https://angel.co/u/jean-youn-lee" target="_blank">AngelList</a> 
               </div>
             </li>
           </ul>
