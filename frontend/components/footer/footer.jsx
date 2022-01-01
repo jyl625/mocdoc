@@ -10,10 +10,12 @@ class Footer extends React.Component {
     return (
       <footer>
         <div className="footer-links-container">
-          <ul>
+          <div><ul>
             <li className="footer-detail">Created by:</li>
             
             <li className="footer-detail">Jean Youn Lee</li>
+          </ul></div>
+          <div><ul>
             <li>
               <div className="footer-detail">
                 <a href="https://github.com/jyl625/mocdoc" target="_blank">GitHub</a>
@@ -29,7 +31,7 @@ class Footer extends React.Component {
                 <a href="https://angel.co/u/jean-youn-lee" target="_blank">AngelList</a> 
               </div>
             </li>
-          </ul>
+          </ul></div>
         </div>
       </footer>
     )
