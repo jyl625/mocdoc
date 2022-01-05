@@ -23,16 +23,22 @@
     width: 1300px;
   }
 
-  .greetings {
-    width: 100%;
+  .greetings-user  {
+    width: 1310px;
     height: 60%;
+    padding-left: 50px;
 
     h1:first-child {
       padding-top: 10px;
+      margin-bottom: 10px;
     }
     
     h1 {
       font-size: 64px;
+    }
+
+    h3 {
+      font-weight:lighter;
     }
   }
 

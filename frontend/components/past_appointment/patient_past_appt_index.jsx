@@ -43,7 +43,11 @@ class PatientPastAppointmentIndex extends React.Component {
                 {`${this.props.providers[appointment.provider_id].name}`}
               </Link>
             </span>
-            <p>Reason for your visit: {`${appointment.reason}`}</p>
+            <div className="appointment-details">
+              <p>Reason for your visit: {`${appointment.reason}`}</p>
+              <p>New patient visit: {appointment.new_patient ? "Yes" : "No"}</p>
+              <p>Appointment type: {appointment.in_person ? "In-person Visit" : "Video Visit"}</p>
+            </div>
           </div>
         ))
       } 
