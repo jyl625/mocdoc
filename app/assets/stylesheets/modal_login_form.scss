@@ -30,12 +30,12 @@
   background-color: #f3f3f4;
 
 
-  input[type="button"] {
-    width: 600px;
-    background-color:#fff04b;
-    font-size: 18px;
-    border: none;
-  }
+  // input[type="button"] {
+  //   width: 600px;
+  //   background-color:#fff04b;
+  //   font-size: 18px;
+  //   border: none;
+  // }
 
   .close-button-container {
     height: fit-content;
@@ -101,11 +101,11 @@
   }
 
   input[type="submit"], input[type="button"] {
-    background-color: white;
-    border: solid 1px rgb(0, 35, 75);
+    background-color: #fff04b;
     font-family: "sharp-sans-semibold", "fallback-font", Arial, sans-serif;
     font-size: 15px;
     margin-bottom: 24px;
+    border: none;
   }
 
   input[type="submit"]:hover, input[type="button"]:hover {
