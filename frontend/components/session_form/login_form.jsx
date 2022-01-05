@@ -59,8 +59,7 @@ class LoginForm extends React.Component {
       <>
         <FormNavBar currPath={this.props.currPath}/>
         <form onSubmit={this.handleSubmit} className="login-form">
-          <input type="button" value="Sign up with email" onClick={this.redirectToSignUp} />
-          <h3><span>or</span></h3>
+          <div className="form-title">Log in</div>
           <label>Email address
             <input
               type="text"
@@ -74,10 +73,16 @@ class LoginForm extends React.Component {
               onChange={this.update("password")} />
           </label>
           <input type="submit" value="Log in"/>
-          <input type="button" value="Demo Login" onClick={this.handleDemoLogin}/>
+          <input type="button" value="Demo Login" 
+                  className="demo-login"onClick={this.handleDemoLogin}/>
           <ul>
             {this.showErrors()}
           </ul>
+
+          <h3><span>or</span></h3>
+          
+          <input type="button" value="Sign up with email" 
+              className="sign-up" onClick={this.redirectToSignUp} />
         </form>
       </>
     )

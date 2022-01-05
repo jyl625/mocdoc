@@ -40,6 +40,7 @@ class ReviewAndBook extends React.Component {
             newPatient: this.props.appointment.new_patient,
             inPerson: this.props.appointment.in_person
           })
+          this.updateDateTime(this.props.appointment.appointment_time)
         }
       })
     })
@@ -171,6 +172,11 @@ class ReviewAndBook extends React.Component {
 
 
   createFormObjectAndSubmit() {
+    // if (!this.state.appointmentYear || !this.state.appointmentMonth || !this.state.appointmentDay || !this.state.appointmentHour || !this.state.appointmentMin) {
+    //   console.log(this.props.appointment.appointment_time)
+    //   this.updateDateTime(this.props.appointment.appointment_time)
+    // }
+
     const appointment = {
       id: this.props.match.params.id,
       year: this.state.appointmentYear,
@@ -185,6 +191,8 @@ class ReviewAndBook extends React.Component {
       inPerson: this.state.inPerson,
       planId: this.state.planId //this!!!
     }
+    // debugger
+    console.log(appointment)
     this.props.updateAppointment(appointment)
     this.props.updateUser({
       id: this.props.currentUser.id,
@@ -222,7 +230,7 @@ class ReviewAndBook extends React.Component {
   }
 
   render() {
-    if (this.props.appointment) {
+    if (this.props.appointment && Object.keys(this.props.insurances).length > 0) {
       const appointment = this.props.appointment
       return (
         <>
