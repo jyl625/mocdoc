@@ -96,7 +96,10 @@ class NavBar extends React.Component {
 
         <div className="nav-bar">
           <div className="nav-content-container">
-            <Link className="logo"to="/">Mocdoc</Link>
+            <Link className="logo"to="/">
+              <img src="images/mocdoc_logo.png" alt="logo" />
+              Mocdoc
+            </Link>
             {this.props.currentUser ? this.patientNav() : this.sessionLinks()}
           </div>
         </div>
