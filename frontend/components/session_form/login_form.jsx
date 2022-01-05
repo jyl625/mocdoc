@@ -59,6 +59,7 @@ class LoginForm extends React.Component {
       <>
         <FormNavBar currPath={this.props.currPath}/>
         <form onSubmit={this.handleSubmit} className="login-form">
+          <div className="form-title">Log in</div>
           <label>Email address
             <input
               type="text"
