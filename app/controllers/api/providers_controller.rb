@@ -12,6 +12,12 @@ class Api::ProvidersController < ApplicationController
   end
 
   def index 
+
+    # Check if request is for featured providers
+
+    p params[:featured]
+
+
     # p params
     # p params[:plan]
     # p params[:specialty]
