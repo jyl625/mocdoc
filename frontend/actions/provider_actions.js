@@ -23,3 +23,9 @@ export const fetchProviders = (planIdQ, specialtyQ) => dispatch => (
     dispatch(receiveProviders(payload))
   ))
 )
+
+export const fetchFeaturedProviders = () => dispatch => (
+  APIUtil.fetchFeaturedProviders().then(payload => (
+    dispatch(receiveProviders(payload))
+  ))
+)

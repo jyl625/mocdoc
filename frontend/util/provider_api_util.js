@@ -11,3 +11,10 @@ export const fetchProviders = (planIdQ, specialtyQ) => (
     url: `/api/providers/?plan=${planIdQ}&specialty=${specialtyQ}`
   })
 )
+
+export const fetchFeaturedProviders = () => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/providers/?featured=true`
+  })
+)

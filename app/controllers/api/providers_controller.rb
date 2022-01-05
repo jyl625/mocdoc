@@ -12,15 +12,24 @@ class Api::ProvidersController < ApplicationController
   end
 
   def index 
-    # p params
-    # p params[:plan]
-    # p params[:specialty]
 
-    # plan = params[:plan]
-    # specialty = params[:specialty]
+    # Check if request is for featured providers
 
-    @providers = Provider.searchByPlanAndSpecialty(params[:plan], params[:specialty])
+    if params[:featured]
+      @providers = []
+      @providers << Provider.find(1)
+      @providers << Provider.find(2)
 
+    else 
+      # p params
+      # p params[:plan]
+      # p params[:specialty]
+
+      # plan = params[:plan]
+      # specialty = params[:specialty]
+
+      @providers = Provider.searchByPlanAndSpecialty(params[:plan], params[:specialty])
+    end
 
     specialty_ids = []
     @providers.map do |provider| 

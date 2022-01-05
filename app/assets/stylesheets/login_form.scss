@@ -5,11 +5,25 @@
   margin-top: 96px;
   margin-bottom: 240px;
 
-  input[type="button"] {
+
+  .form-title {
+    display: block;
+    width: 600px;
+    font-size: 28px;
+    font: "sharp-sans-bold", "fallback-font", Arial, sans-serif;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .sign-up {
     width: 600px;
     background-color:#fff04b;
-    font-size: 18px;
     border: none;
+    font-family: "sharp-sans-semibold", "fallback-font", Arial, sans-serif;
+    font-size: 15px;
+    margin-top: 24px;
   }
 
   h3 {
@@ -56,15 +70,24 @@
     padding: 14px 12px 12px;
   }
 
-  input[type="submit"], input[type="button"] {
-    background-color: white;
-    border: solid 1px rgb(0, 35, 75);
+  input[type="submit"], .demo-login {
+    background-color: #fff04b;
+    // border: solid 1px rgb(0, 35, 75);
+    border: none;
     font-family: "sharp-sans-semibold", "fallback-font", Arial, sans-serif;
     font-size: 15px;
+  }
+
+  input[type="submit"]{
+    margin-top: 24px;
     margin-bottom: 24px;
   }
 
-  input[type="submit"]:hover, input[type="button"]:hover {
+  .demo-login {
+    margin-bottom: 36px;
+  }
+
+  input[type="submit"]:hover, .demo-login:hover {
     color: white;
     background-color: rgb(0, 35, 75);
   }

@@ -51,10 +51,16 @@
     cursor:pointer;
     text-decoration: underline;
   }
+
+  .past-appointment-item .appointment-details {
+    margin-top: 12px;
+  }  
+
   .past-appointment-item p {
     font-size: 14px;
     color: rgb(102, 115, 133);
-    height: 26px;
+    height: 14px;
+    margin: 6px 0;
   }
 
   .appointment-icon-container {
