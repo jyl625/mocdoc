@@ -162,7 +162,7 @@ class SearchBar extends React.Component {
     } else if (this.props.match.path === '/patient'){
       return (
         <div className="greetings-user">
-          <h1>{this.props.currentUser.first_name}, welcome to your MocDoc </h1>
+          <h1>{this.props.currentUser.first_name}, welcome to your Mocdoc </h1>
           <h3>Find, compare, and book in-network doctors </h3>
         </div>
       )

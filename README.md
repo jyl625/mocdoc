@@ -1,9 +1,9 @@
-# MocDoc
+# Mocdoc
 
 * [Link to live site](https://mocdoc.herokuapp.com/)
 
 ## About
-* MocDoc is a ZocDoc clone where users can search for providers while filtering for provider specialtiy and type of insurance plans accepted.
+* Mocdoc is a Zocdoc clone where users can search for providers while filtering for provider specialtiy and type of insurance plans accepted.
 
 ## Core Feature 1 - Provider Search
 
