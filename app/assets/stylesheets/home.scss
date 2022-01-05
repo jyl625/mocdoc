@@ -7,23 +7,14 @@
   min-height: 100vh;
 }
 
-// TESITNG ONLY
-// .test {
-//   width: fit-content;
-//   margin: 0 auto
-// }
+.featured-section {
+  width: 100vw;
+  padding: 20px 42px;
+}
 
-// svg {
-//   width: 20px;
-//   height: 20px;
-// }
-
-// polygon {
-//   fill: rgb(0,35,75);
-//   transform:scale(25%)
-// }
-
-// img {
-//   width: 20px;
-//   height: 20px;
-// }
+.featured-providers-list {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  max-width: 1350px;
+}

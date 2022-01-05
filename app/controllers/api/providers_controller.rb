@@ -14,8 +14,9 @@ class Api::ProvidersController < ApplicationController
   def index 
 
     # Check if request is for featured providers
+
     if params[:featured]
-      p params[:featured]
+      @providers = []
       @providers << Provider.find(1)
       @providers << Provider.find(2)
 
