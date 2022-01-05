@@ -125,10 +125,15 @@
     cursor:pointer;
     text-decoration: underline;
   }
+
+  .panel-right-item .appointment-details {
+    margin-top: 12px;
+  }
   .panel-right-item p {
     font-size: 14px;
     color: rgb(102, 115, 133);
-    height: 26px;
+    height: 14px;
+    margin: 6px 0;
   }
 
   .appointment-icon-container {
