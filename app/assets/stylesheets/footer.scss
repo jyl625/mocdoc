@@ -1,5 +1,5 @@
 footer {
-  height: 400px;
+  height: 300px;
   display: flex;
   justify-content: center;
   background-color: rgb(0, 35, 75);
@@ -10,7 +10,7 @@ footer {
   width: 1350px;
   margin: 0 auto;
   display: flex;
-  padding-top: 100px;
+  padding-top: 24px;
   justify-content: space-around;
   align-items:flex-start;
   flex-wrap: wrap
@@ -19,12 +19,24 @@ footer {
 footer li {
 }
 
-.footer-link, .footer-detail {
+.footer-link, .footer-detail, .footer-detail-title {
   color: #ffffff;
-  margin-top: 20px;
+  margin-top: 18px;
+  height: 32px;
+  display: flex;
+  align-content: center;
 
   a {
     color: #ffffff;
+    line-height: 32px;
   }
+}
+
+
+#linkedin-logo, #github-logo, #angellist-logo {
+  height: 32px;
+  width: 32px;
+  margin-right: 8px;
+  fill: white;
 }
 
