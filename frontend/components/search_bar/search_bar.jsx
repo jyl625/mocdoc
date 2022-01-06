@@ -169,6 +169,7 @@ class SearchBar extends React.Component {
     } else {
       return (
         <div className="greetings">
+          {/* <h1>Find local doctors </h1> */}
           <h1>Find local doctors </h1>
           <h1>Who takes your insurance</h1>
         </div>
@@ -210,6 +211,7 @@ class SearchBar extends React.Component {
             <input type="text"
               className="location-filter"
               value="Los Angeles, CA"
+              title="Currently only searching for doctors in Los Angeles"
               readOnly />
 
             <input type="text"

@@ -26,6 +26,7 @@ class Home extends React.Component {
         {/* {this.props.modal ? <ModalLoginFormContainer/> : null} */}
         <NavBarContainer />
         <SearchBarContainer/>
+        <div className="banner">Currently only searching for doctors in Los Angeles. Other cities coming soon&trade;</div>
         <div className="home-content">
           <HomeFeaturedContainer/>
         </div>

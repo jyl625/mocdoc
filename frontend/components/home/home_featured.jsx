@@ -38,9 +38,9 @@ class HomeFeatured extends React.Component {
         const provider = this.props.providers[id]
         return (
           <div key={id} className="search-item">
-            <div className="search-image-container">
+            {/* <div className="search-image-container">
               <div className="place-holder-img"></div>
-            </div>
+            </div> */}
             <div className="details-container">
               <div className="details-name">
                 <Link to={`doctor/${provider.id}`}>{provider.name}</Link>
@@ -70,7 +70,8 @@ class HomeFeatured extends React.Component {
 
     return (
       <div className="featured-section">
-        <div>Featured Providers</div>
+        <div className="featured-title">Featured Doctors</div>
+        <div className="featured-detail">Too many to choose from? Try out these doctors chosen for the demo</div>
         <div className="featured-providers-list">
           {this.listProviders()}
         </div>
