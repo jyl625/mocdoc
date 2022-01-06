@@ -64,7 +64,6 @@ class HomeFeatured extends React.Component {
   }
 
   render() {
-    console.log("providers", this.props.providers)
     if (Object.keys(this.props.providers).length === 0)
       return null
 

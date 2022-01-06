@@ -173,7 +173,6 @@ class DoctorShow extends React.Component {
               <div id="background">
                 {this.renderBackground()}
               </div>
-              <div id="place-holder"></div>
             </div>
             <AppointmentFormContainer 
               accepted_plan_ids={this.props.provider.insurances}

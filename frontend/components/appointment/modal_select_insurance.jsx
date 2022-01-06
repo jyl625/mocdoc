@@ -15,7 +15,6 @@ class ModalSelectInsurance extends React.Component {
   }
 
   renderCurrentInsurance() {
-    console.log(this.props)
     const userInsuranceObj = this.props.insurances[this.props.plan_id]
     const userInsuranceCarrier = userInsuranceObj.carrier
     const userInsurancePlan = userInsuranceObj.plan
