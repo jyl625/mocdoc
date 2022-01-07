@@ -7,8 +7,8 @@
 
   .nav-bar {
     background-color: #fff04b;
-    width: 1440px;
-    padding-right: calc(1440px - 100vw + 42px)
+    width: 100vw;
+    padding-right: calc(max(0,1440px - 100vw) + 42px)
   }
 
   .main-page {
