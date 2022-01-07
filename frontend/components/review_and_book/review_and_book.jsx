@@ -173,7 +173,6 @@ class ReviewAndBook extends React.Component {
 
   createFormObjectAndSubmit() {
     // if (!this.state.appointmentYear || !this.state.appointmentMonth || !this.state.appointmentDay || !this.state.appointmentHour || !this.state.appointmentMin) {
-    //   console.log(this.props.appointment.appointment_time)
     //   this.updateDateTime(this.props.appointment.appointment_time)
     // }
 
@@ -192,7 +191,6 @@ class ReviewAndBook extends React.Component {
       planId: this.state.planId //this!!!
     }
     // debugger
-    console.log(appointment)
     this.props.updateAppointment(appointment)
     this.props.updateUser({
       id: this.props.currentUser.id,

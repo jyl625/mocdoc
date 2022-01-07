@@ -7,12 +7,15 @@
 
   .nav-bar {
     background-color: #fff04b;
+    width: 1440px;
+    padding-right: calc(1440px - 100vw + 42px)
   }
 
   .main-page {
 
     width: 1440px;
     // height: 100%;
+    background-color: #ffffff;
     margin: 0px auto;
     padding-bottom: 100px;
     //testing
@@ -182,9 +185,6 @@
         }
       }
 
-      #place-holder {
-        height: 1000px;
-      }
     }
 
 

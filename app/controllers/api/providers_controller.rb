@@ -19,6 +19,8 @@ class Api::ProvidersController < ApplicationController
       @providers = []
       @providers << Provider.find(1)
       @providers << Provider.find(2)
+      @providers << Provider.find(3)
+      @providers << Provider.find(4)
 
     else 
       # p params

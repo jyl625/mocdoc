@@ -1,5 +1,6 @@
 .nav-bar {
   background-color: #d6e5f3;
+  // min-width: 1440px;
   padding: 20px 42px;
   height: 75px;
   display: flex;
@@ -8,22 +9,31 @@
 
 .nav-content-container {
   width: 1350px;
-  margin-left: 30px;
+  // margin-left: 30px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
 .logo {
+  height: 36px;
   font-size: 32px;
   text-align: center;
   font-weight: bold;
+  align-items: center;
 }
 
 .logo:hover {
   text-decoration: none;
   color: inherit;
   cursor: pointer
+}
+
+.logo img {
+  height: 36px;
+  width: 36x;
+  margin-right: 4px;
+  transform: translateY(6px);
 }
 
 .nav-link {
