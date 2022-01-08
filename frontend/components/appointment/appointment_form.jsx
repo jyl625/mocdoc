@@ -140,6 +140,7 @@ class AppointmentForm extends React.Component {
     const plan_id = this.state.plan_id;
     const new_patient = this.state.new_patient;
     const in_person = this.state.in_person;
+    const appointmentYear = this.state.appointmentYear
 
     // NEED TO REFACTOR 
     if (!this.props.currentUser) {
@@ -150,7 +151,7 @@ class AppointmentForm extends React.Component {
       this.setState({
         loggedOut: false
       })
-      if (reason === "Input a reason" || reason === "" || plan_id === "" || new_patient === null || in_person === null) {
+      if (reason === "Input a reason" || reason === "" || plan_id === "" || new_patient === null || in_person === null || appointmentYear === null) {
         this.setState({
           formErrors: true
         })
