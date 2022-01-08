@@ -23,10 +23,8 @@ class DoctorShow extends React.Component {
   renderSpecialties() {
     //this and below can maybe refactored
     const provider = this.props.provider
-    if (provider.specialties.every(specialty_code => Object.keys(this.props.specialties).includes(specialty_code))) {
-      const specialties = this.props.provider.specialties.map( specialty_code => (
-        this.props.specialties[specialty_code].specialty_name
-      ))
+    if (provider.specialties.every(specialty_code => Object.keys(this.props.specialties).includes(`${specialty_code}`))) {
+      const specialties = Object.values(this.props.specialties).map(specialtyObj => specialtyObj.specialty_name)
       return specialties.join(", ") + ` ${this.props.provider.provider_type}`
     } else {
       return this.props.provider.provider_type
