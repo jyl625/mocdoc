@@ -38,13 +38,19 @@ class Provider < ApplicationRecord
         .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
         "#{specialty}%", "% #{specialty}%")
 
+      # SINGLE QUERY - WORKS
+      test = Provider
+        .joins(:specialties).joins(:insurances)
+        .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
+        "#{specialty}%", "% #{specialty}%", "#{plan}").limit(10)
+
       result = []
       matching_specialties.each do |matched_provider| 
         if matched_provider.insurances.where(plan_id: plan).length == 1
           result << matched_provider
         end
 
-        return result if result.length == search_result_cap
+        #return result if result.length == search_result_cap
       end
       return result
     elsif specialty != "" && plan == ""
