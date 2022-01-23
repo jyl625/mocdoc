@@ -30,26 +30,49 @@ class Provider < ApplicationRecord
     through: :appointments,
     source: :user
 
-  def self.searchByPlanAndSpecialty(plan, specialty)
-    offset = 0
+  def self.searchByPlanAndSpecialty(plan, specialty) #page_num
     limit = 10
+    offset = 0 #page_num * limit
+
+    #result = {} #{ total_count = < integer >, providers = [] }
+
     if plan != "" && specialty != "" 
+      # result[:total_count] = Provider
+          # .joins(:specialties).joins(:insurances)
+          # .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
+          # "#{specialty}%", "% #{specialty}%", "#{plan}").length
+
+      # result[:providers] = Provider
       Provider
           .joins(:specialties).joins(:insurances)
           .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
           "#{specialty}%", "% #{specialty}%", "#{plan}").offset(offset).limit(limit)
     elsif plan != "" && specialty == ""
+      #result[:total_count] = Provider.joins(:insurances)
+          # .where("insurances.plan_id = (?)", "#{plan}").length
+
+      # result[:providers] = Provider.joins(:insurances)
       Provider.joins(:insurances)
           .where("insurances.plan_id = (?)", "#{plan}").offset(offset).limit(limit)
     elsif plan == "" && specialty != ""
+      #result[:total_count] = Provider
+          # .joins(:specialties).joins(:insurances)
+          # .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)",
+          # "#{specialty}%", "% #{specialty}%").length
+
+      # result[:providers] = Provider
       Provider
           .joins(:specialties).joins(:insurances)
           .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)",
           "#{specialty}%", "% #{specialty}%").offset(offset).limit(limit)
     else 
+      # result[:total_count] = Provider.length
+
+      # result[:providers] = Provider.offset(offset).limit(limit)
       Provider.offset(offset).limit(limit)
     end
 
+    # result
   end
 
   # def self.searchByPlanAndSpecialty(plan, specialty)
