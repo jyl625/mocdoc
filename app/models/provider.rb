@@ -31,44 +31,66 @@ class Provider < ApplicationRecord
     source: :user
 
   def self.searchByPlanAndSpecialty(plan, specialty)
-    search_result_cap = 42
-    if specialty && specialty != "" && plan != ""
-      matching_specialties = Provider
-        .joins(:specialties)
-        .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
-        "#{specialty}%", "% #{specialty}%")
-
-      # SINGLE QUERY - WORKS
-      test = Provider
-        .joins(:specialties).joins(:insurances)
-        .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
-        "#{specialty}%", "% #{specialty}%", "#{plan}").offset(10).limit(10)
-
-      result = []
-      matching_specialties.each do |matched_provider| 
-        if matched_provider.insurances.where(plan_id: plan).length == 1
-          result << matched_provider
-        end
-
-        #return result if result.length == search_result_cap
-      end
-      return result
-    elsif specialty != "" && plan == ""
-      result = Provider
-        .joins(:specialties)
-        .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
-        "#{specialty}%", "% #{specialty}%").limit(search_result_cap)
-      return result
-    elsif specialty == "" && plan != "" 
-      result = []
-      Provider.all.each do |provider|
-        result << provider if provider.insurances.any? { |insurance| insurance.plan_id == plan }
-        return result if result.length == search_result_cap
-      end
+    offset = 0
+    limit = 10
+    if plan != "" && specialty != "" 
+      Provider
+          .joins(:specialties).joins(:insurances)
+          .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
+          "#{specialty}%", "% #{specialty}%", "#{plan}").offset(offset).limit(limit)
+    elsif plan != "" && specialty == ""
+      Provider.joins(:insurances)
+          .where("insurances.plan_id = (?)", "#{plan}").offset(offset).limit(limit)
+    elsif plan == "" && specialty != ""
+      Provider
+          .joins(:specialties).joins(:insurances)
+          .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)",
+          "#{specialty}%", "% #{specialty}%").offset(offset).limit(limit)
     else 
-      return Provider.all.sample(search_result_cap)
+      Provider.offset(offset).limit(limit)
     end
 
-    # result = result[0...10] if result.length > 20
   end
+
+  # def self.searchByPlanAndSpecialty(plan, specialty)
+  #   search_result_cap = 42
+    # if specialty && specialty != "" && plan != ""
+  #     matching_specialties = Provider
+  #       .joins(:specialties)
+  #       .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
+  #       "#{specialty}%", "% #{specialty}%")
+
+  #     # SINGLE QUERY - WORKS
+  #     test = Provider
+  #       .joins(:specialties).joins(:insurances)
+  #       .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
+  #       "#{specialty}%", "% #{specialty}%", "#{plan}").offset(10).limit(10)
+
+  #     result = []
+  #     matching_specialties.each do |matched_provider| 
+  #       if matched_provider.insurances.where(plan_id: plan).length == 1
+  #         result << matched_provider
+  #       end
+
+  #       #return result if result.length == search_result_cap
+  #     end
+  #     return result
+  #   elsif specialty != "" && plan == ""
+  #     result = Provider
+  #       .joins(:specialties)
+  #       .where("lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?) ",
+  #       "#{specialty}%", "% #{specialty}%").limit(search_result_cap)
+  #     return result
+  #   elsif specialty == "" && plan != "" 
+  #     result = []
+  #     Provider.all.each do |provider|
+  #       result << provider if provider.insurances.any? { |insurance| insurance.plan_id == plan }
+  #       return result if result.length == search_result_cap
+  #     end
+  #   else 
+  #     return Provider.all.sample(search_result_cap)
+  #   end
+
+  #   # result = result[0...10] if result.length > 20
+  # end
 end
