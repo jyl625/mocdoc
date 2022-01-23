@@ -42,7 +42,7 @@ class Provider < ApplicationRecord
       test = Provider
         .joins(:specialties).joins(:insurances)
         .where("(lower(specialty_name) LIKE lower(?) OR lower(specialty_name) LIKE lower(?)) AND insurances.plan_id = (?)",
-        "#{specialty}%", "% #{specialty}%", "#{plan}").limit(10)
+        "#{specialty}%", "% #{specialty}%", "#{plan}").offset(10).limit(10)
 
       result = []
       matching_specialties.each do |matched_provider| 
